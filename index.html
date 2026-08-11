@@ -1,210 +1,1191 @@
-<!doctype html><html lang="es-VE"><head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!doctype html>
+<html lang="es-VE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Mapa Participativo de Gestión de Riesgos en Venezuela | La Movida de SST Plus</title>
 
-<title>Mapa Participativo de Gestión de Riesgos en Venezuela | La Movida de SST Plus</title>
-<meta name="description" content="Mapa participativo de gestión de riesgos en Venezuela para identificar y visualizar amenazas, elementos expuestos, vulnerabilidades y capacidades. Iniciativa de La Movida de SST Plus para profesionales de SST, emergencias, prevención y gestión del riesgo.">
-<meta name="keywords" content="gestión de riesgos Venezuela, mapa de riesgos Venezuela, amenazas Venezuela, vulnerabilidades, elementos expuestos, capacidades, emergencias, SST Venezuela, seguridad y salud en el trabajo, prevención, planes de emergencia, La Movida de SST Plus">
-<meta name="author" content="David Linares Brea - La Movida de SST Plus">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#0B2A6F">
-<meta name="application-name" content="Mapa Participativo de Gestión de Riesgos - La Movida de SST Plus">
-<meta name="geo.region" content="VE">
-<meta name="geo.placename" content="Venezuela">
-<link rel="canonical" href="https://gdr.movidasst.com/">
+  <meta name="description" content="Mapa participativo de gestión de riesgos en Venezuela para identificar y visualizar amenazas, elementos expuestos, vulnerabilidades y capacidades. Iniciativa de La Movida de SST Plus para profesionales de SST, emergencias, prevención y gestión del riesgo.">
+  <meta name="keywords" content="gestión de riesgos Venezuela, mapa de riesgos Venezuela, amenazas, vulnerabilidades, elementos expuestos, capacidades, emergencias, SST Venezuela, planes de emergencia, La Movida de SST Plus">
+  <meta name="author" content="David Linares Brea - La Movida de SST Plus">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#0B2A6F">
+  <meta name="geo.region" content="VE">
+  <meta name="geo.placename" content="Venezuela">
+  <link rel="canonical" href="https://gdr.movidasst.com/">
 
-<meta property="og:type" content="website">
-<meta property="og:locale" content="es_VE">
-<meta property="og:site_name" content="La Movida de SST Plus">
-<meta property="og:title" content="Mapa Participativo de Gestión de Riesgos en Venezuela">
-<meta property="og:description" content="Explora y aporta información sobre amenazas, elementos expuestos, vulnerabilidades y capacidades en Venezuela. Un mapa colaborativo de La Movida de SST Plus.">
-<meta property="og:url" content="https://gdr.movidasst.com/">
-<meta property="og:image" content="https://drive.google.com/thumbnail?id=1uJQz_j4X2fEHVNEqQPpXdF5A862WYBNB&sz=w1200">
-<meta property="og:image:secure_url" content="https://drive.google.com/thumbnail?id=1uJQz_j4X2fEHVNEqQPpXdF5A862WYBNB&sz=w1200">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Mapa Participativo de Gestión de Riesgos en Venezuela - La Movida de SST Plus">
+  <!-- Vista previa al compartir -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_VE">
+  <meta property="og:site_name" content="La Movida de SST Plus">
+  <meta property="og:title" content="Mapa Participativo de Gestión de Riesgos en Venezuela">
+  <meta property="og:description" content="Explora y aporta información sobre amenazas, elementos expuestos, vulnerabilidades y capacidades en Venezuela.">
+  <meta property="og:url" content="https://gdr.movidasst.com/">
+  <meta property="og:image" content="https://drive.google.com/thumbnail?id=1uJQz_j4X2fEHVNEqQPpXdF5A862WYBNB&sz=w1200">
+  <meta property="og:image:secure_url" content="https://drive.google.com/thumbnail?id=1uJQz_j4X2fEHVNEqQPpXdF5A862WYBNB&sz=w1200">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mapa Participativo de Gestión de Riesgos en Venezuela - La Movida de SST Plus">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Mapa Participativo de Gestión de Riesgos en Venezuela">
-<meta name="twitter:description" content="Amenazas, exposición, vulnerabilidades y capacidades en un mapa colaborativo para profesionales de SST y gestión de riesgos en Venezuela.">
-<meta name="twitter:image" content="https://drive.google.com/thumbnail?id=1uJQz_j4X2fEHVNEqQPpXdF5A862WYBNB&sz=w1200">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mapa Participativo de Gestión de Riesgos en Venezuela">
+  <meta name="twitter:description" content="Amenazas, exposición, vulnerabilidades y capacidades en un mapa colaborativo de La Movida de SST Plus.">
+  <meta name="twitter:image" content="https://drive.google.com/thumbnail?id=1uJQz_j4X2fEHVNEqQPpXdF5A862WYBNB&sz=w1200">
 
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"WebApplication",
-  "name":"Mapa Participativo de Gestión de Riesgos en Venezuela",
-  "alternateName":"Mapa de Gestión de Riesgos - La Movida de SST Plus",
-  "url":"https://gdr.movidasst.com/",
-  "description":"Mapa participativo para identificar, visualizar y analizar amenazas, elementos expuestos, vulnerabilidades y capacidades en Venezuela.",
-  "applicationCategory":"EducationalApplication",
-  "operatingSystem":"Web",
-  "inLanguage":"es-VE",
-  "areaServed":{"@type":"Country","name":"Venezuela"},
-  "creator":{"@type":"Person","name":"David Linares Brea","email":"info@movidasst.com"},
-  "publisher":{"@type":"Organization","name":"La Movida de SST Plus","url":"https://www.movidasst.com"},
-  "about":[
-    {"@type":"Thing","name":"Gestión de riesgos"},
-    {"@type":"Thing","name":"Seguridad y Salud en el Trabajo"},
-    {"@type":"Thing","name":"Gestión de emergencias"},
-    {"@type":"Thing","name":"Amenazas"},
-    {"@type":"Thing","name":"Vulnerabilidades"},
-    {"@type":"Thing","name":"Capacidades"}
-  ]
-}
-</script>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Mapa Participativo de Gestión de Riesgos en Venezuela",
+    "url":"https://gdr.movidasst.com/",
+    "description":"Mapa participativo para identificar, visualizar y analizar amenazas, elementos expuestos, vulnerabilidades y capacidades en Venezuela.",
+    "applicationCategory":"EducationalApplication",
+    "operatingSystem":"Web",
+    "inLanguage":"es-VE",
+    "areaServed":{"@type":"Country","name":"Venezuela"},
+    "creator":{"@type":"Person","name":"David Linares Brea","email":"info@movidasst.com"},
+    "publisher":{"@type":"Organization","name":"La Movida de SST Plus","url":"https://www.movidasst.com"}
+  }
+  </script>
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<style>
-:root{--az:#0b2a6f;--pt:#006d8f;--tx:#172033;--gr:#64748b;--bd:#dfe7f0;--sh:0 8px 28px rgba(20,38,70,.14)}*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--tx)}body{overflow:hidden}button,input,select,textarea{font:inherit}#map{position:fixed;inset:0 0 72px;z-index:1}.top{position:fixed;z-index:1000;top:0;left:0;right:0;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 2px 16px rgba(15,35,70,.1);padding:calc(9px + env(safe-area-inset-top)) 12px 9px}.brand{display:flex;justify-content:space-between;align-items:center;gap:8px}.marca{font-weight:950;color:var(--az);font-size:13px}.title{margin:2px 0 0;color:#10264f;font-weight:950;font-size:clamp(16px,4vw,22px);line-height:1.05}.sub{font-size:10px;color:var(--gr);font-weight:650;margin-top:3px}.estado{font-size:10px;font-weight:850;padding:7px 9px;border-radius:999px;background:#eef8f2;color:#287543;white-space:nowrap}.acciones{position:fixed;z-index:950;top:90px;left:10px;right:10px;display:flex;gap:7px;pointer-events:none}.btn{pointer-events:auto;border:0;min-height:43px;border-radius:14px;padding:0 12px;background:#fff;box-shadow:var(--sh);font-size:12px;font-weight:850;cursor:pointer}.gps{background:var(--az);color:#fff;flex:1}.sq{width:46px;padding:0}#btnMod{display:none;background:#fff5e8;color:#934b08}.reportar{position:fixed;z-index:1000;right:15px;bottom:88px;height:56px;border:0;border-radius:28px;padding:0 19px;background:linear-gradient(135deg,var(--pt),var(--az));color:#fff;font-weight:950;box-shadow:0 12px 32px rgba(11,42,111,.3);cursor:pointer}.capas{position:fixed;z-index:1000;bottom:0;left:0;right:0;height:calc(72px + env(safe-area-inset-bottom));background:rgba(255,255,255,.98);box-shadow:0 -4px 20px rgba(20,40,70,.12);padding:6px 5px calc(6px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.capa{border:0;background:transparent;border-radius:13px;color:#6a7487;font-size:9px;font-weight:850}.capa .i{display:block;font-size:20px}.capa.on{background:#edf4ff;color:var(--az)}.panel{position:fixed;z-index:1600;left:10px;right:10px;bottom:80px;max-height:68vh;overflow:auto;background:#fff;border-radius:21px;box-shadow:0 14px 44px rgba(15,30,60,.24);padding:15px;transform:translateY(120%);transition:.25s}.panel.open{transform:translateY(0)}.ph{display:flex;align-items:center;justify-content:space-between}.ph h2{margin:0;font-size:17px;color:var(--az)}.x{border:0;width:35px;height:35px;border-radius:50%;background:#eef2f7}.group{margin:14px 0}.gt{font-size:10px;color:var(--gr);font-weight:950;text-transform:uppercase}.li{display:flex;gap:9px;align-items:center;padding:8px 0;border-bottom:1px solid #eef1f5;font-size:12px;font-weight:750}.ii{width:32px;height:32px;border-radius:10px;background:#f3f6fa;display:grid;place-items:center;font-size:18px}.modal{position:fixed;inset:0;z-index:3000;background:rgba(8,20,45,.58);backdrop-filter:blur(5px);display:flex;align-items:flex-end;justify-content:center;padding:12px;opacity:0;visibility:hidden;pointer-events:none;transition:.22s}.modal.open{opacity:1;visibility:visible;pointer-events:auto}.card{position:relative;width:100%;max-width:540px;max-height:92vh;overflow:auto;background:#fff;border-radius:25px 25px 18px 18px;padding:22px 18px 18px;box-shadow:0 22px 60px rgba(10,25,55,.30)}.card h2{margin:0 40px 5px 0;color:var(--az);font-size:20px}.intro{font-size:12px;line-height:1.45;color:var(--gr);margin:0 0 15px}.mi{width:50px;height:50px;border-radius:15px;background:#edf4ff;display:grid;place-items:center;font-size:25px;margin-bottom:10px}.close{position:absolute;top:12px;right:12px;border:0;width:37px;height:37px;border-radius:50%;background:#eef2f7}.lab{display:block;margin:11px 0 5px;font-size:11px;font-weight:900;color:#26354e}.in,.sel,.ta{width:100%;border:1.5px solid #dce3ed;border-radius:13px;background:#f9fbfd;color:var(--tx);outline:none}.in,.sel{height:48px;padding:0 12px}.ta{min-height:90px;padding:11px 12px;resize:vertical}.in:focus,.sel:focus,.ta:focus{border-color:var(--pt);box-shadow:0 0 0 4px rgba(0,109,143,.1);background:#fff}.prim{width:100%;min-height:50px;margin-top:15px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--pt),var(--az));color:#fff;font-weight:950}.sec{width:100%;min-height:46px;margin-top:7px;border:1px solid var(--bd);border-radius:14px;background:#fff;color:var(--az);font-weight:850}.res{display:none;margin-top:12px;padding:11px;border-radius:13px;font-size:12px}.res.ok{display:block;background:#eef9f2;color:#246c3e}.res.err{display:block;background:#fff0f0;color:#9a2929}.help{margin-top:12px;padding:10px 11px;border-radius:13px;background:#f4f7fb;color:#64748b;font-size:10px;line-height:1.45}.types{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}.type{border:1px solid var(--bd);border-radius:17px;background:#fff;padding:12px 9px;min-height:105px;text-align:center}.type span{font-size:28px}.type strong{display:block;color:#18345f;font-size:12px;margin-top:5px}.type small{display:block;color:#6a7487;font-size:9px;line-height:1.3}.chip{padding:9px 11px;border-radius:13px;background:#eef9f2;color:#256a40;font-size:11px;font-weight:800}.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ubs{display:grid;grid-template-columns:1fr 1fr;gap:7px}.ub{border:1px solid var(--bd);border-radius:14px;background:#fff;min-height:58px;font-size:11px;font-weight:850}.ubr{margin-top:8px;padding:10px;border-radius:13px;background:#f4f7fb;color:#42526b;font-size:11px}.ubr.ok{background:#eef9f2;color:#246c3e}.srow{display:flex;gap:7px}.srow .in{flex:1}.mini{width:49px;border:0;border-radius:13px;background:var(--az);color:#fff}.results{display:none;border:1px solid var(--bd);border-radius:13px;margin-top:7px;overflow:hidden}.results.open{display:block}.place{padding:9px 10px;border-bottom:1px solid #eef1f5;font-size:11px;line-height:1.35}.radios{display:grid;grid-template-columns:1fr 1fr;gap:7px}.radio{border:1px solid var(--bd);border-radius:13px;padding:9px;text-align:center;font-size:11px;font-weight:850}.radio input{display:none}.radio:has(input:checked){background:#edf9fb;border-color:var(--pt);color:var(--pt)}.env{margin-top:12px;border:1px solid #dbe5ef;border-radius:16px;padding:11px;background:#fbfdff}.envhead{display:flex;gap:7px;margin-top:7px}.envhead .sel{flex:1}.envhead button{border:0;border-radius:12px;background:#143d72;color:#fff;font-size:11px;font-weight:900;padding:0 10px}.envlist{max-height:180px;overflow:auto;margin-top:8px}.poi{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #edf1f5;font-size:10px}.poi b{display:block;font-size:11px}.dist{color:var(--pt);font-weight:850}.ctx{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px}.ctx label{border:1px solid var(--bd);border-radius:12px;padding:9px;font-size:10px;font-weight:800}.mods .m{padding:11px;border:1px solid var(--bd);border-radius:14px;margin:9px 0}.mt{display:flex;justify-content:space-between;gap:8px;font-size:11px}.ma{display:flex;gap:6px;margin-top:8px}.ma button{flex:1;border:0;min-height:38px;border-radius:10px;font-size:10px;font-weight:900}.valid{background:#eaf8ef;color:#246c3e}.reject{background:#fff0f0;color:#9a2929}.goto{background:#edf4ff;color:#174c8b}.toast{position:fixed;z-index:6000;left:50%;bottom:150px;transform:translate(-50%,25px);opacity:0;max-width:calc(100% - 25px);background:#172033;color:#fff;padding:10px 13px;border-radius:13px;font-size:11px;font-weight:750;text-align:center;transition:.22s;pointer-events:none}.toast.on{opacity:1;transform:translate(-50%,0)}
-@media(min-width:800px){#map{bottom:0}.top{top:18px;left:18px;right:auto;width:395px;border-radius:19px;padding:14px}.acciones{top:132px;left:18px;right:auto;width:395px}.capas{left:18px;right:auto;bottom:18px;width:395px;height:70px;border-radius:19px}.reportar{right:26px;bottom:25px}.panel{left:auto;right:18px;bottom:95px;width:410px}.modal{align-items:center}.card{border-radius:23px}}
+  <link rel="preconnect" href="https://unpkg.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
-/* ===== Identidad La Movida de SST Plus / Venezuela ===== */
-.top{
-  padding:calc(9px + env(safe-area-inset-top)) 10px 9px;
-  border-bottom:1px solid rgba(11,42,111,.08);
-}
-.top::before{
-  content:"";
-  position:absolute;top:0;left:0;right:0;height:4px;
-  background:linear-gradient(90deg,#F7D117 0 33.333%,#003DA5 33.333% 66.666%,#CF142B 66.666% 100%);
-}
-.branding{display:flex;align-items:center;gap:10px}
-.logoBox{
-  width:64px;height:64px;flex:0 0 64px;border-radius:18px;background:#fff;
-  display:grid;place-items:center;overflow:hidden;box-shadow:0 6px 20px rgba(11,42,111,.12)
-}
-.logoBox img{width:92%;height:92%;object-fit:contain;display:block}
-.brandCopy{min-width:0;flex:1}
-.brandName{font-size:18px;line-height:1.03;font-weight:950;color:#0B2A6F;letter-spacing:-.02em}
-.slogan{margin-top:4px;font-size:10px;font-weight:850;color:#006D8F}
-.toolLine{
-  display:flex;align-items:flex-end;justify-content:space-between;gap:8px;
-  margin-top:8px;padding-top:7px;border-top:1px solid #edf1f6
-}
-.toolTitle{font-size:14px;font-weight:950;color:#172E5C;line-height:1.08}
-.toolSub{font-size:8.5px;color:#68758A;font-weight:700;margin-top:3px}
-.institutional{display:grid;grid-template-columns:auto 1fr 42px;gap:6px;margin-top:8px}
-.instBtn{
-  min-height:38px;border:0;border-radius:11px;padding:0 11px;font-size:10.5px;
-  font-weight:900;cursor:pointer
-}
-.backBtn{background:#eff3f8;color:#3e4d64}
-.registerBtn{background:linear-gradient(135deg,#F7D117,#F2BE1A);color:#172E5C}
-.infoBtn{background:#003DA5;color:white;padding:0;font-size:16px}
-.acciones{top:188px}
-.reportar{border:2px solid rgba(247,209,23,.85)}
-.infoLogo{
-  width:112px;height:112px;margin:0 auto 10px;border-radius:26px;background:#fff;
-  display:grid;place-items:center;box-shadow:0 10px 32px rgba(11,42,111,.14);overflow:hidden
-}
-.infoLogo img{width:92%;height:92%;object-fit:contain}
-.infoTitle{text-align:center;font-size:22px!important;margin:0!important;color:#0B2A6F!important}
-.infoSlogan{text-align:center;color:#006D8F;font-weight:850;font-size:12px;margin-top:4px}
-.flagMini{height:5px;width:82px;margin:12px auto 14px;border-radius:5px;background:linear-gradient(90deg,#F7D117 0 33.333%,#003DA5 33.333% 66.666%,#CF142B 66.666% 100%)}
-.infoLinks{display:grid;gap:7px;margin-top:14px}
-.infoLinks a,.infoLinks button{
-  width:100%;min-height:46px;border:0;border-radius:13px;padding:10px 12px;
-  display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;
-  font-size:11px;font-weight:900;cursor:pointer
-}
-.linkReg{background:#F7D117;color:#172E5C}
-.linkWa{background:#EAF8EF;color:#176B3A}
-.linkContact{background:#EFF5FF;color:#194C8C}
-.linkBack{background:#EEF1F5;color:#48566B}
-.authorBox{text-align:center;margin-top:16px;padding-top:13px;border-top:1px solid #e8edf3;color:#68758A;font-size:10px;line-height:1.5}
-.statusReported{color:#A3560B}.statusConfirmed{color:#174C8B}.statusValidated{color:#246C3E}
-@media(min-width:800px){
-  .top{width:430px!important;padding:15px!important}
-  .logoBox{width:78px;height:78px;flex-basis:78px;border-radius:21px}
-  .brandName{font-size:22px}.slogan{font-size:11px}
-  .acciones{top:247px!important;width:430px!important}
-}
+  <style>
+    :root{
+      --blue:#0B2A6F; --blue2:#003DA5; --teal:#006D8F; --green:#58B947;
+      --yellow:#F7D117; --red:#CF142B; --orange:#E87916;
+      --ink:#172033; --muted:#66758B; --line:#E1E8F0; --soft:#F4F7FB;
+      --white:#fff; --shadow:0 14px 40px rgba(10,35,75,.14);
+      --radius:20px;
+    }
 
-</style></head><body>
-<header class="top">
-  <div class="branding">
-    <div class="logoBox">
-      <img src="https://drive.google.com/thumbnail?id=1MjVa3JxeKC95xEdlcZ5ZFMCKlatbrU2s&sz=w1000" alt="Logo La Movida de SST Plus">
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#eef3f8}
+    body{overflow:hidden}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+
+    .app{
+      width:100%;
+      height:100dvh;
+      display:grid;
+      grid-template-rows:auto minmax(0,1fr) auto;
+      background:var(--soft);
+    }
+
+    /* ---------- CABECERA MOBILE ---------- */
+    .header{
+      position:relative;
+      z-index:1000;
+      background:rgba(255,255,255,.98);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 4px 20px rgba(13,37,74,.08);
+      padding:calc(8px + env(safe-area-inset-top)) 12px 9px;
+    }
+    .header::before{
+      content:"";position:absolute;left:0;right:0;top:0;height:4px;
+      background:linear-gradient(90deg,var(--yellow) 0 33.333%,var(--blue2) 33.333% 66.666%,var(--red) 66.666% 100%);
+    }
+    .identity{display:flex;align-items:center;gap:10px;min-width:0}
+    .logo{
+      width:58px;height:58px;flex:0 0 58px;border-radius:16px;background:#fff;
+      display:grid;place-items:center;overflow:hidden;
+      box-shadow:0 6px 18px rgba(11,42,111,.12);
+    }
+    .logo img{width:94%;height:94%;object-fit:contain;display:block}
+    .brand{min-width:0;flex:1}
+    .brandName{font-size:17px;font-weight:950;color:var(--blue);line-height:1.02;letter-spacing:-.02em}
+    .slogan{font-size:9.5px;font-weight:850;color:var(--teal);margin-top:4px}
+    .toolName{font-size:12px;font-weight:900;color:#213a67;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .toolSub{font-size:8.5px;color:var(--muted);font-weight:700;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .status{
+      flex:0 0 auto;font-size:9px;font-weight:900;padding:6px 8px;border-radius:999px;
+      background:#eef8f2;color:#267044;border:1px solid #d4ecdd
+    }
+
+    .quick{
+      display:grid;grid-template-columns:auto 1fr 40px;gap:6px;margin-top:8px;
+    }
+    .qbtn{
+      min-height:36px;border:0;border-radius:11px;font-size:10px;font-weight:900;padding:0 10px;
+    }
+    .back{background:#eef2f7;color:#4b596d}
+    .register{background:linear-gradient(135deg,var(--yellow),#f2bd17);color:#172e5c}
+    .info{background:var(--blue2);color:#fff;padding:0;font-size:16px}
+
+    /* ---------- MAPA ---------- */
+    .mapStage{position:relative;min-height:0;overflow:hidden;background:#dce6ef}
+    #map{position:absolute;inset:0;width:100%;height:100%}
+
+    .mapTools{
+      position:absolute;z-index:700;top:10px;left:10px;right:10px;
+      display:flex;gap:7px;pointer-events:none;
+    }
+    .mapTools button{
+      pointer-events:auto;border:0;border-radius:13px;min-height:42px;padding:0 12px;
+      background:#fff;color:var(--ink);box-shadow:var(--shadow);font-size:11px;font-weight:900;
+    }
+    .mapTools .gps{flex:1;background:var(--blue);color:white}
+    .square{width:44px;padding:0!important}
+    #moderationBtn{display:none;background:#fff3e3;color:#8f4b08}
+
+    .reportBtn{
+      position:absolute;z-index:700;right:14px;bottom:16px;height:54px;border:2px solid rgba(247,209,23,.9);
+      border-radius:28px;padding:0 18px;background:linear-gradient(135deg,var(--teal),var(--blue));color:white;
+      box-shadow:0 12px 28px rgba(11,42,111,.28);font-size:13px;font-weight:950;
+    }
+
+    /* ---------- NAVEGACIÓN CAPAS MOBILE ---------- */
+    .layers{
+      z-index:900;background:rgba(255,255,255,.99);border-top:1px solid var(--line);
+      padding:6px 5px calc(6px + env(safe-area-inset-bottom));
+      display:grid;grid-template-columns:repeat(4,1fr);gap:4px;
+      box-shadow:0 -4px 18px rgba(20,40,70,.08)
+    }
+    .layerBtn{
+      border:0;background:transparent;color:#68758a;border-radius:12px;min-height:54px;font-size:9px;font-weight:850;
+    }
+    .layerBtn span{display:block;font-size:20px;margin-bottom:2px}
+    .layerBtn.active{background:#edf4ff;color:var(--blue)}
+
+    /* ---------- PANELES / MODALES ---------- */
+    .sheet{
+      position:fixed;z-index:2400;left:10px;right:10px;bottom:76px;max-height:70vh;overflow:auto;
+      background:#fff;border-radius:22px;padding:15px;box-shadow:0 22px 60px rgba(10,30,65,.25);
+      transform:translateY(calc(100% + 100px));transition:.24s ease;
+    }
+    .sheet.open{transform:translateY(0)}
+    .sheetHead{display:flex;justify-content:space-between;align-items:center;gap:10px}
+    .sheetHead h2{margin:0;color:var(--blue);font-size:17px}
+    .close{
+      width:36px;height:36px;border:0;border-radius:50%;background:#eef2f7;color:#435167;font-weight:900
+    }
+
+    .modal{
+      position:fixed;z-index:3000;inset:0;background:rgba(7,19,42,.58);backdrop-filter:blur(5px);
+      display:flex;align-items:flex-end;justify-content:center;padding:12px;
+      opacity:0;visibility:hidden;pointer-events:none;transition:.2s ease;
+    }
+    .modal.open{opacity:1;visibility:visible;pointer-events:auto}
+    .card{
+      position:relative;width:100%;max-width:560px;max-height:92vh;overflow:auto;
+      border-radius:24px 24px 17px 17px;background:#fff;padding:21px 17px 17px;
+      box-shadow:0 24px 70px rgba(7,25,55,.32)
+    }
+    .card h2{margin:0 42px 5px 0;color:var(--blue);font-size:20px}
+    .modalIcon{width:50px;height:50px;border-radius:15px;background:#edf4ff;display:grid;place-items:center;font-size:25px;margin-bottom:10px}
+    .intro{font-size:11.5px;line-height:1.48;color:var(--muted);margin:0 0 14px}
+
+    .label{display:block;margin:11px 0 5px;color:#26354e;font-size:11px;font-weight:900}
+    .input,.select,.textarea{
+      width:100%;border:1.5px solid #dce3ed;border-radius:13px;background:#f9fbfd;color:var(--ink);outline:none
+    }
+    .input,.select{height:48px;padding:0 12px}
+    .textarea{min-height:95px;padding:11px 12px;resize:vertical;line-height:1.4}
+    .input:focus,.select:focus,.textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(0,109,143,.1);background:#fff}
+
+    .primary,.secondary{
+      width:100%;min-height:48px;margin-top:9px;border-radius:13px;font-weight:900
+    }
+    .primary{border:0;background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff}
+    .secondary{border:1px solid var(--line);background:#fff;color:var(--blue)}
+    .primary:disabled{opacity:.55;cursor:wait}
+    .help{margin-top:11px;padding:10px;border-radius:12px;background:#f4f7fb;color:#65748a;font-size:10px;line-height:1.45}
+    .loginResult{display:none;margin-top:11px;padding:10px;border-radius:12px;font-size:11px}
+    .loginResult.ok{display:block;background:#eef9f2;color:#246c3e;border:1px solid #ccebd7}
+    .loginResult.err{display:block;background:#fff0f0;color:#9a2929;border:1px solid #ffd1d1}
+
+    .typeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+    .typeBtn{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 8px;min-height:102px;text-align:center}
+    .typeBtn .ico{font-size:28px}.typeBtn strong{display:block;color:#1b365e;font-size:12px;margin-top:5px}.typeBtn small{display:block;color:#6a7487;font-size:9px;line-height:1.3;margin-top:3px}
+    .memberChip{padding:9px 10px;border-radius:12px;background:#eef9f2;color:#256a40;font-size:11px;font-weight:800}
+
+    .locationGrid,.grid2,.radioGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .locationBtn{min-height:58px;border:1px solid var(--line);border-radius:13px;background:#fff;font-size:11px;font-weight:850}
+    .locationSummary{margin-top:8px;padding:10px;border-radius:12px;background:#f4f7fb;color:#42526b;font-size:10.5px;line-height:1.4}
+    .locationSummary.ok{background:#eef9f2;border:1px solid #d0ead8;color:#246c3e}
+    .radio{padding:9px;border:1px solid var(--line);border-radius:12px;text-align:center;font-size:10.5px;font-weight:850}
+    .searchRow{display:flex;gap:6px}.searchRow .input{flex:1}.searchBtn{width:48px;border:0;border-radius:12px;background:var(--blue);color:#fff}
+    .searchResults{display:none;margin-top:6px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+    .searchResults.show{display:block}.place{padding:9px;border-bottom:1px solid #eef1f5;font-size:10.5px;line-height:1.35}
+
+    .contextGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}
+    .contextOpt{border:1px solid var(--line);border-radius:11px;padding:9px;font-size:10px;font-weight:800}
+    .envBox{margin-top:12px;border:1px solid #dbe5ef;border-radius:15px;background:#fbfdff;padding:10px}
+    .poi{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #edf1f5;font-size:10px}
+    .poi:last-child{border-bottom:0}.poi strong{display:block;font-size:11px}.distance{color:var(--teal);font-weight:850}
+
+    .legendGroup{margin:13px 0}.legendTitle{font-size:10px;font-weight:950;color:var(--muted);text-transform:uppercase}
+    .legendItem{display:flex;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid #eef1f5;font-size:11.5px;font-weight:750}
+
+    .modItem{border:1px solid var(--line);border-radius:13px;padding:10px;margin-bottom:8px}
+    .modTitle{font-size:11px;font-weight:900;color:#1b365e}.modDesc{font-size:10px;color:#65748a;line-height:1.4;margin-top:4px}
+    .modActions{display:flex;gap:5px;margin-top:7px}.modActions button{flex:1;border:0;border-radius:9px;min-height:36px;font-size:9.5px;font-weight:900}
+    .viewBtn{background:#edf4ff;color:#174c8b}.validBtn{background:#eaf8ef;color:#246c3e}.rejectBtn{background:#fff0f0;color:#9a2929}
+
+    .infoLogo{width:116px;height:116px;margin:0 auto 10px;border-radius:26px;background:#fff;display:grid;place-items:center;box-shadow:0 10px 32px rgba(11,42,111,.14);overflow:hidden}
+    .infoLogo img{width:94%;height:94%;object-fit:contain}
+    .infoTitle{text-align:center!important;margin:0!important}.infoSlogan{text-align:center;color:var(--teal);font-size:12px;font-weight:850;margin-top:4px}
+    .flagMini{height:5px;width:82px;margin:12px auto;border-radius:5px;background:linear-gradient(90deg,var(--yellow) 0 33.333%,var(--blue2) 33.333% 66.666%,var(--red) 66.666% 100%)}
+    .infoLinks{display:grid;gap:7px;margin-top:12px}.infoLinks a,.infoLinks button{min-height:45px;border:0;border-radius:12px;display:flex;justify-content:center;align-items:center;text-decoration:none;font-size:10.5px;font-weight:900}
+    .linkReg{background:var(--yellow);color:#172e5c}.linkWa{background:#eaf8ef;color:#176b3a}.linkContact{background:#eff5ff;color:#194c8c}.linkBack{background:#eef1f5;color:#48566b}
+    .author{text-align:center;margin-top:14px;padding-top:12px;border-top:1px solid #e8edf3;color:#68758a;font-size:10px;line-height:1.5}
+
+    .popup{min-width:205px}.popup h3{margin:5px 0;color:var(--blue);font-size:13px}.popup p{margin:5px 0;color:#4f5c70;font-size:10.5px;line-height:1.35}
+    .badge{display:inline-block;padding:4px 7px;border-radius:999px;font-size:8.5px;font-weight:950}
+    .reported{background:#fff4e8;color:#a3560b}.confirmed{background:#edf4ff;color:#174c8b}.validated{background:#eaf8ef;color:#246c3e}
+    .popupActions{display:flex;gap:5px;margin-top:7px}.popupActions button{border:0;border-radius:8px;padding:7px;font-size:9px;font-weight:900;background:#edf4ff;color:#174c8b}
+
+    .toast{
+      position:fixed;z-index:5000;left:50%;bottom:90px;max-width:calc(100% - 24px);
+      transform:translate(-50%,18px);opacity:0;background:#172033;color:#fff;padding:10px 13px;border-radius:12px;
+      font-size:10.5px;font-weight:750;text-align:center;pointer-events:none;transition:.2s
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .fatal{
+      position:absolute;z-index:800;inset:16px;display:none;place-items:center;text-align:center;
+      background:rgba(255,255,255,.96);border-radius:18px;padding:20px;color:#7b2430;box-shadow:var(--shadow)
+    }
+    .fatal.show{display:grid}
+
+    /* ---------- TABLET / PC ---------- */
+    @media (min-width: 760px){
+      .app{
+        grid-template-columns:360px minmax(0,1fr);
+        grid-template-rows:minmax(0,1fr);
+      }
+      .header{
+        grid-column:1;grid-row:1;
+        display:flex;flex-direction:column;
+        padding:20px 18px;
+        border-right:1px solid var(--line);border-bottom:0;
+        box-shadow:6px 0 24px rgba(12,36,76,.08);
+      }
+      .identity{align-items:flex-start}
+      .logo{width:82px;height:82px;flex-basis:82px;border-radius:21px}
+      .brandName{font-size:23px}.slogan{font-size:11px}.toolName{font-size:15px;white-space:normal;margin-top:10px}.toolSub{font-size:10px;white-space:normal;line-height:1.35}
+      .status{margin-left:auto}
+      .quick{margin-top:16px;grid-template-columns:1fr 1fr 42px}
+      .mapStage{grid-column:2;grid-row:1}
+      .layers{
+        grid-column:1;grid-row:1;align-self:end;
+        margin:0 14px 14px;border:1px solid var(--line);border-radius:17px;padding:7px;
+        box-shadow:var(--shadow);z-index:1200
+      }
+      .mapTools{top:16px;left:16px;right:auto;width:min(470px,calc(100% - 32px))}
+      .reportBtn{right:20px;bottom:20px}
+      .sheet{left:auto;right:18px;bottom:18px;width:400px;max-height:76vh}
+      .modal{align-items:center}
+      .card{border-radius:22px}
+      .toast{bottom:26px}
+    }
+
+    @media (min-width: 1180px){
+      .app{grid-template-columns:400px minmax(0,1fr)}
+      .header{padding:24px 22px}
+      .logo{width:92px;height:92px;flex-basis:92px}
+      .brandName{font-size:25px}
+      .toolName{font-size:17px}
+      .layers{margin:0 18px 18px}
+      .mapTools{width:520px}
+    }
+  </style>
+</head>
+
+<body>
+<div class="app">
+
+  <header class="header">
+    <div class="identity">
+      <div class="logo">
+        <img src="https://drive.google.com/thumbnail?id=1MjVa3JxeKC95xEdlcZ5ZFMCKlatbrU2s&sz=w1000" alt="La Movida de SST Plus">
+      </div>
+
+      <div class="brand">
+        <div class="brandName">La Movida de SST Plus</div>
+        <div class="slogan">De la reacción a la prevención</div>
+        <div class="toolName">Mapa Participativo de Gestión de Riesgos en Venezuela</div>
+        <div class="toolSub">Amenazas · Exposición · Vulnerabilidades · Capacidades</div>
+      </div>
+
+      <div class="status" id="connectionStatus">● Iniciando</div>
     </div>
-    <div class="brandCopy">
-      <div class="brandName">La Movida de SST Plus</div>
-      <div class="slogan">De la reacción a la prevención</div>
+
+    <div class="quick">
+      <button class="qbtn back" onclick="window.location.href='https://www.movidasst.com'">← Volver</button>
+      <button class="qbtn register" onclick="window.location.href='https://registro.movidasst.com'">👤 Registrarse</button>
+      <button class="qbtn info" onclick="openModal('aboutModal')" aria-label="Información">ℹ️</button>
     </div>
-  </div>
+  </header>
 
-  <div class="toolLine">
-    <div>
-      <div class="toolTitle">Mapa Participativo de Gestión de Riesgos en Venezuela</div>
-      <div class="toolSub">Amenazas · Exposición · Vulnerabilidades · Capacidades</div>
+  <main class="mapStage">
+    <div id="map"></div>
+
+    <div class="mapTools">
+      <button class="gps" onclick="goToMyLocation()">📍 Mi ubicación</button>
+      <button class="square" onclick="openSheet('contextSheet')" title="Contexto territorial">🏙️</button>
+      <button class="square" onclick="openSheet('legendSheet')" title="Leyenda">☰</button>
+      <button class="square" id="moderationBtn" onclick="openModeration()" title="Moderación">🛠️</button>
     </div>
-    <div class="estado" id="conn">● Conectando</div>
+
+    <button class="reportBtn" onclick="startReport()">＋ Reportar</button>
+
+    <div class="fatal" id="fatalError">
+      <div>
+        <strong>No se pudo iniciar el mapa.</strong><br>
+        <small id="fatalText">Comprueba tu conexión y recarga la página.</small>
+      </div>
+    </div>
+  </main>
+
+  <nav class="layers">
+    <button class="layerBtn active"><span>🔥</span>Amenazas</button>
+    <button class="layerBtn" onclick="comingSoon('Elementos expuestos')"><span>👥</span>Exposición</button>
+    <button class="layerBtn" onclick="comingSoon('Vulnerabilidades')"><span>⚠️</span>Vulnerabilidad</button>
+    <button class="layerBtn" onclick="comingSoon('Capacidades')"><span>🛡️</span>Capacidades</button>
+  </nav>
+</div>
+
+<!-- LEYENDA -->
+<aside class="sheet" id="legendSheet">
+  <div class="sheetHead">
+    <h2>Leyenda</h2>
+    <button class="close" onclick="closeSheet('legendSheet')">✕</button>
+  </div>
+  <div class="help">
+    🟠 <strong>Reportado:</strong> aportado por un integrante verificado.<br><br>
+    🔵 <strong>Confirmado:</strong> corroborado por al menos 2 integrantes distintos.<br><br>
+    🟢 <strong>Validado:</strong> revisado por un moderador.
+  </div>
+  <div id="legendBody"></div>
+</aside>
+
+<!-- CONTEXTO -->
+<aside class="sheet" id="contextSheet">
+  <div class="sheetHead">
+    <h2>🏙️ Contexto territorial</h2>
+    <button class="close" onclick="closeSheet('contextSheet')">✕</button>
+  </div>
+  <p class="intro">Consulta lugares registrados en OpenStreetMap alrededor del centro actual del mapa. Son contexto territorial; no se consideran automáticamente elementos expuestos.</p>
+
+  <div class="contextGrid">
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="salud" checked> 🏥 Salud</label>
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="educacion" checked> 🏫 Educación</label>
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="fire_station" checked> 🚒 Bomberos</label>
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="police"> 🚓 Policía</label>
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="fuel"> ⛽ Combustible</label>
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="pharmacy"> 💊 Farmacias</label>
   </div>
 
-  <div class="institutional">
-    <button class="instBtn backBtn" onclick="window.location.href='https://www.movidasst.com'">← Volver</button>
-    <button class="instBtn registerBtn" onclick="window.location.href='https://registro.movidasst.com'">👤 Registrarse en La Movida</button>
-    <button class="instBtn infoBtn" onclick="openM('about')" aria-label="Información">ℹ️</button>
-  </div>
-</header>
-<div class="acciones"><button class="btn gps" onclick="gpsGeneral()">📍 Mi ubicación</button><button class="btn sq" onclick="openPanel('context')">🏙️</button><button class="btn sq" onclick="openPanel('legend')">☰</button><button class="btn sq" id="btnMod" onclick="openModeration()">🛠️</button></div>
-<div id="map"></div><button class="reportar" onclick="startReport()">＋ Reportar</button>
-<nav class="capas"><button class="capa on"><span class="i">🔥</span>Amenazas</button><button class="capa" onclick="later('Elementos expuestos')"><span class="i">👥</span>Exposición</button><button class="capa" onclick="later('Vulnerabilidades')"><span class="i">⚠️</span>Vulnerabilidad</button><button class="capa" onclick="later('Capacidades')"><span class="i">🛡️</span>Capacidades</button></nav>
-<aside class="panel" id="legend"><div class="ph"><h2>Leyenda</h2><button class="x" onclick="closePanel('legend')">✕</button></div><div id="legendBody"></div></aside>
-<aside class="panel" id="context"><div class="ph"><h2>🏙️ Contexto territorial</h2><button class="x" onclick="closePanel('context')">✕</button></div><p class="intro">Carga lugares existentes en OpenStreetMap alrededor del centro del mapa. Sirven como contexto; no son automáticamente elementos expuestos.</p><div class="ctx"><label><input type="checkbox" value="health" checked> 🏥 Salud</label><label><input type="checkbox" value="school" checked> 🏫 Educación</label><label><input type="checkbox" value="fire_station" checked> 🚒 Bomberos</label><label><input type="checkbox" value="police"> 🚓 Policía</label><label><input type="checkbox" value="fuel"> ⛽ Combustible</label><label><input type="checkbox" value="pharmacy"> 💊 Farmacias</label></div><label class="lab">Radio</label><select id="ctxRadius" class="sel"><option value="500">500 m</option><option value="1000" selected>1 km</option><option value="2000">2 km</option><option value="5000">5 km</option></select><button class="prim" onclick="loadContext()">Cargar lugares</button><button class="sec" onclick="contextLayer.clearLayers()">Limpiar</button><div class="help">Fuente: OpenStreetMap/Overpass. La cobertura depende de los datos disponibles en la zona.</div></aside>
-<div class="modal" id="login"><section class="card"><button class="close" onclick="closeM('login')">✕</button><div class="mi">🔐</div><h2>Identifícate como integrante</h2><p class="intro">Necesario para reportar, confirmar o moderar.</p><label class="lab">Cédula</label><input class="in" id="cedula" inputmode="numeric"><label class="lab">Código de integrante</label><input class="in" id="codigo"><button class="prim" id="loginBtn" onclick="validateMember()">Verificar integrante</button><div class="res" id="loginRes"></div><div class="help">Los visitantes pueden consultar el mapa sin identificarse.</div></section></div>
-<div class="modal" id="types"><section class="card"><button class="close" onclick="closeM('types')">✕</button><div class="mi">＋</div><h2>¿Qué deseas registrar?</h2><div class="chip" id="memberChip">✅ Integrante verificado</div><div class="types"><button class="type" onclick="chooseType('AMENAZA')"><span>🔥</span><strong>Amenaza</strong><small>Identificar, ubicar y caracterizar.</small></button><button class="type" onclick="later('Elementos expuestos')"><span>👥</span><strong>Elemento expuesto</strong><small>Personas, infraestructura o servicios.</small></button><button class="type" onclick="later('Vulnerabilidades')"><span>⚠️</span><strong>Vulnerabilidad</strong><small>Debilidades y susceptibilidad.</small></button><button class="type" onclick="later('Capacidades')"><span>🛡️</span><strong>Capacidad</strong><small>Recursos y fortalezas.</small></button></div></section></div>
-<div class="modal" id="threat"><section class="card"><button class="close" onclick="closeM('threat')">✕</button><div class="mi">🔥</div><h2>Registrar amenaza</h2><p class="intro">El reporte aparecerá inmediatamente como <strong>🟠 REPORTADO</strong>. Con 2 confirmaciones independientes pasará a <strong>🔵 CONFIRMADO</strong>; un moderador puede marcarlo como <strong>🟢 VALIDADO</strong>.</p><label class="lab">Tipo *</label><select id="threatType" class="sel"></select><label class="lab">Título *</label><input id="threatTitle" class="in" maxlength="120"><label class="lab">Ubicación *</label><div class="ubs"><button class="ub" onclick="gpsThreat()">📍<br>Usar mi ubicación</button><button class="ub" onclick="mapThreat()">🗺️<br>Marcar en mapa</button></div><label class="lab">Buscar lugar</label><div class="srow"><input id="placeQ" class="in" placeholder="Ej. Maracay, Aragua"><button class="mini" onclick="searchPlace()">🔎</button></div><div class="results" id="placeResults"></div><div class="ubr" id="locRes">Aún no seleccionaste ubicación.</div><label class="lab">Precisión</label><div class="radios"><label class="radio"><input type="radio" name="exact" value="true" checked>🎯 Exacta</label><label class="radio"><input type="radio" name="exact" value="false">⭕ Aproximada</label></div><div class="g2"><div><label class="lab">Estado temporal</label><select id="temporal" class="sel"><option>POTENCIAL</option><option>ACTIVA</option><option>RECURRENTE</option><option>HISTORICA</option></select></div><div><label class="lab">Fecha</label><input id="dateObs" type="date" class="in"></div></div><div class="g2"><div><label class="lab">Frecuencia</label><select id="freq" class="sel"><option value="">No determinada</option><option>UNICA</option><option>OCASIONAL</option><option>ESTACIONAL</option><option>RECURRENTE</option><option>PERMANENTE</option></select></div><div><label class="lab">Intensidad</label><select id="intensity" class="sel"><option value="">No determinada</option><option>BAJA</option><option>MEDIA</option><option>ALTA</option></select></div></div><label class="lab">Fuente</label><select id="source" class="sel"><option value="">Selecciona</option><option>OBSERVACION_PROPIA</option><option>COMUNIDAD</option><option>EMPRESA</option><option>AUTORIDAD</option><option>DOCUMENTO_TECNICO</option><option>MEDIO_COMUNICACION</option><option>OTRA</option></select><label class="lab">Descripción *</label><textarea id="desc" class="ta" maxlength="1200"></textarea><div class="env"><b>🔎 ¿Qué hay cerca?</b><div class="envhead"><select id="envRadius" class="sel"><option value="500">500 m</option><option value="1000" selected>1 km</option><option value="2000">2 km</option><option value="5000">5 km</option></select><button onclick="analyzeThreatEnv()">Analizar</button></div><div class="help">Radio de consulta del entorno; no representa automáticamente el área de impacto.</div><div class="envlist" id="envList"></div></div><div class="help">📷 Foto opcional: la interfaz queda prevista. Para subirla a Drive faltan las credenciales Google del proyecto, que deben ir del lado servidor.</div><button class="prim" id="saveBtn" onclick="saveThreat()">Guardar reporte</button><button class="sec" onclick="closeM('threat')">Cancelar</button></section></div>
-<div class="modal" id="moderation"><section class="card"><button class="close" onclick="closeM('moderation')">✕</button><div class="mi">🛠️</div><h2>Moderación técnica</h2><p class="intro">Valida o rechaza reportes antes de publicarlos.</p><button class="prim" onclick="loadPending()">Actualizar pendientes</button><div class="mods" id="modList"></div></section></div>
-<div class="modal" id="about">
-<section class="card">
-  <button class="close" onclick="closeM('about')">✕</button>
-  <div class="infoLogo">
-    <img src="https://drive.google.com/thumbnail?id=1MjVa3JxeKC95xEdlcZ5ZFMCKlatbrU2s&sz=w1000" alt="La Movida de SST Plus">
-  </div>
-  <h2 class="infoTitle">La Movida de SST Plus</h2>
-  <div class="infoSlogan">De la reacción a la prevención</div>
-  <div class="flagMini"></div>
-  <p class="intro" style="text-align:center">
-    Mapa colaborativo para identificar, ubicar y analizar amenazas, elementos expuestos,
-    vulnerabilidades y capacidades para la gestión de riesgos y emergencias en Venezuela.
-  </p>
+  <label class="label">Radio alrededor del centro</label>
+  <select id="contextRadius" class="select">
+    <option value="500">500 m</option>
+    <option value="1000" selected>1 km</option>
+    <option value="2000">2 km</option>
+    <option value="5000">5 km</option>
+  </select>
 
-  <div class="infoLinks">
-    <a class="linkReg" href="https://registro.movidasst.com">👤 Registrarme en La Movida</a>
-    <a class="linkWa" href="https://whatsapp.com/channel/0029Va0mlH5Jf05mrcCz8r3e" target="_blank" rel="noopener noreferrer">📢 Canal de La Movida de SST en WhatsApp</a>
-    <a class="linkWa" href="https://wa.me/56868615650" target="_blank" rel="noopener noreferrer">💬 WhatsApp +56 868 615 650</a>
-    <a class="linkContact" href="mailto:info@movidasst.com">✉️ info@movidasst.com</a>
-    <button class="linkBack" onclick="window.location.href='https://www.movidasst.com'">← Volver a www.movidasst.com</button>
-  </div>
+  <button class="primary" onclick="loadContext()">Cargar lugares</button>
+  <button class="secondary" onclick="clearContext()">Limpiar</button>
+</aside>
 
-  <div class="authorBox">
-    Elaborado por<br><strong>David Linares Brea</strong><br>
-    La Movida de SST Plus · Venezuela
-  </div>
-</section>
+<!-- LOGIN -->
+<div class="modal" id="loginModal">
+  <section class="card">
+    <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('loginModal')">✕</button>
+    <div class="modalIcon">🔐</div>
+    <h2>Identifícate como integrante</h2>
+    <p class="intro">Para reportar o confirmar información debes validar tu cédula y código de integrante.</p>
+
+    <label class="label">Cédula</label>
+    <input id="loginCedula" class="input" inputmode="numeric" autocomplete="off" placeholder="Ej. 12345678">
+
+    <label class="label">Código de integrante</label>
+    <input id="loginCodigo" class="input" autocomplete="off" placeholder="Tu código">
+
+    <button id="loginBtn" class="primary" onclick="validateMember()">Verificar integrante</button>
+    <div id="loginResult" class="loginResult"></div>
+
+    <div class="help">Los visitantes pueden consultar el mapa sin identificarse. La identificación mantiene trazabilidad de los aportes.</div>
+  </section>
+</div>
+
+<!-- TIPO DE APORTE -->
+<div class="modal" id="typeModal">
+  <section class="card">
+    <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('typeModal')">✕</button>
+    <div class="modalIcon">＋</div>
+    <h2>¿Qué deseas registrar?</h2>
+    <div class="memberChip" id="memberChip">✅ Integrante verificado</div>
+
+    <div class="typeGrid">
+      <button class="typeBtn" onclick="selectReportType('AMENAZA')"><div class="ico">🔥</div><strong>Amenaza</strong><small>Identificar, ubicar y caracterizar.</small></button>
+      <button class="typeBtn" onclick="selectReportType('ELEMENTO')"><div class="ico">👥</div><strong>Elemento expuesto</strong><small>Personas, infraestructura y servicios.</small></button>
+      <button class="typeBtn" onclick="selectReportType('VULNERABILIDAD')"><div class="ico">⚠️</div><strong>Vulnerabilidad</strong><small>Debilidades y susceptibilidad.</small></button>
+      <button class="typeBtn" onclick="selectReportType('CAPACIDAD')"><div class="ico">🛡️</div><strong>Capacidad</strong><small>Recursos y fortalezas disponibles.</small></button>
+    </div>
+  </section>
+</div>
+
+<!-- FORMULARIO AMENAZA -->
+<div class="modal" id="threatModal">
+  <section class="card">
+    <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('threatModal')">✕</button>
+    <div class="modalIcon">🔥</div>
+    <h2>Registrar amenaza</h2>
+    <p class="intro">Se publicará inmediatamente como <strong>🟠 REPORTADO</strong>. Con 2 confirmaciones independientes pasa a <strong>🔵 CONFIRMADO</strong>; un moderador puede marcarlo como <strong>🟢 VALIDADO</strong>.</p>
+
+    <label class="label">Tipo de amenaza *</label>
+    <select id="threatType" class="select"><option value="">Selecciona</option></select>
+
+    <label class="label">Título *</label>
+    <input id="threatTitle" class="input" maxlength="120" placeholder="Ej. Inundación recurrente en acceso principal">
+
+    <label class="label">Ubicación *</label>
+    <div class="locationGrid">
+      <button class="locationBtn" onclick="useGPSForReport()">📍<br>Usar mi ubicación</button>
+      <button class="locationBtn" onclick="selectOnMap()">🗺️<br>Marcar en mapa</button>
+    </div>
+
+    <label class="label">Buscar lugar</label>
+    <div class="searchRow">
+      <input id="placeSearch" class="input" placeholder="Ej. Valencia, Carabobo">
+      <button class="searchBtn" onclick="searchPlace()">🔎</button>
+    </div>
+    <div id="placeResults" class="searchResults"></div>
+
+    <div id="locationSummary" class="locationSummary">Aún no seleccionaste una ubicación.</div>
+
+    <label class="label">Precisión de ubicación</label>
+    <div class="radioGrid">
+      <label class="radio"><input type="radio" name="exact" value="true" checked> 🎯 Exacta</label>
+      <label class="radio"><input type="radio" name="exact" value="false"> ⭕ Aproximada</label>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <label class="label">Estado temporal</label>
+        <select id="temporal" class="select">
+          <option value="POTENCIAL">Potencial</option>
+          <option value="ACTIVA">Activa</option>
+          <option value="RECURRENTE">Recurrente</option>
+          <option value="HISTORICA">Histórica</option>
+        </select>
+      </div>
+      <div>
+        <label class="label">Fecha observada</label>
+        <input id="dateObs" type="date" class="input">
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div>
+        <label class="label">Frecuencia</label>
+        <select id="frequency" class="select">
+          <option value="">No determinada</option>
+          <option value="UNICA">Única / aislada</option>
+          <option value="OCASIONAL">Ocasional</option>
+          <option value="ESTACIONAL">Estacional</option>
+          <option value="RECURRENTE">Recurrente</option>
+          <option value="PERMANENTE">Permanente</option>
+        </select>
+      </div>
+      <div>
+        <label class="label">Intensidad estimada</label>
+        <select id="intensity" class="select">
+          <option value="">No determinada</option>
+          <option value="BAJA">Baja</option>
+          <option value="MEDIA">Media</option>
+          <option value="ALTA">Alta</option>
+        </select>
+      </div>
+    </div>
+
+    <label class="label">Fuente</label>
+    <select id="sourceInfo" class="select">
+      <option value="">Selecciona</option>
+      <option value="OBSERVACION_PROPIA">Observación propia</option>
+      <option value="COMUNIDAD">Comunidad</option>
+      <option value="EMPRESA">Empresa / organización</option>
+      <option value="AUTORIDAD">Autoridad u organismo</option>
+      <option value="DOCUMENTO_TECNICO">Documento técnico</option>
+      <option value="MEDIO_COMUNICACION">Medio de comunicación</option>
+      <option value="OTRA">Otra</option>
+    </select>
+
+    <label class="label">Descripción *</label>
+    <textarea id="threatDescription" class="textarea" maxlength="1200" placeholder="Describe la amenaza, antecedentes, comportamiento observado y cualquier información relevante."></textarea>
+
+    <div class="envBox">
+      <strong style="font-size:11px;color:#18345f">🔎 ¿Qué hay cerca?</strong>
+      <label class="label">Radio de consulta</label>
+      <select id="nearRadius" class="select">
+        <option value="500">500 m</option>
+        <option value="1000" selected>1 km</option>
+        <option value="2000">2 km</option>
+        <option value="5000">5 km</option>
+      </select>
+      <button class="secondary" onclick="analyzeNearReport()">Analizar entorno</button>
+      <div class="help">Este radio solo consulta el entorno; no representa automáticamente el área de impacto.</div>
+      <div id="nearList"></div>
+    </div>
+
+    <button id="saveThreatBtn" class="primary" onclick="saveThreat()">Guardar reporte</button>
+    <button class="secondary" onclick="closeModal('threatModal')">Cancelar</button>
+  </section>
+</div>
+
+<!-- MODERACIÓN -->
+<div class="modal" id="moderationModal">
+  <section class="card">
+    <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('moderationModal')">✕</button>
+    <div class="modalIcon">🛠️</div>
+    <h2>Moderación técnica</h2>
+    <p class="intro">Revisa reportes y decide si se validan o se rechazan.</p>
+    <button class="primary" onclick="loadPendingReports()">Actualizar reportes</button>
+    <div id="moderationList" style="margin-top:11px"></div>
+  </section>
+</div>
+
+<!-- INFORMACIÓN -->
+<div class="modal" id="aboutModal">
+  <section class="card">
+    <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('aboutModal')">✕</button>
+    <div class="infoLogo">
+      <img src="https://drive.google.com/thumbnail?id=1MjVa3JxeKC95xEdlcZ5ZFMCKlatbrU2s&sz=w1000" alt="La Movida de SST Plus">
+    </div>
+    <h2 class="infoTitle">La Movida de SST Plus</h2>
+    <div class="infoSlogan">De la reacción a la prevención</div>
+    <div class="flagMini"></div>
+
+    <p class="intro" style="text-align:center">Herramienta colaborativa para la gestión de riesgos y emergencias en Venezuela.</p>
+
+    <div class="infoLinks">
+      <a class="linkReg" href="https://registro.movidasst.com">👤 Registrarme en La Movida</a>
+      <a class="linkWa" href="https://whatsapp.com/channel/0029Va0mlH5Jf05mrcCz8r3e" target="_blank" rel="noopener noreferrer">📢 Canal de La Movida de SST en WhatsApp</a>
+      <a class="linkWa" href="https://wa.me/56868615650" target="_blank" rel="noopener noreferrer">💬 WhatsApp +56 868 615 650</a>
+      <a class="linkContact" href="mailto:info@movidasst.com">✉️ info@movidasst.com</a>
+      <button class="linkBack" onclick="window.location.href='https://www.movidasst.com'">← Volver a www.movidasst.com</button>
+    </div>
+
+    <div class="author">Elaborado por<br><strong>David Linares Brea</strong><br>La Movida de SST Plus · Venezuela</div>
+  </section>
 </div>
 
 <div class="toast" id="toast"></div>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-const URL='https://lfdmbkzghnwvsapxypvt.supabase.co',KEY='sb_publishable_bRnkA6PA8-v073nrw9zxiQ_8rVGiOn1',sb=window.supabase.createClient(URL,KEY);const map=L.map('map',{zoomControl:false}).setView([7.1,-66.2],6);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);L.control.zoom({position:'bottomleft'}).addTo(map);const publicLayer=L.layerGroup().addTo(map),contextLayer=L.layerGroup().addTo(map);let catalog=[],member=null,cCed='',cCod='',pending=null,marker=null,loc=null,mapMode=false,placeData=[],lastSearch=0,cache=new Map();
-const E=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');function T(x){const e=document.getElementById('toast');e.textContent=x;e.classList.add('on');clearTimeout(window.tt);window.tt=setTimeout(()=>e.classList.remove('on'),3200)}function openM(id){document.getElementById(id).classList.add('open')}function closeM(id){document.getElementById(id).classList.remove('open')}function openPanel(id){document.getElementById(id).classList.add('open')}function closePanel(id){document.getElementById(id).classList.remove('open')}function later(n){T(n+': el catálogo ya existe; su formulario específico es el siguiente módulo.')}
-async function init(){try{let {data,error}=await sb.from('mapa_catalogo_amenazas').select('id,categoria,codigo,nombre,icono,orden').eq('activo',true).order('orden');if(error)throw error;catalog=data||[];drawLegend();fillTypes();document.getElementById('conn').textContent='● Conectado'}catch(e){console.error(e);document.getElementById('conn').textContent='● Error'}loadPublic()}
-function drawLegend(){let g={};catalog.forEach(x=>(g[x.categoria]??=[]).push(x));document.getElementById('legendBody').innerHTML=Object.entries(g).map(([c,a])=>`<div class=group><div class=gt>${E(c.replaceAll('_',' '))}</div>${a.map(x=>`<div class=li><span class=ii>${E(x.icono||'⚠️')}</span>${E(x.nombre)}</div>`).join('')}</div>`).join('')}
-function fillTypes(){document.getElementById('threatType').innerHTML='<option value="">Selecciona</option>'+catalog.map(x=>`<option value=${x.id}>${E(x.icono||'⚠️')} ${E(x.nombre)}</option>`).join('')}
-async function loadPublic(){try{let {data,error}=await sb.functions.invoke('reportes-publicos',{body:{}});if(error)throw error;if(!data?.ok)return;publicLayer.clearLayers();(data.reportes||[]).forEach(r=>{let lat=+r.latitud,lng=+r.longitud;if(!isFinite(lat)||!isFinite(lng))return;let col=r.nivel_validacion==='VALIDADO'?'#279455':(r.nivel_validacion==='CONFIRMADO'?'#2563a7':'#E87916'),ic=L.divIcon({className:'',html:`<div style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:white;border:3px solid ${col};box-shadow:0 5px 15px #0003;font-size:21px">${E(r.amenaza_icono||'⚠️')}</div>`,iconSize:[42,42],iconAnchor:[21,21]});L.marker([lat,lng],{icon:ic}).addTo(publicLayer).bindPopup(`<b>${E(r.amenaza_nombre||'Amenaza')}</b><br>${E(r.titulo)}<br><small>${E(r.nivel_validacion)} · 👥 ${r.confirmaciones||0}</small><br><button onclick="nearPublic(${lat},${lng})">🔎 Entorno</button> ${r.nivel_validacion==="VALIDADO"?"":`<button onclick="askConfirm(${r.id})">✅ Confirmar</button>`}`)})}catch(e){console.error(e)}}
-function gps(cb){if(!window.isSecureContext){T('GPS requiere HTTPS o localhost.');return}navigator.geolocation?.getCurrentPosition(p=>cb(p.coords.latitude,p.coords.longitude,p.coords.accuracy),()=>T('No fue posible obtener la ubicación.'),{enableHighAccuracy:true,timeout:15000,maximumAge:0})}function gpsGeneral(){gps((a,b,c)=>{map.setView([a,b],16);L.circle([a,b],{radius:c}).addTo(map);L.marker([a,b]).addTo(map);T(`Ubicación ±${Math.round(c)} m`)})}
-function startReport(){if(member){openTypes();return}pending={type:'REPORT'};openM('login')}function openTypes(){document.getElementById('memberChip').innerHTML=`✅ ${E(member.nombres)} ${E(member.apellidos)}`;openM('types')}
-async function validateMember(){let ced=document.getElementById('cedula').value.trim(),cod=document.getElementById('codigo').value.trim(),r=document.getElementById('loginRes'),b=document.getElementById('loginBtn');if(!ced||!cod){r.className='res err';r.textContent='Completa cédula y código.';return}b.disabled=true;try{let {data,error}=await sb.functions.invoke('validar-integrante',{body:{cedula:ced,codigo:cod}});if(error)throw error;if(!data?.ok)throw new Error(data?.error||'No validado');member=data.integrante;cCed=ced;cCod=cod;r.className='res ok';r.textContent='✅ Integrante verificado';if(member.es_moderador)document.getElementById('btnMod').style.display='block';setTimeout(()=>{closeM('login');if(pending?.type==='CONFIRM'){let id=pending.id;pending=null;confirmReport(id)}else{pending=null;openTypes()}},500)}catch(e){r.className='res err';r.textContent=e.message||'No validado'}finally{b.disabled=false}}
-function chooseType(t){closeM('types');if(t==='AMENAZA'){loc=null;if(marker){map.removeLayer(marker);marker=null}document.getElementById('dateObs').value=new Date().toISOString().slice(0,10);document.getElementById('locRes').className='ubr';document.getElementById('locRes').textContent='Aún no seleccionaste ubicación.';document.getElementById('envList').innerHTML='';openM('threat')}}
-function setLoc(a,b,m,p=null){if(marker)map.removeLayer(marker);marker=L.marker([a,b],{draggable:true}).addTo(map);loc={lat:+a,lng:+b,method:m,precision:p};marker.on('dragend',e=>{let q=e.target.getLatLng();loc.lat=q.lat;loc.lng=q.lng;loc.method='MAPA';showLoc()});map.setView([a,b],16);showLoc()}function showLoc(){let e=document.getElementById('locRes');if(!loc)return;e.className='ubr ok';e.textContent=`✅ Ubicación por ${loc.method}${loc.precision?` · ±${Math.round(loc.precision)} m`:''}. Puedes mover el marcador.`}function gpsThreat(){gps((a,b,c)=>setLoc(a,b,'GPS',c))}function mapThreat(){closeM('threat');mapMode=true;T('Toca en el mapa donde está la amenaza.')}map.on('click',e=>{if(!mapMode)return;mapMode=false;setLoc(e.latlng.lat,e.latlng.lng,'MAPA');openM('threat')});
-async function searchPlace(){let q=document.getElementById('placeQ').value.trim(),box=document.getElementById('placeResults');if(q.length<3)return T('Escribe al menos 3 caracteres.');if(Date.now()-lastSearch<1100)return T('Espera un momento.');lastSearch=Date.now();box.className='results open';box.innerHTML='<div class=place>Buscando…</div>';try{let u='https://nominatim.openstreetmap.org/search?'+new URLSearchParams({format:'jsonv2',q,limit:'5',countrycodes:'ve'});let r=await fetch(u,{headers:{Accept:'application/json'}});placeData=await r.json();box.innerHTML=placeData.map((x,i)=>`<div class=place onclick="pickPlace(${i})">📍 ${E(x.display_name)}</div>`).join('')||'<div class=place>Sin resultados</div>'}catch(e){box.innerHTML='<div class=place>Error de búsqueda</div>'}}function pickPlace(i){let x=placeData[i];if(!x)return;setLoc(+x.lat,+x.lon,'BUSQUEDA');document.getElementById('placeResults').classList.remove('open')}
-const PM={hospital:['🏥','Hospital'],clinic:['🏥','Clínica'],school:['🏫','Escuela'],kindergarten:['🧒','Preescolar'],university:['🎓','Universidad'],fire_station:['🚒','Bomberos'],police:['🚓','Policía'],fuel:['⛽','Combustible'],pharmacy:['💊','Farmacia']};function H(a,b,c,d){let R=6371000,r=x=>x*Math.PI/180,x=r(c-a),y=r(d-b),z=Math.sin(x/2)**2+Math.cos(r(a))*Math.cos(r(c))*Math.sin(y/2)**2;return 2*R*Math.asin(Math.sqrt(z))}async function overpass(lat,lng,rad,tags){let k=`${lat.toFixed(3)}|${lng.toFixed(3)}|${rad}|${tags.sort().join(',')}`,h=cache.get(k);if(h&&Date.now()-h.t<600000)return h.d;let rx=tags.join('|'),q=`[out:json][timeout:20];(nwr(around:${rad},${lat},${lng})["amenity"~"^(${rx})$"];);out center tags;`,r=await fetch('https://overpass-api.de/api/interpreter?data='+encodeURIComponent(q));if(!r.ok)throw Error();let j=await r.json(),d=(j.elements||[]).map(x=>{let a=x.lat??x.center?.lat,b=x.lon??x.center?.lon;if(a==null||b==null)return null;let am=x.tags?.amenity||'';return{lat:a,lng:b,am,name:x.tags?.name||PM[am]?.[1]||am,dist:H(lat,lng,a,b)}}).filter(Boolean).sort((a,b)=>a.dist-b.dist);cache.set(k,{t:Date.now(),d});return d}function poiIcon(p){return L.divIcon({className:'',html:`<div style="width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:white;border:1px solid #aab8c8;box-shadow:0 3px 10px #0002;font-size:17px">${PM[p.am]?.[0]||'📍'}</div>`,iconSize:[32,32],iconAnchor:[16,16]})}function paintPois(d){contextLayer.clearLayers();d.slice(0,150).forEach(p=>L.marker([p.lat,p.lng],{icon:poiIcon(p)}).addTo(contextLayer).bindPopup(`<b>${E(p.name)}</b><br><small>${E(PM[p.am]?.[1]||p.am)}</small>`))}
-async function analyzeThreatEnv(){if(!loc)return T('Primero ubica la amenaza.');let r=+document.getElementById('envRadius').value,b=document.getElementById('envList');b.textContent='Consultando…';try{let d=await overpass(loc.lat,loc.lng,r,['hospital','clinic','school','kindergarten','fire_station','police','fuel','pharmacy']);paintPois(d);b.innerHTML=d.slice(0,25).map(p=>`<div class=poi><span>${PM[p.am]?.[0]||'📍'}</span><div><b>${E(p.name)}</b><span class=dist>${p.dist<1000?Math.round(p.dist)+' m':(p.dist/1000).toFixed(1)+' km'}</span><br>${E(PM[p.am]?.[1]||p.am)}</div></div>`).join('')||'Sin elementos cercanos.'}catch(e){b.textContent='No fue posible consultar el entorno.'}}async function nearPublic(a,b){map.setView([a,b],16);openPanel('context');try{let d=await overpass(a,b,1000,['hospital','clinic','school','kindergarten','fire_station','police','fuel','pharmacy']);paintPois(d);T(`${d.length} elementos cercanos.`)}catch(e){T('No se pudo consultar el entorno.')}}async function loadContext(){let c=map.getCenter(),rad=+document.getElementById('ctxRadius').value,t=[];[...document.querySelectorAll('.ctx input:checked')].forEach(x=>{if(x.value==='health')t.push('hospital','clinic');else if(x.value==='school')t.push('school','kindergarten','university');else t.push(x.value)});t=[...new Set(t)];if(!t.length)return T('Selecciona una categoría.');try{let d=await overpass(c.lat,c.lng,rad,t);paintPois(d);T(`${d.length} lugares cargados.`)}catch(e){T('No fue posible cargar contexto.')}}
-async function saveThreat(){if(!member)return openM('login');let id=+document.getElementById('threatType').value,title=document.getElementById('threatTitle').value.trim(),desc=document.getElementById('desc').value.trim();if(!id)return T('Selecciona la amenaza.');if(title.length<5)return T('Escribe un título.');if(!loc)return T('Selecciona la ubicación.');if(desc.length<10)return T('Completa la descripción.');let b=document.getElementById('saveBtn');b.disabled=true;try{let {data,error}=await sb.functions.invoke('guardar-reporte',{body:{cedula:cCed,codigo:cCod,tipo_registro:'AMENAZA',amenaza_id:id,titulo:title,descripcion:desc,latitud:loc.lat,longitud:loc.lng,metodo_ubicacion:loc.method,precision_gps_metros:loc.precision,ubicacion_exacta:document.querySelector('input[name=exact]:checked')?.value==='true',fecha_observacion:document.getElementById('dateObs').value||null,estado_temporal:document.getElementById('temporal').value,frecuencia:document.getElementById('freq').value||null,intensidad:document.getElementById('intensity').value||null,fuente_informacion:document.getElementById('source').value||null}});if(error)throw error;if(!data?.ok)throw Error(data?.error||'No guardado');closeM('threat');T(`Reporte #${data.reporte_id} publicado como 🟠 REPORTADO.`);loadPublic()}catch(e){T(e.message||'No se pudo guardar.')}finally{b.disabled=false}}
-function askConfirm(id){if(!member){pending={type:'CONFIRM',id};openM('login');return}confirmReport(id)}async function confirmReport(id){try{let {data,error}=await sb.functions.invoke('confirmar-reporte',{body:{reporte_id:id,cedula:cCed,codigo:cCod}});if(error)throw error;if(!data?.ok)throw Error(data?.error||'No confirmado');T(`Confirmación registrada · ${data.confirmaciones}.`);loadPublic()}catch(e){T(e.message||'No se pudo confirmar.')}}
-function openModeration(){if(!member?.es_moderador)return T('No tienes permisos de moderación.');openM('moderation');loadPending()}async function loadPending(){let box=document.getElementById('modList');box.textContent='Cargando…';try{let {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{accion:'LISTAR',cedula:cCed,codigo:cCod}});if(error)throw error;if(!data?.ok)throw Error(data?.error||'Error');box.innerHTML=(data.reportes||[]).map(r=>`<div class=m><div class=mt><b>${E(r.amenaza_icono||'⚠️')} ${E(r.titulo)}</b><span>${E(r.nivel_validacion)}</span></div><small>${E(r.descripcion||'')}<br>👥 ${r.confirmaciones||0}</small><div class=ma><button class=goto onclick="go(${r.latitud},${r.longitud})">📍 Ver</button><button class=valid onclick="moderate(${r.id},'VALIDAR')">✅ Validar</button><button class=reject onclick="moderate(${r.id},'RECHAZAR')">✕ Rechazar</button></div></div>`).join('')||'No hay pendientes.'}catch(e){box.textContent='Error al cargar.'}}function go(a,b){closeM('moderation');map.setView([+a,+b],17)}async function moderate(id,a){try{let {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{accion:a,reporte_id:id,cedula:cCed,codigo:cCod}});if(error)throw error;if(!data?.ok)throw Error(data?.error||'Error');T(`Reporte ${data.estado}.`);loadPending();loadPublic()}catch(e){T(e.message||'No se pudo moderar.')}}
-init();
-</script></body></html>
+'use strict';
+
+const SUPABASE_URL = 'https://lfdmbkzghnwvsapxypvt.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_bRnkA6PA8-v073nrw9zxiQ_8rVGiOn1';
+
+let sb = null;
+let map = null;
+let publicLayer = null;
+let contextLayer = null;
+
+let threatCatalog = [];
+let member = null;
+let sessionCedula = '';
+let sessionCodigo = '';
+let pendingAction = null;
+
+let reportMarker = null;
+let reportLocation = null;
+let selectingMapPoint = false;
+let searchResults = [];
+let lastSearchAt = 0;
+const overpassCache = new Map();
+
+const poiTypes = {
+  hospital:['🏥','Hospital'], clinic:['🏥','Clínica'], school:['🏫','Escuela'],
+  kindergarten:['🧒','Preescolar'], university:['🎓','Universidad'],
+  fire_station:['🚒','Bomberos'], police:['🚓','Policía'],
+  fuel:['⛽','Estación de servicio'], pharmacy:['💊','Farmacia']
+};
+
+function htmlEscape(v){
+  return String(v ?? '')
+    .replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
+    .replaceAll('"','&quot;').replaceAll("'","&#039;");
+}
+
+function toast(message){
+  const el = document.getElementById('toast');
+  el.textContent = message;
+  el.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(()=>el.classList.remove('show'), 3400);
+}
+
+function openModal(id){ document.getElementById(id)?.classList.add('open'); }
+function closeModal(id){ document.getElementById(id)?.classList.remove('open'); }
+function openSheet(id){ document.getElementById(id)?.classList.add('open'); }
+function closeSheet(id){ document.getElementById(id)?.classList.remove('open'); }
+function comingSoon(name){ toast(`${name}: el catálogo ya existe; el formulario específico será el siguiente módulo.`); }
+
+function showFatal(message){
+  const box = document.getElementById('fatalError');
+  document.getElementById('fatalText').textContent = message;
+  box.classList.add('show');
+}
+
+async function initApp(){
+  try{
+    if(typeof L === 'undefined'){
+      showFatal('Leaflet no cargó. Comprueba Internet/CDN y recarga.');
+      return;
+    }
+
+    map = L.map('map', {zoomControl:false}).setView([7.1,-66.2],6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+      maxZoom:19,
+      attribution:'&copy; OpenStreetMap'
+    }).addTo(map);
+    L.control.zoom({position:'bottomleft'}).addTo(map);
+
+    publicLayer = L.layerGroup().addTo(map);
+    contextLayer = L.layerGroup().addTo(map);
+
+    map.on('click', ev=>{
+      if(!selectingMapPoint) return;
+      selectingMapPoint = false;
+      setReportPoint(ev.latlng.lat, ev.latlng.lng, 'MAPA', null);
+      openModal('threatModal');
+      toast('Ubicación seleccionada.');
+    });
+
+    if(!window.supabase){
+      document.getElementById('connectionStatus').textContent = '● Mapa activo';
+      toast('Mapa activo. Supabase no pudo cargar todavía.');
+      return;
+    }
+
+    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    await loadThreatCatalog();
+    await loadPublicReports();
+    document.getElementById('connectionStatus').textContent = '● Conectado';
+
+    setTimeout(()=>map.invalidateSize(), 100);
+  }catch(error){
+    console.error(error);
+    document.getElementById('connectionStatus').textContent = '● Error';
+    showFatal('Error al iniciar: ' + (error?.message || 'desconocido'));
+  }
+}
+
+async function loadThreatCatalog(){
+  const {data,error} = await sb
+    .from('mapa_catalogo_amenazas')
+    .select('id,categoria,codigo,nombre,icono,orden')
+    .eq('activo',true)
+    .order('orden',{ascending:true});
+
+  if(error) throw error;
+  threatCatalog = data || [];
+  renderLegend();
+  renderThreatSelect();
+}
+
+function renderLegend(){
+  const groups = {};
+  threatCatalog.forEach(x => (groups[x.categoria] ??= []).push(x));
+  let out = '';
+  Object.entries(groups).forEach(([category,items])=>{
+    out += `<div class="legendGroup"><div class="legendTitle">${htmlEscape(category.replaceAll('_',' '))}</div>`;
+    items.forEach(x=>{
+      out += `<div class="legendItem"><span>${htmlEscape(x.icono || '⚠️')}</span>${htmlEscape(x.nombre)}</div>`;
+    });
+    out += '</div>';
+  });
+  document.getElementById('legendBody').innerHTML = out || '<p class="intro">No hay amenazas en el catálogo.</p>';
+}
+
+function renderThreatSelect(){
+  const groups = {};
+  threatCatalog.forEach(x => (groups[x.categoria] ??= []).push(x));
+  let out = '<option value="">Selecciona una amenaza</option>';
+  Object.entries(groups).forEach(([category,items])=>{
+    out += `<optgroup label="${htmlEscape(category.replaceAll('_',' '))}">`;
+    items.forEach(x=> out += `<option value="${Number(x.id)}">${htmlEscape(x.icono || '⚠️')} ${htmlEscape(x.nombre)}</option>`);
+    out += '</optgroup>';
+  });
+  document.getElementById('threatType').innerHTML = out;
+}
+
+async function loadPublicReports(){
+  if(!sb) return;
+  try{
+    const {data,error} = await sb.functions.invoke('reportes-publicos',{body:{}});
+    if(error) throw error;
+    if(!data?.ok) throw new Error(data?.error || 'No fue posible leer los reportes.');
+
+    publicLayer.clearLayers();
+    (data.reportes || []).forEach(drawPublicReport);
+  }catch(error){
+    console.error('reportes-publicos', error);
+    toast('El mapa cargó, pero no fue posible leer los reportes públicos.');
+  }
+}
+
+function drawPublicReport(r){
+  const lat = Number(r.latitud), lng = Number(r.longitud);
+  if(!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+
+  let color = '#E87916', label = '🟠 REPORTADO', badgeClass = 'reported';
+  if(r.nivel_validacion === 'CONFIRMADO'){ color='#2563A7'; label='🔵 CONFIRMADO'; badgeClass='confirmed'; }
+  if(r.nivel_validacion === 'VALIDADO'){ color='#279455'; label='🟢 VALIDADO'; badgeClass='validated'; }
+
+  const icon = L.divIcon({
+    className:'',
+    html:`<div style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:white;border:3px solid ${color};box-shadow:0 5px 15px rgba(0,0,0,.2);font-size:21px">${htmlEscape(r.amenaza_icono || '⚠️')}</div>`,
+    iconSize:[42,42], iconAnchor:[21,21]
+  });
+
+  const confirmButton = r.nivel_validacion === 'VALIDADO'
+    ? ''
+    : `<button onclick="requestConfirmation(${Number(r.id)})">✅ Confirmar</button>`;
+
+  const popup = `
+    <div class="popup">
+      <span class="badge ${badgeClass}">${label}</span>
+      <h3>${htmlEscape(r.amenaza_nombre || 'Amenaza')}</h3>
+      <p><strong>${htmlEscape(r.titulo || '')}</strong></p>
+      <p>${htmlEscape(r.descripcion || '')}</p>
+      <p>👥 Confirmaciones: <strong>${Number(r.confirmaciones || 0)}</strong></p>
+      <div class="popupActions">
+        <button onclick="analyzePublicPoint(${lat},${lng})">🔎 Entorno</button>
+        ${confirmButton}
+      </div>
+    </div>`;
+
+  L.marker([lat,lng],{icon}).addTo(publicLayer).bindPopup(popup);
+}
+
+function getGPS(onSuccess){
+  if(!window.isSecureContext){
+    toast('El GPS requiere HTTPS o localhost.');
+    return;
+  }
+  if(!navigator.geolocation){
+    toast('Este dispositivo no dispone de geolocalización.');
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    p=>onSuccess(p.coords.latitude,p.coords.longitude,p.coords.accuracy),
+    e=>toast(e.code===1 ? 'Permiso de ubicación denegado.' : 'No fue posible obtener la ubicación.'),
+    {enableHighAccuracy:true,timeout:15000,maximumAge:0}
+  );
+}
+
+function goToMyLocation(){
+  getGPS((lat,lng,accuracy)=>{
+    map.setView([lat,lng],16);
+    L.circle([lat,lng],{radius:accuracy}).addTo(map).bindPopup(`Tu ubicación · ±${Math.round(accuracy)} m`).openPopup();
+  });
+}
+
+function startReport(){
+  if(member){ openTypeSelector(); return; }
+  pendingAction = {type:'REPORT'};
+  openModal('loginModal');
+}
+
+async function validateMember(){
+  const cedula = document.getElementById('loginCedula').value.trim();
+  const codigo = document.getElementById('loginCodigo').value.trim();
+  const result = document.getElementById('loginResult');
+  const btn = document.getElementById('loginBtn');
+
+  if(!cedula || !codigo){
+    result.className='loginResult err'; result.textContent='Completa cédula y código.'; return;
+  }
+  if(!sb){ toast('Supabase todavía no está disponible.'); return; }
+
+  btn.disabled=true; btn.textContent='Verificando…';
+  try{
+    const {data,error} = await sb.functions.invoke('validar-integrante',{body:{cedula,codigo}});
+    if(error) throw error;
+    if(!data?.ok) throw new Error(data?.error || 'No fue posible validar.');
+
+    member = data.integrante;
+    sessionCedula = cedula;
+    sessionCodigo = codigo;
+
+    result.className='loginResult ok';
+    result.innerHTML=`✅ <strong>${htmlEscape(member.nombres || '')} ${htmlEscape(member.apellidos || '')}</strong>`;
+
+    if(member.es_moderador){
+      document.getElementById('moderationBtn').style.display='block';
+    }
+
+    setTimeout(()=>{
+      closeModal('loginModal');
+      if(pendingAction?.type === 'CONFIRM'){
+        const id = pendingAction.id; pendingAction=null; confirmReport(id);
+      }else{
+        pendingAction=null; openTypeSelector();
+      }
+    },450);
+  }catch(error){
+    console.error(error);
+    result.className='loginResult err';
+    result.textContent = error.message || 'No fue posible validar.';
+  }finally{
+    btn.disabled=false; btn.textContent='Verificar integrante';
+  }
+}
+
+function openTypeSelector(){
+  document.getElementById('memberChip').innerHTML =
+    `✅ ${htmlEscape(member?.nombres || '')} ${htmlEscape(member?.apellidos || '')}`;
+  openModal('typeModal');
+}
+
+function selectReportType(type){
+  closeModal('typeModal');
+  if(type === 'AMENAZA'){ prepareThreatForm(); return; }
+  comingSoon(type === 'ELEMENTO' ? 'Elementos expuestos' : type === 'VULNERABILIDAD' ? 'Vulnerabilidades' : 'Capacidades');
+}
+
+function prepareThreatForm(){
+  reportLocation=null;
+  if(reportMarker){ map.removeLayer(reportMarker); reportMarker=null; }
+  document.getElementById('threatType').value='';
+  document.getElementById('threatTitle').value='';
+  document.getElementById('threatDescription').value='';
+  document.getElementById('dateObs').value=new Date().toISOString().slice(0,10);
+  document.getElementById('nearList').innerHTML='';
+  updateLocationSummary();
+  openModal('threatModal');
+}
+
+function setReportPoint(lat,lng,method,precision=null){
+  if(reportMarker) map.removeLayer(reportMarker);
+  reportMarker = L.marker([lat,lng],{draggable:true}).addTo(map);
+  reportLocation = {lat:Number(lat),lng:Number(lng),method,precision:precision==null?null:Number(precision)};
+
+  reportMarker.on('dragend',ev=>{
+    const p=ev.target.getLatLng();
+    reportLocation.lat=p.lat; reportLocation.lng=p.lng; reportLocation.method='MAPA';
+    updateLocationSummary();
+  });
+
+  map.setView([lat,lng],16);
+  updateLocationSummary();
+}
+
+function useGPSForReport(){
+  getGPS((lat,lng,accuracy)=>{
+    setReportPoint(lat,lng,'GPS',accuracy);
+    toast(`Ubicación GPS asignada · ±${Math.round(accuracy)} m`);
+  });
+}
+
+function selectOnMap(){
+  closeModal('threatModal');
+  selectingMapPoint=true;
+  toast('Toca en el mapa donde se encuentra la amenaza.');
+}
+
+function updateLocationSummary(){
+  const el=document.getElementById('locationSummary');
+  if(!reportLocation){
+    el.className='locationSummary';
+    el.textContent='Aún no seleccionaste una ubicación.';
+    return;
+  }
+  el.className='locationSummary ok';
+  el.textContent=`✅ Ubicación por ${reportLocation.method}${reportLocation.precision?` · precisión GPS inicial ±${Math.round(reportLocation.precision)} m`:''}. Puedes mover el marcador para ajustarla.`;
+}
+
+async function searchPlace(){
+  const q=document.getElementById('placeSearch').value.trim();
+  const box=document.getElementById('placeResults');
+  if(q.length<3){ toast('Escribe al menos 3 caracteres.'); return; }
+  if(Date.now()-lastSearchAt<1100){ toast('Espera un momento antes de otra búsqueda.'); return; }
+  lastSearchAt=Date.now();
+
+  box.className='searchResults show';
+  box.innerHTML='<div class="place">Buscando…</div>';
+
+  try{
+    const url='https://nominatim.openstreetmap.org/search?'+new URLSearchParams({
+      format:'jsonv2', q, limit:'5', countrycodes:'ve', addressdetails:'1'
+    }).toString();
+
+    const resp=await fetch(url,{headers:{Accept:'application/json'}});
+    if(!resp.ok) throw new Error('Error de búsqueda.');
+    searchResults=await resp.json();
+
+    box.innerHTML=searchResults.length
+      ? searchResults.map((x,i)=>`<div class="place" onclick="choosePlace(${i})">📍 ${htmlEscape(x.display_name)}</div>`).join('')
+      : '<div class="place">No encontramos resultados.</div>';
+  }catch(error){
+    console.error(error);
+    box.innerHTML='<div class="place">No fue posible realizar la búsqueda.</div>';
+  }
+}
+
+function choosePlace(index){
+  const x=searchResults[index];
+  if(!x) return;
+  setReportPoint(Number(x.lat),Number(x.lon),'BUSQUEDA',null);
+  document.getElementById('placeResults').classList.remove('show');
+}
+
+function haversine(lat1,lng1,lat2,lng2){
+  const R=6371000, rad=x=>x*Math.PI/180;
+  const dLat=rad(lat2-lat1), dLng=rad(lng2-lng1);
+  const a=Math.sin(dLat/2)**2 + Math.cos(rad(lat1))*Math.cos(rad(lat2))*Math.sin(dLng/2)**2;
+  return 2*R*Math.asin(Math.sqrt(a));
+}
+
+async function queryOverpass(lat,lng,radius,amenities){
+  const sorted=[...amenities].sort();
+  const key=`${lat.toFixed(3)}|${lng.toFixed(3)}|${radius}|${sorted.join(',')}`;
+  const cached=overpassCache.get(key);
+  if(cached && Date.now()-cached.time<600000) return cached.data;
+
+  const regex=sorted.join('|');
+  const query=`[out:json][timeout:20];(nwr(around:${radius},${lat},${lng})["amenity"~"^(${regex})$"];);out center tags;`;
+
+  const resp=await fetch('https://overpass-api.de/api/interpreter?data='+encodeURIComponent(query));
+  if(!resp.ok) throw new Error('Overpass no disponible');
+  const json=await resp.json();
+
+  const data=(json.elements||[]).map(el=>{
+    const pLat=el.lat ?? el.center?.lat, pLng=el.lon ?? el.center?.lon;
+    if(pLat==null || pLng==null) return null;
+    const amenity=el.tags?.amenity || '';
+    return {
+      id:`${el.type}/${el.id}`,lat:pLat,lng:pLng,amenity,
+      name:el.tags?.name || poiTypes[amenity]?.[1] || amenity,
+      distance:haversine(lat,lng,pLat,pLng)
+    };
+  }).filter(Boolean).sort((a,b)=>a.distance-b.distance);
+
+  overpassCache.set(key,{time:Date.now(),data});
+  return data;
+}
+
+function poiIcon(p){
+  const meta=poiTypes[p.amenity] || ['📍',p.amenity];
+  return L.divIcon({
+    className:'',
+    html:`<div style="width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:white;border:1px solid #aab8c8;box-shadow:0 3px 10px rgba(0,0,0,.15);font-size:17px">${meta[0]}</div>`,
+    iconSize:[32,32],iconAnchor:[16,16]
+  });
+}
+
+function drawPOIs(data){
+  contextLayer.clearLayers();
+  data.slice(0,150).forEach(p=>{
+    const meta=poiTypes[p.amenity] || ['📍',p.amenity];
+    L.marker([p.lat,p.lng],{icon:poiIcon(p)}).addTo(contextLayer)
+      .bindPopup(`<strong>${htmlEscape(p.name)}</strong><br><small>${htmlEscape(meta[1])}</small><br><small>Fuente: OpenStreetMap</small>`);
+  });
+}
+
+async function analyzeNearReport(){
+  if(!reportLocation){ toast('Primero ubica la amenaza.'); return; }
+  const radius=Number(document.getElementById('nearRadius').value);
+  const box=document.getElementById('nearList');
+  box.textContent='Consultando…';
+
+  try{
+    const data=await queryOverpass(reportLocation.lat,reportLocation.lng,radius,
+      ['hospital','clinic','school','kindergarten','university','fire_station','police','fuel','pharmacy']);
+    drawPOIs(data);
+
+    box.innerHTML=data.length ? data.slice(0,30).map(p=>{
+      const meta=poiTypes[p.amenity] || ['📍',p.amenity];
+      const dist=p.distance<1000?`${Math.round(p.distance)} m`:`${(p.distance/1000).toFixed(1)} km`;
+      return `<div class="poi"><span style="font-size:18px">${meta[0]}</span><div><strong>${htmlEscape(p.name)}</strong><span class="distance">${dist}</span><br>${htmlEscape(meta[1])}</div></div>`;
+    }).join('') : '<p class="intro">No encontramos elementos registrados en OpenStreetMap dentro de ese radio.</p>';
+  }catch(error){
+    console.error(error);
+    box.innerHTML='<p class="intro">No fue posible consultar el entorno en este momento.</p>';
+  }
+}
+
+async function analyzePublicPoint(lat,lng){
+  map.setView([lat,lng],16);
+  openSheet('contextSheet');
+  try{
+    const data=await queryOverpass(lat,lng,1000,['hospital','clinic','school','kindergarten','university','fire_station','police','fuel','pharmacy']);
+    drawPOIs(data);
+    toast(`${data.length} elementos encontrados a 1 km.`);
+  }catch(error){ toast('No fue posible consultar el entorno.'); }
+}
+
+async function loadContext(){
+  const center=map.getCenter();
+  const radius=Number(document.getElementById('contextRadius').value);
+  const selected=[...document.querySelectorAll('.ctx:checked')].map(x=>x.value);
+
+  let amenities=[];
+  selected.forEach(x=>{
+    if(x==='salud') amenities.push('hospital','clinic');
+    else if(x==='educacion') amenities.push('school','kindergarten','university');
+    else amenities.push(x);
+  });
+  amenities=[...new Set(amenities)];
+  if(!amenities.length){ toast('Selecciona al menos una categoría.'); return; }
+
+  try{
+    const data=await queryOverpass(center.lat,center.lng,radius,amenities);
+    drawPOIs(data);
+    toast(`${data.length} lugares cargados.`);
+  }catch(error){
+    console.error(error);
+    toast('No fue posible cargar el contexto territorial.');
+  }
+}
+
+function clearContext(){ contextLayer.clearLayers(); toast('Contexto territorial limpiado.'); }
+
+async function saveThreat(){
+  if(!member){ openModal('loginModal'); return; }
+  const threatId=Number(document.getElementById('threatType').value);
+  const title=document.getElementById('threatTitle').value.trim();
+  const description=document.getElementById('threatDescription').value.trim();
+
+  if(!threatId){ toast('Selecciona la amenaza.'); return; }
+  if(title.length<5){ toast('Escribe un título.'); return; }
+  if(!reportLocation){ toast('Selecciona la ubicación.'); return; }
+  if(description.length<10){ toast('Completa la descripción.'); return; }
+
+  const btn=document.getElementById('saveThreatBtn');
+  btn.disabled=true; btn.textContent='Guardando…';
+
+  try{
+    const {data,error}=await sb.functions.invoke('guardar-reporte',{body:{
+      cedula:sessionCedula,codigo:sessionCodigo,tipo_registro:'AMENAZA',
+      amenaza_id:threatId,titulo:title,descripcion:description,
+      latitud:reportLocation.lat,longitud:reportLocation.lng,
+      metodo_ubicacion:reportLocation.method,precision_gps_metros:reportLocation.precision,
+      ubicacion_exacta:document.querySelector('input[name="exact"]:checked')?.value==='true',
+      fecha_observacion:document.getElementById('dateObs').value||null,
+      estado_temporal:document.getElementById('temporal').value,
+      frecuencia:document.getElementById('frequency').value||null,
+      intensidad:document.getElementById('intensity').value||null,
+      fuente_informacion:document.getElementById('sourceInfo').value||null
+    }});
+
+    if(error) throw error;
+    if(!data?.ok) throw new Error(data?.error || 'No fue posible guardar.');
+
+    closeModal('threatModal');
+    toast(`Reporte #${data.reporte_id} publicado como 🟠 REPORTADO.`);
+    await loadPublicReports();
+  }catch(error){
+    console.error(error);
+    toast(error.message || 'No fue posible guardar el reporte.');
+  }finally{
+    btn.disabled=false; btn.textContent='Guardar reporte';
+  }
+}
+
+function requestConfirmation(reportId){
+  if(!member){
+    pendingAction={type:'CONFIRM',id:reportId};
+    openModal('loginModal');
+    return;
+  }
+  confirmReport(reportId);
+}
+
+async function confirmReport(reportId){
+  try{
+    const {data,error}=await sb.functions.invoke('confirmar-reporte',{body:{
+      reporte_id:reportId,cedula:sessionCedula,codigo:sessionCodigo
+    }});
+    if(error) throw error;
+    if(!data?.ok) throw new Error(data?.error || 'No fue posible confirmar.');
+    toast(data.mensaje || `Confirmaciones: ${data.confirmaciones}`);
+    await loadPublicReports();
+  }catch(error){
+    console.error(error);
+    toast(error.message || 'No fue posible confirmar.');
+  }
+}
+
+function openModeration(){
+  if(!member?.es_moderador){ toast('No tienes permisos de moderación.'); return; }
+  openModal('moderationModal');
+  loadPendingReports();
+}
+
+async function loadPendingReports(){
+  const box=document.getElementById('moderationList');
+  box.textContent='Cargando…';
+
+  try{
+    const {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{
+      accion:'LISTAR',cedula:sessionCedula,codigo:sessionCodigo
+    }});
+    if(error) throw error;
+    if(!data?.ok) throw new Error(data?.error || 'No fue posible cargar.');
+
+    const reports=data.reportes || [];
+    box.innerHTML=reports.length ? reports.map(r=>`
+      <div class="modItem">
+        <div class="modTitle">${htmlEscape(r.amenaza_icono || '⚠️')} ${htmlEscape(r.titulo)}</div>
+        <div class="modDesc">
+          Estado: ${htmlEscape(r.nivel_validacion)} · 👥 ${Number(r.confirmaciones || 0)} confirmaciones<br><br>
+          ${htmlEscape(r.descripcion || '')}
+        </div>
+        <div class="modActions">
+          <button class="viewBtn" onclick="viewModerationReport(${Number(r.latitud)},${Number(r.longitud)})">📍 Ver</button>
+          <button class="validBtn" onclick="moderateReport(${Number(r.id)},'VALIDAR')">✅ Validar</button>
+          <button class="rejectBtn" onclick="moderateReport(${Number(r.id)},'RECHAZAR')">✕ Rechazar</button>
+        </div>
+      </div>`).join('') : '<p class="intro">No hay reportes pendientes.</p>';
+  }catch(error){
+    console.error(error);
+    box.textContent='No fue posible cargar la moderación.';
+  }
+}
+
+function viewModerationReport(lat,lng){
+  closeModal('moderationModal');
+  map.setView([lat,lng],17);
+}
+
+async function moderateReport(reportId,action){
+  try{
+    const {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{
+      accion:action,reporte_id:reportId,cedula:sessionCedula,codigo:sessionCodigo
+    }});
+    if(error) throw error;
+    if(!data?.ok) throw new Error(data?.error || 'No fue posible moderar.');
+
+    toast(`Reporte ${data.estado}.`);
+    await loadPendingReports();
+    await loadPublicReports();
+  }catch(error){
+    console.error(error);
+    toast(error.message || 'No fue posible realizar la moderación.');
+  }
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  document.getElementById('loginCodigo').addEventListener('keydown',e=>{
+    if(e.key==='Enter') validateMember();
+  });
+  document.getElementById('placeSearch').addEventListener('keydown',e=>{
+    if(e.key==='Enter'){ e.preventDefault(); searchPlace(); }
+  });
+  initApp();
+});
+</script>
+</body>
+</html>
