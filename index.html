@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <title>Mapa Participativo de Gestión de Riesgos en Venezuela | La Movida de SST Plus</title>
 
-  <meta name="description" content="Mapa participativo de gestión de riesgos en Venezuela para identificar y visualizar amenazas, elementos expuestos, vulnerabilidades y capacidades. Iniciativa de La Movida de SST Plus para profesionales de SST, emergencias, prevención y gestión del riesgo.">
-  <meta name="keywords" content="gestión de riesgos Venezuela, mapa de riesgos Venezuela, amenazas, vulnerabilidades, elementos expuestos, capacidades, emergencias, SST Venezuela, planes de emergencia, La Movida de SST Plus">
+  <meta name="description" content="Mapa participativo de gestión de riesgos en Venezuela para identificar, ubicar y visualizar amenazas, elementos expuestos, vulnerabilidades y capacidades. Iniciativa de La Movida de SST Plus para profesionales de SST, emergencias y gestión del riesgo.">
+  <meta name="keywords" content="gestión de riesgos Venezuela, mapa de riesgos Venezuela, amenazas, elementos expuestos, vulnerabilidades, capacidades, emergencias, SST Venezuela, planes de emergencia, La Movida de SST Plus">
   <meta name="author" content="David Linares Brea - La Movida de SST Plus">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#0B2A6F">
@@ -14,12 +14,11 @@
   <meta name="geo.placename" content="Venezuela">
   <link rel="canonical" href="https://gdr.movidasst.com/">
 
-  <!-- Vista previa al compartir -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="es_VE">
   <meta property="og:site_name" content="La Movida de SST Plus">
   <meta property="og:title" content="Mapa Participativo de Gestión de Riesgos en Venezuela">
-  <meta property="og:description" content="Explora y aporta información sobre amenazas, elementos expuestos, vulnerabilidades y capacidades en Venezuela.">
+  <meta property="og:description" content="Amenazas, elementos expuestos, vulnerabilidades y capacidades en un mapa colaborativo para la gestión de riesgos en Venezuela.">
   <meta property="og:url" content="https://gdr.movidasst.com/">
   <meta property="og:image" content="https://drive.google.com/thumbnail?id=1uJQz_j4X2fEHVNEqQPpXdF5A862WYBNB&sz=w1200">
   <meta property="og:image:secure_url" content="https://drive.google.com/thumbnail?id=1uJQz_j4X2fEHVNEqQPpXdF5A862WYBNB&sz=w1200">
@@ -38,7 +37,7 @@
     "@type":"WebApplication",
     "name":"Mapa Participativo de Gestión de Riesgos en Venezuela",
     "url":"https://gdr.movidasst.com/",
-    "description":"Mapa participativo para identificar, visualizar y analizar amenazas, elementos expuestos, vulnerabilidades y capacidades en Venezuela.",
+    "description":"Mapa participativo para identificar, ubicar y analizar amenazas, elementos expuestos, vulnerabilidades y capacidades en Venezuela.",
     "applicationCategory":"EducationalApplication",
     "operatingSystem":"Web",
     "inLanguage":"es-VE",
@@ -55,282 +54,201 @@
   <style>
     :root{
       --blue:#0B2A6F; --blue2:#003DA5; --teal:#006D8F; --green:#58B947;
-      --yellow:#F7D117; --red:#CF142B; --orange:#E87916;
+      --yellow:#F7D117; --red:#CF142B; --orange:#E87916; --purple:#7B61A8;
       --ink:#172033; --muted:#66758B; --line:#E1E8F0; --soft:#F4F7FB;
       --white:#fff; --shadow:0 14px 40px rgba(10,35,75,.14);
-      --radius:20px;
     }
-
     *{box-sizing:border-box}
     html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#eef3f8}
     body{overflow:hidden}
     button,input,select,textarea{font:inherit}
     button{cursor:pointer}
+    .app{width:100%;height:100dvh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;background:var(--soft)}
 
-    .app{
-      width:100%;
-      height:100dvh;
-      display:grid;
-      grid-template-rows:auto minmax(0,1fr) auto;
-      background:var(--soft);
-    }
-
-    /* ---------- CABECERA MOBILE ---------- */
+    /* CABECERA */
     .header{
-      position:relative;
-      z-index:1000;
-      background:rgba(255,255,255,.98);
-      border-bottom:1px solid var(--line);
-      box-shadow:0 4px 20px rgba(13,37,74,.08);
-      padding:calc(8px + env(safe-area-inset-top)) 12px 9px;
+      position:relative;z-index:1000;background:rgba(255,255,255,.98);
+      border-bottom:1px solid var(--line);box-shadow:0 4px 20px rgba(13,37,74,.08);
+      padding:calc(8px + env(safe-area-inset-top)) 12px 9px
     }
     .header::before{
       content:"";position:absolute;left:0;right:0;top:0;height:4px;
-      background:linear-gradient(90deg,var(--yellow) 0 33.333%,var(--blue2) 33.333% 66.666%,var(--red) 66.666% 100%);
+      background:linear-gradient(90deg,var(--yellow) 0 33.333%,var(--blue2) 33.333% 66.666%,var(--red) 66.666% 100%)
     }
     .identity{display:flex;align-items:center;gap:10px;min-width:0}
-    .logo{
-      width:58px;height:58px;flex:0 0 58px;border-radius:16px;background:#fff;
-      display:grid;place-items:center;overflow:hidden;
-      box-shadow:0 6px 18px rgba(11,42,111,.12);
-    }
+    .logo{width:58px;height:58px;flex:0 0 58px;border-radius:16px;background:#fff;display:grid;place-items:center;overflow:hidden;box-shadow:0 6px 18px rgba(11,42,111,.12)}
     .logo img{width:94%;height:94%;object-fit:contain;display:block}
     .brand{min-width:0;flex:1}
     .brandName{font-size:17px;font-weight:950;color:var(--blue);line-height:1.02;letter-spacing:-.02em}
     .slogan{font-size:9.5px;font-weight:850;color:var(--teal);margin-top:4px}
     .toolName{font-size:12px;font-weight:900;color:#213a67;margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .toolSub{font-size:8.5px;color:var(--muted);font-weight:700;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .status{
-      flex:0 0 auto;font-size:9px;font-weight:900;padding:6px 8px;border-radius:999px;
-      background:#eef8f2;color:#267044;border:1px solid #d4ecdd
-    }
+    .status{flex:0 0 auto;font-size:9px;font-weight:900;padding:6px 8px;border-radius:999px;background:#eef8f2;color:#267044;border:1px solid #d4ecdd}
+    .quick{display:grid;grid-template-columns:auto 1fr 40px;gap:6px;margin-top:8px}
+    .qbtn{min-height:36px;border:0;border-radius:11px;font-size:10px;font-weight:900;padding:0 10px}
+    .back{background:#eef2f7;color:#4b596d}.register{background:linear-gradient(135deg,var(--yellow),#f2bd17);color:#172e5c}.info{background:var(--blue2);color:#fff;padding:0;font-size:16px}
 
-    .quick{
-      display:grid;grid-template-columns:auto 1fr 40px;gap:6px;margin-top:8px;
-    }
-    .qbtn{
-      min-height:36px;border:0;border-radius:11px;font-size:10px;font-weight:900;padding:0 10px;
-    }
-    .back{background:#eef2f7;color:#4b596d}
-    .register{background:linear-gradient(135deg,var(--yellow),#f2bd17);color:#172e5c}
-    .info{background:var(--blue2);color:#fff;padding:0;font-size:16px}
-
-    /* ---------- MAPA ---------- */
+    /* MAPA */
     .mapStage{position:relative;min-height:0;overflow:hidden;background:#dce6ef}
     #map{position:absolute;inset:0;width:100%;height:100%}
-
-    .mapTools{
-      position:absolute;z-index:700;top:10px;left:10px;right:10px;
-      display:flex;gap:7px;pointer-events:none;
-    }
-    .mapTools button{
-      pointer-events:auto;border:0;border-radius:13px;min-height:42px;padding:0 12px;
-      background:#fff;color:var(--ink);box-shadow:var(--shadow);font-size:11px;font-weight:900;
-    }
-    .mapTools .gps{flex:1;background:var(--blue);color:white}
-    .square{width:44px;padding:0!important}
+    .mapTools{position:absolute;z-index:700;top:10px;left:10px;right:10px;display:flex;gap:7px;pointer-events:none}
+    .mapTools button{pointer-events:auto;border:0;border-radius:13px;min-height:42px;padding:0 12px;background:#fff;color:var(--ink);box-shadow:var(--shadow);font-size:11px;font-weight:900}
+    .mapTools .gps{flex:1;background:var(--blue);color:white}.square{width:44px;padding:0!important}
     #moderationBtn{display:none;background:#fff3e3;color:#8f4b08}
-
     .reportBtn{
       position:absolute;z-index:700;right:14px;bottom:16px;height:54px;border:2px solid rgba(247,209,23,.9);
       border-radius:28px;padding:0 18px;background:linear-gradient(135deg,var(--teal),var(--blue));color:white;
-      box-shadow:0 12px 28px rgba(11,42,111,.28);font-size:13px;font-weight:950;
+      box-shadow:0 12px 28px rgba(11,42,111,.28);font-size:13px;font-weight:950
+    }
+    .mapCount{
+      position:absolute;z-index:690;left:10px;bottom:16px;padding:7px 9px;border-radius:12px;background:rgba(255,255,255,.94);
+      border:1px solid rgba(205,217,230,.9);box-shadow:0 6px 18px rgba(12,36,76,.12);color:#526176;font-size:9px;font-weight:850
     }
 
-    /* ---------- NAVEGACIÓN CAPAS MOBILE ---------- */
+    /* CAPAS */
     .layers{
       z-index:900;background:rgba(255,255,255,.99);border-top:1px solid var(--line);
-      padding:6px 5px calc(6px + env(safe-area-inset-bottom));
-      display:grid;grid-template-columns:repeat(4,1fr);gap:4px;
+      padding:6px 5px calc(6px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);gap:4px;
       box-shadow:0 -4px 18px rgba(20,40,70,.08)
     }
-    .layerBtn{
-      border:0;background:transparent;color:#68758a;border-radius:12px;min-height:54px;font-size:9px;font-weight:850;
-    }
-    .layerBtn span{display:block;font-size:20px;margin-bottom:2px}
-    .layerBtn.active{background:#edf4ff;color:var(--blue)}
+    .layerBtn{border:0;background:transparent;color:#68758a;border-radius:12px;min-height:54px;font-size:9px;font-weight:850}
+    .layerBtn span{display:block;font-size:20px;margin-bottom:2px}.layerBtn.active{background:#edf4ff;color:var(--blue)}
 
-    /* ---------- PANELES / MODALES ---------- */
-    .sheet{
-      position:fixed;z-index:2400;left:10px;right:10px;bottom:76px;max-height:70vh;overflow:auto;
-      background:#fff;border-radius:22px;padding:15px;box-shadow:0 22px 60px rgba(10,30,65,.25);
-      transform:translateY(calc(100% + 100px));transition:.24s ease;
-    }
-    .sheet.open{transform:translateY(0)}
-    .sheetHead{display:flex;justify-content:space-between;align-items:center;gap:10px}
-    .sheetHead h2{margin:0;color:var(--blue);font-size:17px}
-    .close{
-      width:36px;height:36px;border:0;border-radius:50%;background:#eef2f7;color:#435167;font-weight:900
-    }
-
+    /* MODALES */
     .modal{
       position:fixed;z-index:3000;inset:0;background:rgba(7,19,42,.58);backdrop-filter:blur(5px);
-      display:flex;align-items:flex-end;justify-content:center;padding:12px;
-      opacity:0;visibility:hidden;pointer-events:none;transition:.2s ease;
+      display:flex;align-items:flex-end;justify-content:center;padding:12px;opacity:0;visibility:hidden;pointer-events:none;transition:.2s ease
     }
     .modal.open{opacity:1;visibility:visible;pointer-events:auto}
     .card{
-      position:relative;width:100%;max-width:560px;max-height:92vh;overflow:auto;
-      border-radius:24px 24px 17px 17px;background:#fff;padding:21px 17px 17px;
-      box-shadow:0 24px 70px rgba(7,25,55,.32)
+      position:relative;width:100%;max-width:600px;max-height:92vh;overflow:auto;border-radius:24px 24px 17px 17px;background:#fff;
+      padding:21px 17px 17px;box-shadow:0 24px 70px rgba(7,25,55,.32)
     }
     .card h2{margin:0 42px 5px 0;color:var(--blue);font-size:20px}
+    .close{width:36px;height:36px;border:0;border-radius:50%;background:#eef2f7;color:#435167;font-weight:900}
     .modalIcon{width:50px;height:50px;border-radius:15px;background:#edf4ff;display:grid;place-items:center;font-size:25px;margin-bottom:10px}
     .intro{font-size:11.5px;line-height:1.48;color:var(--muted);margin:0 0 14px}
-
     .label{display:block;margin:11px 0 5px;color:#26354e;font-size:11px;font-weight:900}
-    .input,.select,.textarea{
-      width:100%;border:1.5px solid #dce3ed;border-radius:13px;background:#f9fbfd;color:var(--ink);outline:none
-    }
-    .input,.select{height:48px;padding:0 12px}
-    .textarea{min-height:95px;padding:11px 12px;resize:vertical;line-height:1.4}
+    .input,.select,.textarea{width:100%;border:1.5px solid #dce3ed;border-radius:13px;background:#f9fbfd;color:var(--ink);outline:none}
+    .input,.select{height:48px;padding:0 12px}.textarea{min-height:105px;padding:11px 12px;resize:vertical;line-height:1.4}
     .input:focus,.select:focus,.textarea:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(0,109,143,.1);background:#fff}
-
-    .primary,.secondary{
-      width:100%;min-height:48px;margin-top:9px;border-radius:13px;font-weight:900
-    }
+    .primary,.secondary{width:100%;min-height:48px;margin-top:9px;border-radius:13px;font-weight:900}
     .primary{border:0;background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff}
     .secondary{border:1px solid var(--line);background:#fff;color:var(--blue)}
     .primary:disabled{opacity:.55;cursor:wait}
     .help{margin-top:11px;padding:10px;border-radius:12px;background:#f4f7fb;color:#65748a;font-size:10px;line-height:1.45}
-    .loginResult{display:none;margin-top:11px;padding:10px;border-radius:12px;font-size:11px}
-    .loginResult.ok{display:block;background:#eef9f2;color:#246c3e;border:1px solid #ccebd7}
-    .loginResult.err{display:block;background:#fff0f0;color:#9a2929;border:1px solid #ffd1d1}
-
-    .typeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-    .typeBtn{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 8px;min-height:102px;text-align:center}
+    .loginResult{display:none;margin-top:11px;padding:10px;border-radius:12px;font-size:11px}.loginResult.ok{display:block;background:#eef9f2;color:#246c3e;border:1px solid #ccebd7}.loginResult.err{display:block;background:#fff0f0;color:#9a2929;border:1px solid #ffd1d1}
+    .typeGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.typeBtn{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 8px;min-height:102px;text-align:center}
     .typeBtn .ico{font-size:28px}.typeBtn strong{display:block;color:#1b365e;font-size:12px;margin-top:5px}.typeBtn small{display:block;color:#6a7487;font-size:9px;line-height:1.3;margin-top:3px}
     .memberChip{padding:9px 10px;border-radius:12px;background:#eef9f2;color:#256a40;font-size:11px;font-weight:800}
-
-    .locationGrid,.grid2,.radioGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-    .locationBtn{min-height:58px;border:1px solid var(--line);border-radius:13px;background:#fff;font-size:11px;font-weight:850}
-    .locationSummary{margin-top:8px;padding:10px;border-radius:12px;background:#f4f7fb;color:#42526b;font-size:10.5px;line-height:1.4}
-    .locationSummary.ok{background:#eef9f2;border:1px solid #d0ead8;color:#246c3e}
+    .grid2,.radioGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
     .radio{padding:9px;border:1px solid var(--line);border-radius:12px;text-align:center;font-size:10.5px;font-weight:850}
+    .locSummary{margin-top:8px;padding:11px;border-radius:13px;background:#f4f7fb;color:#42526b;font-size:10.5px;line-height:1.4}
+    .locSummary.ok{background:#eef9f2;border:1px solid #d0ead8;color:#246c3e}
+    .locActions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:7px}
+    .locActions button{min-height:45px;border:1px solid var(--line);border-radius:12px;background:#fff;color:#18345f;font-size:10.5px;font-weight:900}
     .searchRow{display:flex;gap:6px}.searchRow .input{flex:1}.searchBtn{width:48px;border:0;border-radius:12px;background:var(--blue);color:#fff}
-    .searchResults{display:none;margin-top:6px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
-    .searchResults.show{display:block}.place{padding:9px;border-bottom:1px solid #eef1f5;font-size:10.5px;line-height:1.35}
+    .searchResults{display:none;margin-top:6px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}.searchResults.show{display:block}
+    .place{padding:9px;border-bottom:1px solid #eef1f5;font-size:10.5px;line-height:1.35}.place:last-child{border-bottom:0}
+    .locationSensitive{display:flex;gap:9px;align-items:flex-start;padding:10px;border:1px solid #f0ded0;background:#fff8f2;border-radius:12px;font-size:10px;line-height:1.4}
+    .locationSensitive input{margin-top:2px}
+    .catalogHint{font-size:9.5px;color:#6a7487;margin-top:4px}
 
-    .contextGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}
-    .contextOpt{border:1px solid var(--line);border-radius:11px;padding:9px;font-size:10px;font-weight:800}
-    .envBox{margin-top:12px;border:1px solid #dbe5ef;border-radius:15px;background:#fbfdff;padding:10px}
-    .poi{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #edf1f5;font-size:10px}
-    .poi:last-child{border-bottom:0}.poi strong{display:block;font-size:11px}.distance{color:var(--teal);font-weight:850}
+    /* SELECTOR GEOGRÁFICO PROFESIONAL */
+    .locationMode{
+      position:fixed;z-index:4500;inset:0;background:#dce6ef;display:none;flex-direction:column
+    }
+    .locationMode.open{display:flex}
+    .locTop{
+      position:absolute;z-index:4700;top:calc(10px + env(safe-area-inset-top));left:10px;right:10px;
+      background:rgba(255,255,255,.96);border:1px solid #dfe7f0;border-radius:17px;padding:10px 12px;
+      box-shadow:var(--shadow);backdrop-filter:blur(8px)
+    }
+    .locTop strong{display:block;color:var(--blue);font-size:13px}.locTop small{display:block;color:#68758a;font-size:9.5px;line-height:1.35;margin-top:2px}
+    .centerPin{
+      position:absolute;z-index:4650;left:50%;top:50%;transform:translate(-50%,-100%);pointer-events:none;
+      filter:drop-shadow(0 6px 5px rgba(0,0,0,.25))
+    }
+    .centerPin .pin{font-size:44px;line-height:1}.centerPin .shadow{width:15px;height:6px;border-radius:50%;background:rgba(0,0,0,.22);margin:-4px auto 0}
+    .locCross{position:absolute;z-index:4640;left:50%;top:50%;width:18px;height:18px;transform:translate(-50%,-50%);pointer-events:none}
+    .locCross::before,.locCross::after{content:"";position:absolute;background:#0B2A6F;opacity:.55}.locCross::before{width:18px;height:1px;top:8px}.locCross::after{width:1px;height:18px;left:8px}
+    .locBottom{
+      position:absolute;z-index:4700;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));
+      background:rgba(255,255,255,.97);border:1px solid #dfe7f0;border-radius:18px;padding:10px;box-shadow:var(--shadow);backdrop-filter:blur(8px)
+    }
+    .coordBox{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:7px}.coordBox div{background:#f4f7fb;border-radius:10px;padding:8px;font-size:9px;color:#5f6e82}.coordBox strong{display:block;color:#20395f;font-size:10.5px;margin-top:2px}
+    .locBottomBtns{display:grid;grid-template-columns:auto auto 1fr;gap:6px}.locBottomBtns button{min-height:44px;border:0;border-radius:12px;font-size:10.5px;font-weight:900}
+    .locCancel{background:#eef2f7;color:#4b596d}.locGps{background:#edf4ff;color:#174c8b}.locConfirm{background:linear-gradient(135deg,var(--teal),var(--blue));color:#fff}
+    .locContextStatus{font-size:9px;color:#68758a;text-align:center;margin-top:7px;min-height:12px}
 
-    .legendGroup{margin:13px 0}.legendTitle{font-size:10px;font-weight:950;color:var(--muted);text-transform:uppercase}
-    .legendItem{display:flex;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid #eef1f5;font-size:11.5px;font-weight:750}
+    /* CONTEXTO */
+    .sheet{
+      position:fixed;z-index:2400;left:10px;right:10px;bottom:76px;max-height:70vh;overflow:auto;background:#fff;border-radius:22px;
+      padding:15px;box-shadow:0 22px 60px rgba(10,30,65,.25);transform:translateY(calc(100% + 100px));transition:.24s ease
+    }
+    .sheet.open{transform:translateY(0)}.sheetHead{display:flex;justify-content:space-between;align-items:center;gap:10px}.sheetHead h2{margin:0;color:var(--blue);font-size:17px}
+    .contextGrid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}.contextOpt{border:1px solid var(--line);border-radius:11px;padding:9px;font-size:10px;font-weight:800}
+    .contextSwitch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 11px;margin-top:10px;border:1px solid var(--line);border-radius:13px;background:#f8fafc;color:#33435a;font-size:10.5px;font-weight:850}
+    .contextSwitch input{width:18px;height:18px}.osmNote{margin-top:10px;padding:9px 10px;border-radius:12px;background:#f3f6fa;color:#68758a;font-size:9.5px;line-height:1.45}
 
-    .modItem{border:1px solid var(--line);border-radius:13px;padding:10px;margin-bottom:8px}
-    .modTitle{font-size:11px;font-weight:900;color:#1b365e}.modDesc{font-size:10px;color:#65748a;line-height:1.4;margin-top:4px}
-    .modActions{display:flex;gap:5px;margin-top:7px}.modActions button{flex:1;border:0;border-radius:9px;min-height:36px;font-size:9.5px;font-weight:900}
-    .viewBtn{background:#edf4ff;color:#174c8b}.validBtn{background:#eaf8ef;color:#246c3e}.rejectBtn{background:#fff0f0;color:#9a2929}
+    /* POPUPS / MODERACIÓN */
+    .popup{min-width:210px}.popup h3{margin:5px 0;color:var(--blue);font-size:13px}.popup p{margin:5px 0;color:#4f5c70;font-size:10.5px;line-height:1.35}
+    .badge{display:inline-block;padding:4px 7px;border-radius:999px;font-size:8.5px;font-weight:950}.reported{background:#fff4e8;color:#a3560b}.confirmed{background:#edf4ff;color:#174c8b}.validated{background:#eaf8ef;color:#246c3e}
+    .popupActions{display:flex;gap:5px;margin-top:7px}.popupActions button{border:0;border-radius:8px;padding:7px;font-size:9px;font-weight:900;background:#edf4ff;color:#174c8b}
+    .popupActions .shareBtn{background:#eaf8ef;color:#176b3a}
+    .shareNote{margin-top:7px;padding:7px 8px;border-radius:9px;background:#f5f7fa;color:#68758a;font-size:8.5px;line-height:1.35}
+    .deepFocus{animation:deepPulse 1s ease-in-out 3}
+    @keyframes deepPulse{50%{filter:drop-shadow(0 0 10px rgba(247,209,23,.95))}}
 
-    .infoLogo{width:116px;height:116px;margin:0 auto 10px;border-radius:26px;background:#fff;display:grid;place-items:center;box-shadow:0 10px 32px rgba(11,42,111,.14);overflow:hidden}
-    .infoLogo img{width:94%;height:94%;object-fit:contain}
+    .modItem{border:1px solid var(--line);border-radius:13px;padding:10px;margin-bottom:8px}.modTitle{font-size:11px;font-weight:900;color:#1b365e}.modDesc{font-size:10px;color:#65748a;line-height:1.4;margin-top:4px}
+    .modActions{display:flex;gap:5px;margin-top:7px}.modActions button{flex:1;border:0;border-radius:9px;min-height:36px;font-size:9.5px;font-weight:900}.viewBtn{background:#edf4ff;color:#174c8b}.validBtn{background:#eaf8ef;color:#246c3e}.rejectBtn{background:#fff0f0;color:#9a2929}
+    .legendGroup{margin:13px 0}.legendTitle{font-size:10px;font-weight:950;color:var(--muted);text-transform:uppercase}.legendItem{display:flex;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid #eef1f5;font-size:11.5px;font-weight:750}
+
+    /* INFO */
+    .infoLogo{width:116px;height:116px;margin:0 auto 10px;border-radius:26px;background:#fff;display:grid;place-items:center;box-shadow:0 10px 32px rgba(11,42,111,.14);overflow:hidden}.infoLogo img{width:94%;height:94%;object-fit:contain}
     .infoTitle{text-align:center!important;margin:0!important}.infoSlogan{text-align:center;color:var(--teal);font-size:12px;font-weight:850;margin-top:4px}
     .flagMini{height:5px;width:82px;margin:12px auto;border-radius:5px;background:linear-gradient(90deg,var(--yellow) 0 33.333%,var(--blue2) 33.333% 66.666%,var(--red) 66.666% 100%)}
     .infoLinks{display:grid;gap:7px;margin-top:12px}.infoLinks a,.infoLinks button{min-height:45px;border:0;border-radius:12px;display:flex;justify-content:center;align-items:center;text-decoration:none;font-size:10.5px;font-weight:900}
     .linkReg{background:var(--yellow);color:#172e5c}.linkWa{background:#eaf8ef;color:#176b3a}.linkContact{background:#eff5ff;color:#194c8c}.linkBack{background:#eef1f5;color:#48566b}
     .author{text-align:center;margin-top:14px;padding-top:12px;border-top:1px solid #e8edf3;color:#68758a;font-size:10px;line-height:1.5}
 
-    .popup{min-width:205px}.popup h3{margin:5px 0;color:var(--blue);font-size:13px}.popup p{margin:5px 0;color:#4f5c70;font-size:10.5px;line-height:1.35}
-    .badge{display:inline-block;padding:4px 7px;border-radius:999px;font-size:8.5px;font-weight:950}
-    .reported{background:#fff4e8;color:#a3560b}.confirmed{background:#edf4ff;color:#174c8b}.validated{background:#eaf8ef;color:#246c3e}
-    .popupActions{display:flex;gap:5px;margin-top:7px}.popupActions button{border:0;border-radius:8px;padding:7px;font-size:9px;font-weight:900;background:#edf4ff;color:#174c8b}
-
     .toast{
-      position:fixed;z-index:5000;left:50%;bottom:90px;max-width:calc(100% - 24px);
-      transform:translate(-50%,18px);opacity:0;background:#172033;color:#fff;padding:10px 13px;border-radius:12px;
-      font-size:10.5px;font-weight:750;text-align:center;pointer-events:none;transition:.2s
+      position:fixed;z-index:6000;left:50%;bottom:90px;max-width:calc(100% - 24px);transform:translate(-50%,18px);opacity:0;
+      background:#172033;color:#fff;padding:10px 13px;border-radius:12px;font-size:10.5px;font-weight:750;text-align:center;pointer-events:none;transition:.2s
     }
     .toast.show{opacity:1;transform:translate(-50%,0)}
-    .fatal{
-      position:absolute;z-index:800;inset:16px;display:none;place-items:center;text-align:center;
-      background:rgba(255,255,255,.96);border-radius:18px;padding:20px;color:#7b2430;box-shadow:var(--shadow)
-    }
-    .fatal.show{display:grid}
+    .fatal{position:absolute;z-index:800;inset:16px;display:none;place-items:center;text-align:center;background:rgba(255,255,255,.96);border-radius:18px;padding:20px;color:#7b2430;box-shadow:var(--shadow)}.fatal.show{display:grid}
 
-    .autoContextBar{
-      position:absolute;z-index:690;left:10px;bottom:78px;display:flex;align-items:center;gap:6px;
-      max-width:calc(100% - 110px);padding:7px 9px;border-radius:12px;background:rgba(255,255,255,.94);
-      border:1px solid rgba(205,217,230,.9);box-shadow:0 6px 18px rgba(12,36,76,.12);
-      color:#526176;font-size:9px;font-weight:800;backdrop-filter:blur(6px)
+    /* TABLET / PC */
+    @media(min-width:760px){
+      .app{grid-template-columns:360px minmax(0,1fr);grid-template-rows:minmax(0,1fr)}
+      .header{grid-column:1;grid-row:1;display:flex;flex-direction:column;padding:20px 18px;border-right:1px solid var(--line);border-bottom:0;box-shadow:6px 0 24px rgba(12,36,76,.08)}
+      .identity{align-items:flex-start}.logo{width:82px;height:82px;flex-basis:82px;border-radius:21px}.brandName{font-size:23px}.slogan{font-size:11px}.toolName{font-size:15px;white-space:normal;margin-top:10px}.toolSub{font-size:10px;white-space:normal;line-height:1.35}
+      .status{margin-left:auto}.quick{margin-top:16px;grid-template-columns:1fr 1fr 42px}
+      .mapStage{grid-column:2;grid-row:1}.layers{grid-column:1;grid-row:1;align-self:end;margin:0 14px 14px;border:1px solid var(--line);border-radius:17px;padding:7px;box-shadow:var(--shadow);z-index:1200}
+      .mapTools{top:16px;left:16px;right:auto;width:min(470px,calc(100% - 32px))}.reportBtn{right:20px;bottom:20px}.mapCount{left:16px;bottom:20px}
+      .sheet{left:auto;right:18px;bottom:18px;width:400px;max-height:76vh}.modal{align-items:center}.card{border-radius:22px}.toast{bottom:26px}
+      .locTop{left:50%;right:auto;width:520px;transform:translateX(-50%)}.locBottom{left:50%;right:auto;width:560px;transform:translateX(-50%)}
     }
-    .autoContextBar .dot{width:7px;height:7px;border-radius:50%;background:#58B947;flex:0 0 7px}
-    .autoContextBar.off .dot{background:#9aa6b6}
-    .autoContextBar.loading .dot{background:#F2BE1A;animation:pulsePoi 1s infinite alternate}
-    @keyframes pulsePoi{to{opacity:.35}}
-    .contextSwitch{
-      display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 11px;margin-top:10px;
-      border:1px solid var(--line);border-radius:13px;background:#f8fafc;color:#33435a;font-size:10.5px;font-weight:850
-    }
-    .contextSwitch input{width:18px;height:18px}
-    .osmNote{margin-top:10px;padding:9px 10px;border-radius:12px;background:#f3f6fa;color:#68758a;font-size:9.5px;line-height:1.45}
-    @media(min-width:760px){.autoContextBar{left:16px;bottom:18px;max-width:430px}}
-
-    /* ---------- TABLET / PC ---------- */
-    @media (min-width: 760px){
-      .app{
-        grid-template-columns:360px minmax(0,1fr);
-        grid-template-rows:minmax(0,1fr);
-      }
-      .header{
-        grid-column:1;grid-row:1;
-        display:flex;flex-direction:column;
-        padding:20px 18px;
-        border-right:1px solid var(--line);border-bottom:0;
-        box-shadow:6px 0 24px rgba(12,36,76,.08);
-      }
-      .identity{align-items:flex-start}
-      .logo{width:82px;height:82px;flex-basis:82px;border-radius:21px}
-      .brandName{font-size:23px}.slogan{font-size:11px}.toolName{font-size:15px;white-space:normal;margin-top:10px}.toolSub{font-size:10px;white-space:normal;line-height:1.35}
-      .status{margin-left:auto}
-      .quick{margin-top:16px;grid-template-columns:1fr 1fr 42px}
-      .mapStage{grid-column:2;grid-row:1}
-      .layers{
-        grid-column:1;grid-row:1;align-self:end;
-        margin:0 14px 14px;border:1px solid var(--line);border-radius:17px;padding:7px;
-        box-shadow:var(--shadow);z-index:1200
-      }
-      .mapTools{top:16px;left:16px;right:auto;width:min(470px,calc(100% - 32px))}
-      .reportBtn{right:20px;bottom:20px}
-      .sheet{left:auto;right:18px;bottom:18px;width:400px;max-height:76vh}
-      .modal{align-items:center}
-      .card{border-radius:22px}
-      .toast{bottom:26px}
-    }
-
-    @media (min-width: 1180px){
-      .app{grid-template-columns:400px minmax(0,1fr)}
-      .header{padding:24px 22px}
-      .logo{width:92px;height:92px;flex-basis:92px}
-      .brandName{font-size:25px}
-      .toolName{font-size:17px}
-      .layers{margin:0 18px 18px}
-      .mapTools{width:520px}
+    @media(min-width:1180px){
+      .app{grid-template-columns:400px minmax(0,1fr)}.header{padding:24px 22px}.logo{width:92px;height:92px;flex-basis:92px}.brandName{font-size:25px}.toolName{font-size:17px}.layers{margin:0 18px 18px}.mapTools{width:520px}
     }
   </style>
 </head>
 
 <body>
 <div class="app">
-
   <header class="header">
     <div class="identity">
-      <div class="logo">
-        <img src="https://drive.google.com/thumbnail?id=1MjVa3JxeKC95xEdlcZ5ZFMCKlatbrU2s&sz=w1000" alt="La Movida de SST Plus">
-      </div>
-
+      <div class="logo"><img src="https://drive.google.com/thumbnail?id=1MjVa3JxeKC95xEdlcZ5ZFMCKlatbrU2s&sz=w1000" alt="La Movida de SST Plus"></div>
       <div class="brand">
         <div class="brandName">La Movida de SST Plus</div>
         <div class="slogan">De la reacción a la prevención</div>
         <div class="toolName">Mapa Participativo de Gestión de Riesgos en Venezuela</div>
         <div class="toolSub">Amenazas · Exposición · Vulnerabilidades · Capacidades</div>
       </div>
-
       <div class="status" id="connectionStatus">● Iniciando</div>
     </div>
-
     <div class="quick">
       <button class="qbtn back" onclick="window.location.href='https://www.movidasst.com'">← Volver</button>
       <button class="qbtn register" onclick="window.location.href='https://registro.movidasst.com'">👤 Registrarse</button>
@@ -340,62 +258,65 @@
 
   <main class="mapStage">
     <div id="map"></div>
-
     <div class="mapTools">
       <button class="gps" onclick="goToMyLocation()">📍 Mi ubicación</button>
       <button class="square" onclick="openSheet('contextSheet')" title="Contexto territorial">🏙️</button>
       <button class="square" onclick="openSheet('legendSheet')" title="Leyenda">☰</button>
       <button class="square" id="moderationBtn" onclick="openModeration()" title="Moderación">🛠️</button>
     </div>
-
-    <div class="autoContextBar off" id="autoContextStatus">
-      <span class="dot"></span><span id="autoContextText">Acércate al mapa para ver lugares cercanos</span>
-    </div>
+    <div class="mapCount" id="mapCount">0 registros visibles</div>
     <button class="reportBtn" onclick="startReport()">＋ Reportar</button>
-
-    <div class="fatal" id="fatalError">
-      <div>
-        <strong>No se pudo iniciar el mapa.</strong><br>
-        <small id="fatalText">Comprueba tu conexión y recarga la página.</small>
-      </div>
-    </div>
+    <div class="fatal" id="fatalError"><div><strong>No se pudo iniciar el mapa.</strong><br><small id="fatalText">Comprueba tu conexión y recarga la página.</small></div></div>
   </main>
 
   <nav class="layers">
-    <button class="layerBtn active"><span>🔥</span>Amenazas</button>
-    <button class="layerBtn" onclick="comingSoon('Elementos expuestos')"><span>👥</span>Exposición</button>
-    <button class="layerBtn" onclick="comingSoon('Vulnerabilidades')"><span>⚠️</span>Vulnerabilidad</button>
-    <button class="layerBtn" onclick="comingSoon('Capacidades')"><span>🛡️</span>Capacidades</button>
+    <button class="layerBtn active" data-filter="AMENAZA" onclick="setLayerFilter('AMENAZA',this)"><span>🔥</span>Amenazas</button>
+    <button class="layerBtn" data-filter="ELEMENTO_EXPUESTO" onclick="setLayerFilter('ELEMENTO_EXPUESTO',this)"><span>👥</span>Exposición</button>
+    <button class="layerBtn" data-filter="VULNERABILIDAD" onclick="setLayerFilter('VULNERABILIDAD',this)"><span>⚠️</span>Vulnerabilidad</button>
+    <button class="layerBtn" data-filter="CAPACIDAD" onclick="setLayerFilter('CAPACIDAD',this)"><span>🛡️</span>Capacidades</button>
   </nav>
+</div>
+
+<!-- SELECTOR GEOGRÁFICO -->
+<div class="locationMode" id="locationMode">
+  <div class="locTop">
+    <strong id="locModeTitle">📍 Ubica el registro con precisión</strong>
+    <small>Mueve y acerca el mapa hasta que el punto central quede exactamente donde deseas. No se guardará nada hasta que confirmes.</small>
+  </div>
+  <div class="locCross"></div>
+  <div class="centerPin"><div class="pin">📍</div><div class="shadow"></div></div>
+  <div class="locBottom">
+    <div class="coordBox">
+      <div>LATITUD<strong id="locLat">—</strong></div>
+      <div>LONGITUD<strong id="locLng">—</strong></div>
+    </div>
+    <div class="locBottomBtns">
+      <button class="locCancel" onclick="cancelLocationMode()">Cancelar</button>
+      <button class="locGps" onclick="gpsInsideLocationMode()">📡 GPS</button>
+      <button class="locConfirm" onclick="confirmLocationMode()">✓ Confirmar ubicación</button>
+    </div>
+    <div class="locContextStatus" id="locContextStatus">Acércate para revisar el entorno.</div>
+  </div>
 </div>
 
 <!-- LEYENDA -->
 <aside class="sheet" id="legendSheet">
-  <div class="sheetHead">
-    <h2>Leyenda</h2>
-    <button class="close" onclick="closeSheet('legendSheet')">✕</button>
-  </div>
+  <div class="sheetHead"><h2>Leyenda</h2><button class="close" onclick="closeSheet('legendSheet')">✕</button></div>
   <div class="help">
     🟠 <strong>Reportado:</strong> aportado por un integrante verificado.<br><br>
     🔵 <strong>Confirmado:</strong> corroborado por al menos 2 integrantes distintos.<br><br>
     🟢 <strong>Validado:</strong> revisado por un moderador.<br><br>
-    ⚪ <strong>Lugares de contexto:</strong> hospitales, escuelas, bomberos, policía, combustible y farmacias de OpenStreetMap.
+    ⚪ <strong>Contexto:</strong> lugares de OpenStreetMap; no son automáticamente elementos expuestos.
   </div>
   <div id="legendBody"></div>
 </aside>
 
 <!-- CONTEXTO -->
 <aside class="sheet" id="contextSheet">
-  <div class="sheetHead">
-    <h2>🏙️ Contexto territorial</h2>
-    <button class="close" onclick="closeSheet('contextSheet')">✕</button>
-  </div>
-  <p class="intro">Consulta lugares registrados en OpenStreetMap alrededor del centro actual del mapa. Son contexto territorial; no se consideran automáticamente elementos expuestos.</p>
+  <div class="sheetHead"><h2>🏙️ Contexto territorial</h2><button class="close" onclick="closeSheet('contextSheet')">✕</button></div>
+  <p class="intro">Muestra equipamientos y servicios cercanos registrados en OpenStreetMap. Sirven como referencia territorial para el análisis profesional.</p>
 
-  <label class="contextSwitch">
-    <span>✨ Mostrar lugares automáticamente al acercarme</span>
-    <input id="autoContextToggle" type="checkbox" checked onchange="toggleAutoContext(this.checked)">
-  </label>
+  <label class="contextSwitch"><span>✨ Mostrar automáticamente al acercarme</span><input id="autoContextToggle" type="checkbox" checked onchange="toggleAutoContext(this.checked)"></label>
 
   <div class="contextGrid">
     <label class="contextOpt"><input type="checkbox" class="ctx" value="salud" checked onchange="contextFiltersChanged()"> 🏥 Salud</label>
@@ -406,91 +327,77 @@
     <label class="contextOpt"><input type="checkbox" class="ctx" value="pharmacy" checked onchange="contextFiltersChanged()"> 💊 Farmacias</label>
   </div>
 
-  <label class="label">Radio manual alrededor del centro</label>
+  <label class="label">Radio manual</label>
   <select id="contextRadius" class="select">
     <option value="500">500 m</option>
     <option value="1000" selected>1 km</option>
     <option value="2000">2 km</option>
     <option value="5000">5 km</option>
   </select>
-
   <button class="primary" onclick="loadContext(true)">Actualizar ahora</button>
   <button class="secondary" onclick="clearContext(true)">Ocultar lugares</button>
-
-  <div class="osmNote">
-    Los lugares son contexto territorial obtenido de OpenStreetMap. Su presencia
-    <strong>no significa automáticamente que sean elementos expuestos</strong>.
-  </div>
+  <div class="osmNote">El radio es solo de consulta del entorno; no representa por sí mismo un área de impacto.</div>
 </aside>
 
 <!-- LOGIN -->
 <div class="modal" id="loginModal">
   <section class="card">
     <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('loginModal')">✕</button>
-    <div class="modalIcon">🔐</div>
-    <h2>Identifícate como integrante</h2>
-    <p class="intro">Para reportar o confirmar información debes validar tu cédula y código de integrante.</p>
-
-    <label class="label">Cédula</label>
-    <input id="loginCedula" class="input" inputmode="numeric" autocomplete="off" placeholder="Ej. 12345678">
-
-    <label class="label">Código de integrante</label>
-    <input id="loginCodigo" class="input" autocomplete="off" placeholder="Tu código">
-
+    <div class="modalIcon">🔐</div><h2>Identifícate como integrante</h2>
+    <p class="intro">Para reportar o confirmar debes validar tu cédula y código de integrante.</p>
+    <label class="label">Cédula</label><input id="loginCedula" class="input" inputmode="numeric" autocomplete="off" placeholder="Ej. 12345678">
+    <label class="label">Código de integrante</label><input id="loginCodigo" class="input" autocomplete="off" placeholder="Tu código">
     <button id="loginBtn" class="primary" onclick="validateMember()">Verificar integrante</button>
     <div id="loginResult" class="loginResult"></div>
-
-    <div class="help">Los visitantes pueden consultar el mapa sin identificarse. La identificación mantiene trazabilidad de los aportes.</div>
+    <div class="help">Los visitantes pueden consultar el mapa sin identificarse. La identificación permite trazabilidad de los aportes.</div>
   </section>
 </div>
 
-<!-- TIPO DE APORTE -->
+<!-- TIPO -->
 <div class="modal" id="typeModal">
   <section class="card">
     <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('typeModal')">✕</button>
-    <div class="modalIcon">＋</div>
-    <h2>¿Qué deseas registrar?</h2>
+    <div class="modalIcon">＋</div><h2>¿Qué deseas registrar?</h2>
     <div class="memberChip" id="memberChip">✅ Integrante verificado</div>
-
     <div class="typeGrid">
-      <button class="typeBtn" onclick="selectReportType('AMENAZA')"><div class="ico">🔥</div><strong>Amenaza</strong><small>Identificar, ubicar y caracterizar.</small></button>
-      <button class="typeBtn" onclick="selectReportType('ELEMENTO')"><div class="ico">👥</div><strong>Elemento expuesto</strong><small>Personas, infraestructura y servicios.</small></button>
-      <button class="typeBtn" onclick="selectReportType('VULNERABILIDAD')"><div class="ico">⚠️</div><strong>Vulnerabilidad</strong><small>Debilidades y susceptibilidad.</small></button>
-      <button class="typeBtn" onclick="selectReportType('CAPACIDAD')"><div class="ico">🛡️</div><strong>Capacidad</strong><small>Recursos y fortalezas disponibles.</small></button>
+      <button class="typeBtn" onclick="openReportForm('AMENAZA')"><div class="ico">🔥</div><strong>Amenaza</strong><small>Identificar, ubicar y caracterizar una amenaza.</small></button>
+      <button class="typeBtn" onclick="openReportForm('ELEMENTO_EXPUESTO')"><div class="ico">👥</div><strong>Elemento expuesto</strong><small>Personas, infraestructura, servicios o ambiente.</small></button>
+      <button class="typeBtn" onclick="openReportForm('VULNERABILIDAD')"><div class="ico">⚠️</div><strong>Vulnerabilidad</strong><small>Debilidad o condición de susceptibilidad.</small></button>
+      <button class="typeBtn" onclick="openReportForm('CAPACIDAD')"><div class="ico">🛡️</div><strong>Capacidad</strong><small>Recursos, medios y fortalezas disponibles.</small></button>
     </div>
   </section>
 </div>
 
-<!-- FORMULARIO AMENAZA -->
-<div class="modal" id="threatModal">
+<!-- FORMULARIO ÚNICO PARA LOS 4 TIPOS -->
+<div class="modal" id="reportModal">
   <section class="card">
-    <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('threatModal')">✕</button>
-    <div class="modalIcon">🔥</div>
-    <h2>Registrar amenaza</h2>
-    <p class="intro">Se publicará inmediatamente como <strong>🟠 REPORTADO</strong>. Con 2 confirmaciones independientes pasa a <strong>🔵 CONFIRMADO</strong>; un moderador puede marcarlo como <strong>🟢 VALIDADO</strong>.</p>
+    <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('reportModal')">✕</button>
+    <div class="modalIcon" id="reportIcon">🔥</div>
+    <h2 id="reportHeading">Registrar amenaza</h2>
+    <p class="intro" id="reportIntro"></p>
 
-    <label class="label">Tipo de amenaza *</label>
-    <select id="threatType" class="select"><option value="">Selecciona</option></select>
+    <label class="label" id="catalogLabel">Tipo *</label>
+    <select id="reportCatalog" class="select"><option value="">Selecciona</option></select>
+    <div class="catalogHint" id="catalogHint"></div>
 
     <label class="label">Título *</label>
-    <input id="threatTitle" class="input" maxlength="120" placeholder="Ej. Inundación recurrente en acceso principal">
+    <input id="reportTitle" class="input" maxlength="120" placeholder="Describe el registro en una frase">
 
     <label class="label">Ubicación *</label>
-    <div class="locationGrid">
-      <button class="locationBtn" onclick="useGPSForReport()">📍<br>Usar mi ubicación</button>
-      <button class="locationBtn" onclick="selectOnMap()">🗺️<br>Marcar en mapa</button>
+    <div id="locationSummary" class="locSummary">Aún no has confirmado una ubicación.</div>
+    <div class="locActions">
+      <button onclick="beginLocationMode()">🗺️ Ubicar / ajustar en mapa</button>
+      <button onclick="useGPSAndReview()">📡 GPS y revisar</button>
     </div>
 
-    <label class="label">Buscar lugar</label>
+    <label class="label">Buscar un lugar en Venezuela</label>
     <div class="searchRow">
-      <input id="placeSearch" class="input" placeholder="Ej. Valencia, Carabobo">
+      <input id="placeSearch" class="input" placeholder="Ej. Hospital Universitario Caracas">
       <button class="searchBtn" onclick="searchPlace()">🔎</button>
     </div>
     <div id="placeResults" class="searchResults"></div>
 
-    <div id="locationSummary" class="locationSummary">Aún no seleccionaste una ubicación.</div>
-
-    <label class="label">Precisión de ubicación</label>
+    <label class="label">Precisión declarada</label>
     <div class="radioGrid">
       <label class="radio"><input type="radio" name="exact" value="true" checked> 🎯 Exacta</label>
       <label class="radio"><input type="radio" name="exact" value="false"> ⭕ Aproximada</label>
@@ -500,10 +407,9 @@
       <div>
         <label class="label">Estado temporal</label>
         <select id="temporal" class="select">
-          <option value="POTENCIAL">Potencial</option>
-          <option value="ACTIVA">Activa</option>
-          <option value="RECURRENTE">Recurrente</option>
-          <option value="HISTORICA">Histórica</option>
+          <option value="">No aplica / no determinado</option>
+          <option value="POTENCIAL">Potencial</option><option value="ACTIVA">Activa</option>
+          <option value="RECURRENTE">Recurrente</option><option value="HISTORICA">Histórica</option>
         </select>
       </div>
       <div>
@@ -516,56 +422,38 @@
       <div>
         <label class="label">Frecuencia</label>
         <select id="frequency" class="select">
-          <option value="">No determinada</option>
-          <option value="UNICA">Única / aislada</option>
-          <option value="OCASIONAL">Ocasional</option>
-          <option value="ESTACIONAL">Estacional</option>
-          <option value="RECURRENTE">Recurrente</option>
-          <option value="PERMANENTE">Permanente</option>
+          <option value="">No determinada</option><option value="UNICA">Única / aislada</option>
+          <option value="OCASIONAL">Ocasional</option><option value="ESTACIONAL">Estacional</option>
+          <option value="RECURRENTE">Recurrente</option><option value="PERMANENTE">Permanente</option>
         </select>
       </div>
       <div>
-        <label class="label">Intensidad estimada</label>
+        <label class="label">Intensidad / nivel</label>
         <select id="intensity" class="select">
-          <option value="">No determinada</option>
-          <option value="BAJA">Baja</option>
-          <option value="MEDIA">Media</option>
-          <option value="ALTA">Alta</option>
+          <option value="">No determinado</option><option value="BAJA">Baja</option>
+          <option value="MEDIA">Media</option><option value="ALTA">Alta</option>
         </select>
       </div>
     </div>
 
     <label class="label">Fuente</label>
     <select id="sourceInfo" class="select">
-      <option value="">Selecciona</option>
-      <option value="OBSERVACION_PROPIA">Observación propia</option>
-      <option value="COMUNIDAD">Comunidad</option>
-      <option value="EMPRESA">Empresa / organización</option>
-      <option value="AUTORIDAD">Autoridad u organismo</option>
-      <option value="DOCUMENTO_TECNICO">Documento técnico</option>
-      <option value="MEDIO_COMUNICACION">Medio de comunicación</option>
-      <option value="OTRA">Otra</option>
+      <option value="">Selecciona</option><option value="OBSERVACION_PROPIA">Observación propia</option>
+      <option value="COMUNIDAD">Comunidad</option><option value="EMPRESA">Empresa / organización</option>
+      <option value="AUTORIDAD">Autoridad u organismo</option><option value="DOCUMENTO_TECNICO">Documento técnico</option>
+      <option value="MEDIO_COMUNICACION">Medio de comunicación</option><option value="OTRA">Otra</option>
     </select>
 
-    <label class="label">Descripción *</label>
-    <textarea id="threatDescription" class="textarea" maxlength="1200" placeholder="Describe la amenaza, antecedentes, comportamiento observado y cualquier información relevante."></textarea>
+    <label class="label">Descripción técnica *</label>
+    <textarea id="reportDescription" class="textarea" maxlength="1500" placeholder="Describe la situación observada y la información necesaria para comprenderla."></textarea>
 
-    <div class="envBox">
-      <strong style="font-size:11px;color:#18345f">🔎 ¿Qué hay cerca?</strong>
-      <label class="label">Radio de consulta</label>
-      <select id="nearRadius" class="select">
-        <option value="500">500 m</option>
-        <option value="1000" selected>1 km</option>
-        <option value="2000">2 km</option>
-        <option value="5000">5 km</option>
-      </select>
-      <button class="secondary" onclick="analyzeNearReport()">Analizar entorno</button>
-      <div class="help">Este radio solo consulta el entorno; no representa automáticamente el área de impacto.</div>
-      <div id="nearList"></div>
-    </div>
+    <label class="locationSensitive">
+      <input id="sensitiveLocation" type="checkbox">
+      <span><strong>Ubicación sensible</strong><br>Marca esta opción si la localización exacta pudiera requerir tratamiento especial en una fase posterior de publicación.</span>
+    </label>
 
-    <button id="saveThreatBtn" class="primary" onclick="saveThreat()">Guardar reporte</button>
-    <button class="secondary" onclick="closeModal('threatModal')">Cancelar</button>
+    <button id="saveReportBtn" class="primary" onclick="saveReport()">Guardar reporte</button>
+    <button class="secondary" onclick="closeModal('reportModal')">Cancelar</button>
   </section>
 </div>
 
@@ -573,27 +461,20 @@
 <div class="modal" id="moderationModal">
   <section class="card">
     <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('moderationModal')">✕</button>
-    <div class="modalIcon">🛠️</div>
-    <h2>Moderación técnica</h2>
-    <p class="intro">Revisa reportes y decide si se validan o se rechazan.</p>
+    <div class="modalIcon">🛠️</div><h2>Moderación técnica</h2>
+    <p class="intro">Revisa los cuatro tipos de registros y decide si se validan o se rechazan.</p>
     <button class="primary" onclick="loadPendingReports()">Actualizar reportes</button>
     <div id="moderationList" style="margin-top:11px"></div>
   </section>
 </div>
 
-<!-- INFORMACIÓN -->
+<!-- INFO -->
 <div class="modal" id="aboutModal">
   <section class="card">
     <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('aboutModal')">✕</button>
-    <div class="infoLogo">
-      <img src="https://drive.google.com/thumbnail?id=1MjVa3JxeKC95xEdlcZ5ZFMCKlatbrU2s&sz=w1000" alt="La Movida de SST Plus">
-    </div>
-    <h2 class="infoTitle">La Movida de SST Plus</h2>
-    <div class="infoSlogan">De la reacción a la prevención</div>
-    <div class="flagMini"></div>
-
+    <div class="infoLogo"><img src="https://drive.google.com/thumbnail?id=1MjVa3JxeKC95xEdlcZ5ZFMCKlatbrU2s&sz=w1000" alt="La Movida de SST Plus"></div>
+    <h2 class="infoTitle">La Movida de SST Plus</h2><div class="infoSlogan">De la reacción a la prevención</div><div class="flagMini"></div>
     <p class="intro" style="text-align:center">Herramienta colaborativa para la gestión de riesgos y emergencias en Venezuela.</p>
-
     <div class="infoLinks">
       <a class="linkReg" href="https://registro.movidasst.com">👤 Registrarme en La Movida</a>
       <a class="linkWa" href="https://whatsapp.com/channel/0029Va0mlH5Jf05mrcCz8r3e" target="_blank" rel="noopener noreferrer">📢 Canal de La Movida de SST en WhatsApp</a>
@@ -601,7 +482,6 @@
       <a class="linkContact" href="mailto:info@movidasst.com">✉️ info@movidasst.com</a>
       <button class="linkBack" onclick="window.location.href='https://www.movidasst.com'">← Volver a www.movidasst.com</button>
     </div>
-
     <div class="author">Elaborado por<br><strong>David Linares Brea</strong><br>La Movida de SST Plus · Venezuela</div>
   </section>
 </div>
@@ -614,812 +494,514 @@
 <script>
 'use strict';
 
-const SUPABASE_URL = 'https://lfdmbkzghnwvsapxypvt.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_bRnkA6PA8-v073nrw9zxiQ_8rVGiOn1';
+const SUPABASE_URL='https://lfdmbkzghnwvsapxypvt.supabase.co';
+const SUPABASE_KEY='sb_publishable_bRnkA6PA8-v073nrw9zxiQ_8rVGiOn1';
 
-let sb = null;
-let map = null;
-let publicLayer = null;
-let contextLayer = null;
+let sb=null, map=null, publicLayer=null, contextLayer=null, draftMarker=null;
+let publicMarkers=new Map();
+let initialDeepLinkHandled=false;
+let catalogs={AMENAZA:[],ELEMENTO_EXPUESTO:[],VULNERABILIDAD:[],CAPACIDAD:[]};
+let allReports=[], activeLayer='AMENAZA';
+let member=null, sessionCedula='', sessionCodigo='', pendingAction=null;
+let currentReportType='AMENAZA', reportLocation=null, locationDraft=null, locationReturnView=null;
+let locationModeActive=false, autoContextEnabled=true, autoContextTimer=null, lastContextKey='', contextBusy=false;
+let searchResults=[];
 
-let threatCatalog = [];
-let member = null;
-let sessionCedula = '';
-let sessionCodigo = '';
-let pendingAction = null;
-
-let reportMarker = null;
-let reportLocation = null;
-let selectingMapPoint = false;
-let searchResults = [];
-let lastSearchAt = 0;
-const overpassCache = new Map();
-
-let autoContextEnabled = true;
-let autoContextTimer = null;
-let overpassBusy = false;
-let overpassPending = false;
-let contextHiddenManually = false;
-let lastAutoContextKey = '';
-let currentContextCount = 0;
-
-const AUTO_CONTEXT_MIN_ZOOM = 13;
-const AUTO_CONTEXT_DEBOUNCE_MS = 900;
-
-const poiTypes = {
-  hospital:['🏥','Hospital'], clinic:['🏥','Clínica'], doctors:['🩺','Consultorio / médicos'],
-  healthcare_centre:['🏥','Centro de salud'], ambulance_station:['🚑','Base de ambulancias'],
-  school:['🏫','Escuela'], kindergarten:['🧒','Preescolar'], university:['🎓','Universidad'],
-  fire_station:['🚒','Bomberos'], police:['🚓','Policía'],
-  fuel:['⛽','Estación de servicio'], pharmacy:['💊','Farmacia']
+const reportMeta={
+  AMENAZA:{icon:'🔥',heading:'Registrar amenaza',catalogLabel:'Tipo de amenaza *',hint:'Identifica y caracteriza el fenómeno o condición con potencial de causar daños.',idField:'amenaza_id'},
+  ELEMENTO_EXPUESTO:{icon:'👥',heading:'Registrar elemento expuesto',catalogLabel:'Tipo de elemento expuesto *',hint:'Ubica personas, infraestructura, servicios o componentes ambientales cuya presencia puede resultar afectada.',idField:'elemento_id'},
+  VULNERABILIDAD:{icon:'⚠️',heading:'Registrar vulnerabilidad',catalogLabel:'Tipo de vulnerabilidad *',hint:'Describe una debilidad o condición que incrementa la susceptibilidad frente a una amenaza.',idField:'vulnerabilidad_id'},
+  CAPACIDAD:{icon:'🛡️',heading:'Registrar capacidad',catalogLabel:'Tipo de capacidad *',hint:'Registra recursos, medios, organización o fortalezas disponibles para prevenir, responder o recuperarse.',idField:'capacidad_id'}
 };
 
-function htmlEscape(v){
-  return String(v ?? '')
-    .replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;')
-    .replaceAll('"','&quot;').replaceAll("'","&#039;");
-}
+const poiTypes={
+  hospital:['🏥','Hospital'],clinic:['🏥','Clínica'],doctors:['🩺','Centro médico'],healthcare_centre:['🏥','Centro de salud'],ambulance_station:['🚑','Base de ambulancias'],
+  school:['🏫','Escuela'],kindergarten:['🧒','Preescolar'],university:['🎓','Universidad'],fire_station:['🚒','Bomberos'],police:['🚓','Policía'],fuel:['⛽','Estación de servicio'],pharmacy:['💊','Farmacia']
+};
 
-function toast(message){
-  const el = document.getElementById('toast');
-  el.textContent = message;
-  el.classList.add('show');
-  clearTimeout(window.__toastTimer);
-  window.__toastTimer = setTimeout(()=>el.classList.remove('show'), 3400);
-}
+function esc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'","&#039;")}
+function toast(m){const el=document.getElementById('toast');el.textContent=m;el.classList.add('show');clearTimeout(window.__tt);window.__tt=setTimeout(()=>el.classList.remove('show'),3400)}
+function openModal(id){document.getElementById(id)?.classList.add('open')}
+function closeModal(id){document.getElementById(id)?.classList.remove('open')}
+function openSheet(id){document.getElementById(id)?.classList.add('open')}
+function closeSheet(id){document.getElementById(id)?.classList.remove('open')}
+function showFatal(m){document.getElementById('fatalText').textContent=m;document.getElementById('fatalError').classList.add('show')}
 
-function openModal(id){ document.getElementById(id)?.classList.add('open'); }
-function closeModal(id){ document.getElementById(id)?.classList.remove('open'); }
-function openSheet(id){ document.getElementById(id)?.classList.add('open'); }
-function closeSheet(id){ document.getElementById(id)?.classList.remove('open'); }
-function comingSoon(name){ toast(`${name}: el catálogo ya existe; el formulario específico será el siguiente módulo.`); }
-
-function showFatal(message){
-  const box = document.getElementById('fatalError');
-  document.getElementById('fatalText').textContent = message;
-  box.classList.add('show');
-}
-
-async function initApp(){
+async function init(){
   try{
-    if(typeof L === 'undefined'){
-      showFatal('Leaflet no cargó. Comprueba Internet/CDN y recarga.');
-      return;
-    }
-
-    map = L.map('map', {zoomControl:false}).setView([7.1,-66.2],6);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-      maxZoom:19,
-      attribution:'&copy; OpenStreetMap'
-    }).addTo(map);
+    if(typeof L==='undefined'){showFatal('Leaflet no cargó.');return}
+    map=L.map('map',{zoomControl:false}).setView([7.1,-66.2],6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);
     L.control.zoom({position:'bottomleft'}).addTo(map);
+    publicLayer=L.layerGroup().addTo(map); contextLayer=L.layerGroup().addTo(map);
 
-    publicLayer = L.layerGroup().addTo(map);
-    contextLayer = L.layerGroup().addTo(map);
-
-    map.on('click', ev=>{
-      if(!selectingMapPoint) return;
-      selectingMapPoint = false;
-      setReportPoint(ev.latlng.lat, ev.latlng.lng, 'MAPA', null);
-      openModal('threatModal');
-      toast('Ubicación seleccionada.');
+    map.on('moveend zoomend',()=>{
+      if(locationModeActive){
+        updateLocationDraftFromCenter();
+        scheduleContext(true);
+      }else{
+        scheduleContext(false);
+      }
     });
 
-    map.on('moveend zoomend', scheduleAutoContext);
+    if(!window.supabase){document.getElementById('connectionStatus').textContent='● Mapa activo';toast('Supabase no cargó.');return}
+    sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
-    if(!window.supabase){
-      document.getElementById('connectionStatus').textContent = '● Mapa activo';
-      toast('Mapa activo. Supabase no pudo cargar todavía.');
-      return;
-    }
-
-    sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-    await loadThreatCatalog();
-    await loadPublicReports();
-    document.getElementById('connectionStatus').textContent = '● Conectado';
-
-    setTimeout(()=>{ map.invalidateSize(); scheduleAutoContext(); }, 120);
-  }catch(error){
-    console.error(error);
-    document.getElementById('connectionStatus').textContent = '● Error';
-    showFatal('Error al iniciar: ' + (error?.message || 'desconocido'));
-  }
+    await Promise.all([loadCatalogs(),loadPublicReports()]);
+    document.getElementById('connectionStatus').textContent='● Conectado';
+    setTimeout(()=>{
+      map.invalidateSize();
+      scheduleContext(false);
+      handleDeepLink();
+    },180);
+  }catch(e){console.error(e);document.getElementById('connectionStatus').textContent='● Error';showFatal(e?.message||'Error al iniciar')}
 }
 
-async function loadThreatCatalog(){
-  const {data,error} = await sb
-    .from('mapa_catalogo_amenazas')
-    .select('id,categoria,codigo,nombre,icono,orden')
-    .eq('activo',true)
-    .order('orden',{ascending:true});
-
-  if(error) throw error;
-  threatCatalog = data || [];
+async function loadCatalogs(){
+  const defs=[
+    ['AMENAZA','mapa_catalogo_amenazas'],
+    ['ELEMENTO_EXPUESTO','mapa_catalogo_elementos'],
+    ['VULNERABILIDAD','mapa_catalogo_vulnerabilidades'],
+    ['CAPACIDAD','mapa_catalogo_capacidades']
+  ];
+  for(const [key,table] of defs){
+    const {data,error}=await sb.from(table).select('id,categoria,codigo,nombre,icono,orden').eq('activo',true).order('orden',{ascending:true});
+    if(error) throw error;
+    catalogs[key]=data||[];
+  }
   renderLegend();
-  renderThreatSelect();
 }
 
 function renderLegend(){
-  const groups = {};
-  threatCatalog.forEach(x => (groups[x.categoria] ??= []).push(x));
-  let out = '';
-  Object.entries(groups).forEach(([category,items])=>{
-    out += `<div class="legendGroup"><div class="legendTitle">${htmlEscape(category.replaceAll('_',' '))}</div>`;
-    items.forEach(x=>{
-      out += `<div class="legendItem"><span>${htmlEscape(x.icono || '⚠️')}</span>${htmlEscape(x.nombre)}</div>`;
-    });
-    out += '</div>';
+  let out='';
+  Object.entries(reportMeta).forEach(([key,m])=>{
+    out+=`<div class="legendGroup"><div class="legendTitle">${m.icon} ${esc(m.heading.replace('Registrar ',''))}</div>`;
+    catalogs[key].forEach(x=>out+=`<div class="legendItem"><span>${esc(x.icono||m.icon)}</span>${esc(x.nombre)}</div>`);
+    out+='</div>';
   });
-  document.getElementById('legendBody').innerHTML = out || '<p class="intro">No hay amenazas en el catálogo.</p>';
-}
-
-function renderThreatSelect(){
-  const groups = {};
-  threatCatalog.forEach(x => (groups[x.categoria] ??= []).push(x));
-  let out = '<option value="">Selecciona una amenaza</option>';
-  Object.entries(groups).forEach(([category,items])=>{
-    out += `<optgroup label="${htmlEscape(category.replaceAll('_',' '))}">`;
-    items.forEach(x=> out += `<option value="${Number(x.id)}">${htmlEscape(x.icono || '⚠️')} ${htmlEscape(x.nombre)}</option>`);
-    out += '</optgroup>';
-  });
-  document.getElementById('threatType').innerHTML = out;
+  document.getElementById('legendBody').innerHTML=out;
 }
 
 async function loadPublicReports(){
-  if(!sb) return;
-  try{
-    const {data,error} = await sb.functions.invoke('reportes-publicos',{body:{}});
-    if(error) throw error;
-    if(!data?.ok) throw new Error(data?.error || 'No fue posible leer los reportes.');
+  const {data,error}=await sb.functions.invoke('reportes-publicos',{body:{}});
+  if(error) throw error;
+  if(!data?.ok) throw new Error(data?.error||'No se pudieron cargar los reportes');
+  allReports=data.reportes||[];
+  renderPublicReports();
+}
 
-    publicLayer.clearLayers();
-    (data.reportes || []).forEach(drawPublicReport);
-  }catch(error){
-    console.error('reportes-publicos', error);
-    toast('El mapa cargó, pero no fue posible leer los reportes públicos.');
-  }
+function setLayerFilter(type,btn){
+  activeLayer=type;
+  document.querySelectorAll('.layerBtn').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  renderPublicReports();
+}
+
+function renderPublicReports(){
+  publicLayer.clearLayers();
+  publicMarkers.clear();
+  const list=allReports.filter(r=>r.tipo_registro===activeLayer);
+  list.forEach(drawPublicReport);
+  document.getElementById('mapCount').textContent=`${list.length} ${list.length===1?'registro visible':'registros visibles'}`;
+}
+
+function statusStyle(r){
+  if(r.nivel_validacion==='VALIDADO') return {color:'#279455',label:'🟢 VALIDADO',cls:'validated'};
+  if(r.nivel_validacion==='CONFIRMADO') return {color:'#2563A7',label:'🔵 CONFIRMADO',cls:'confirmed'};
+  return {color:'#E87916',label:'🟠 REPORTADO',cls:'reported'};
 }
 
 function drawPublicReport(r){
-  const lat = Number(r.latitud), lng = Number(r.longitud);
-  if(!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+  const lat=Number(r.latitud),lng=Number(r.longitud);
+  if(!Number.isFinite(lat)||!Number.isFinite(lng)) return;
 
-  let color = '#E87916', label = '🟠 REPORTADO', badgeClass = 'reported';
-  if(r.nivel_validacion === 'CONFIRMADO'){ color='#2563A7'; label='🔵 CONFIRMADO'; badgeClass='confirmed'; }
-  if(r.nivel_validacion === 'VALIDADO'){ color='#279455'; label='🟢 VALIDADO'; badgeClass='validated'; }
+  const s=statusStyle(r);
+  const iconText=r.tipo_icono||reportMeta[r.tipo_registro]?.icon||'📍';
 
-  const icon = L.divIcon({
+  const icon=L.divIcon({
     className:'',
-    html:`<div style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:white;border:3px solid ${color};box-shadow:0 5px 15px rgba(0,0,0,.2);font-size:21px">${htmlEscape(r.amenaza_icono || '⚠️')}</div>`,
-    iconSize:[42,42], iconAnchor:[21,21]
+    html:`<div id="marker-${Number(r.id)}" style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#fff;border:3px solid ${s.color};box-shadow:0 5px 15px rgba(0,0,0,.2);font-size:21px">${esc(iconText)}</div>`,
+    iconSize:[42,42],
+    iconAnchor:[21,21]
   });
 
-  const confirmButton = r.nivel_validacion === 'VALIDADO'
+  const confirm=r.nivel_validacion==='VALIDADO'
     ? ''
     : `<button onclick="requestConfirmation(${Number(r.id)})">✅ Confirmar</button>`;
 
-  const popup = `
+  const popup=`
     <div class="popup">
-      <span class="badge ${badgeClass}">${label}</span>
-      <h3>${htmlEscape(r.amenaza_nombre || 'Amenaza')}</h3>
-      <p><strong>${htmlEscape(r.titulo || '')}</strong></p>
-      <p>${htmlEscape(r.descripcion || '')}</p>
-      <p>👥 Confirmaciones: <strong>${Number(r.confirmaciones || 0)}</strong></p>
+      <span class="badge ${s.cls}">${s.label}</span>
+      <h3>${esc(r.tipo_nombre||'Registro')}</h3>
+      <p><strong>${esc(r.titulo||'')}</strong></p>
+      <p>${esc(r.descripcion||'')}</p>
+      <p>👥 Confirmaciones: <strong>${Number(r.confirmaciones||0)}</strong></p>
       <div class="popupActions">
-        <button onclick="analyzePublicPoint(${lat},${lng})">🔎 Entorno</button>
-        ${confirmButton}
+        <button onclick="focusContext(${lat},${lng})">🔎 Entorno</button>
+        ${confirm}
+        <button class="shareBtn" onclick="shareReport(${Number(r.id)})">💬 Compartir</button>
       </div>
+      <div class="shareNote">Puedes compartir este registro con cualquier persona. El enlace abre el mapa directamente en esta ubicación.</div>
     </div>`;
 
-  L.marker([lat,lng],{icon}).addTo(publicLayer).bindPopup(popup);
+  const marker=L.marker([lat,lng],{icon}).addTo(publicLayer).bindPopup(popup);
+  publicMarkers.set(Number(r.id),marker);
 }
 
-function getGPS(onSuccess){
-  if(!window.isSecureContext){
-    toast('El GPS requiere HTTPS o localhost.');
-    return;
-  }
-  if(!navigator.geolocation){
-    toast('Este dispositivo no dispone de geolocalización.');
+function reportTypeLabel(type){
+  if(type==='AMENAZA') return 'Amenaza';
+  if(type==='ELEMENTO_EXPUESTO') return 'Elemento expuesto';
+  if(type==='VULNERABILIDAD') return 'Vulnerabilidad';
+  if(type==='CAPACIDAD') return 'Capacidad';
+  return 'Registro';
+}
+
+function reportStatusLabel(status){
+  if(status==='VALIDADO') return '🟢 Validado';
+  if(status==='CONFIRMADO') return '🔵 Confirmado';
+  return '🟠 Reportado';
+}
+
+function buildReportUrl(r){
+  const url=new URL('https://gdr.movidasst.com/');
+  url.searchParams.set('reporte',String(r.id));
+  url.searchParams.set('capa',r.tipo_registro);
+  return url.toString();
+}
+
+function buildShareText(r){
+  const type=reportTypeLabel(r.tipo_registro);
+  const status=reportStatusLabel(r.nivel_validacion);
+  const place=[r.localidad,r.municipio,r.estado].filter(Boolean).join(', ');
+  const description=String(r.descripcion||'').trim();
+  const shortDescription=description.length>260 ? description.slice(0,257)+'…' : description;
+  const url=buildReportUrl(r);
+
+  return [
+    `${r.tipo_icono||reportMeta[r.tipo_registro]?.icon||'📍'} ${type} | Mapa Participativo de Gestión de Riesgos`,
+    '',
+    `*${r.titulo||r.tipo_nombre||type}*`,
+    status,
+    place ? `📍 ${place}` : '',
+    shortDescription ? `📝 ${shortDescription}` : '',
+    '',
+    `🗺️ Ver ubicación en el mapa: ${url}`,
+    '',
+    'La Movida de SST Plus',
+    'De la reacción a la prevención',
+    '🌐 www.movidasst.com'
+  ].filter(Boolean).join('\n');
+}
+
+function shareReport(reportId){
+  const r=allReports.find(x=>Number(x.id)===Number(reportId));
+  if(!r){toast('No encontramos este registro para compartir.');return}
+
+  const text=buildShareText(r);
+  const whatsapp='https://wa.me/?text='+encodeURIComponent(text);
+
+  // WhatsApp funciona sin necesidad de iniciar sesión en la aplicación.
+  window.open(whatsapp,'_blank','noopener,noreferrer');
+}
+
+function handleDeepLink(){
+  if(initialDeepLinkHandled) return;
+  initialDeepLinkHandled=true;
+
+  const params=new URLSearchParams(window.location.search);
+  const reportId=Number(params.get('reporte'));
+  const requestedLayer=params.get('capa');
+
+  if(!Number.isFinite(reportId)) return;
+
+  const report=allReports.find(r=>Number(r.id)===reportId);
+  if(!report){
+    toast('El registro compartido no está disponible públicamente.');
     return;
   }
 
-  navigator.geolocation.getCurrentPosition(
-    p=>onSuccess(p.coords.latitude,p.coords.longitude,p.coords.accuracy),
-    e=>toast(e.code===1 ? 'Permiso de ubicación denegado.' : 'No fue posible obtener la ubicación.'),
-    {enableHighAccuracy:true,timeout:15000,maximumAge:0}
-  );
+  const layer=report.tipo_registro || requestedLayer;
+  if(layer && reportMeta[layer]){
+    activeLayer=layer;
+    document.querySelectorAll('.layerBtn').forEach(btn=>{
+      btn.classList.toggle('active',btn.dataset.filter===layer);
+    });
+    renderPublicReports();
+  }
+
+  const marker=publicMarkers.get(reportId);
+  const lat=Number(report.latitud),lng=Number(report.longitud);
+
+  if(Number.isFinite(lat)&&Number.isFinite(lng)){
+    map.setView([lat,lng],17,{animate:true});
+  }
+
+  setTimeout(()=>{
+    const mk=publicMarkers.get(reportId);
+    if(mk){
+      mk.openPopup();
+      const markerEl=document.getElementById(`marker-${reportId}`);
+      markerEl?.classList.add('deepFocus');
+    }
+  },450);
+}
+
+
+function getGPS(success){
+  if(!window.isSecureContext){toast('El GPS requiere HTTPS.');return}
+  if(!navigator.geolocation){toast('Geolocalización no disponible.');return}
+  navigator.geolocation.getCurrentPosition(p=>success(p.coords.latitude,p.coords.longitude,p.coords.accuracy),e=>toast(e.code===1?'Permiso de ubicación denegado.':'No fue posible obtener la ubicación.'),{enableHighAccuracy:true,timeout:15000,maximumAge:0});
 }
 
 function goToMyLocation(){
-  getGPS((lat,lng,accuracy)=>{
-    map.setView([lat,lng],16);
-    L.circle([lat,lng],{radius:accuracy}).addTo(map).bindPopup(`Tu ubicación · ±${Math.round(accuracy)} m`).openPopup();
-    setTimeout(scheduleAutoContext,250);
-  });
+  getGPS((lat,lng,acc)=>{map.setView([lat,lng],16);L.circle([lat,lng],{radius:acc}).addTo(map).bindPopup(`Tu ubicación · ±${Math.round(acc)} m`).openPopup()});
 }
 
 function startReport(){
-  if(member){ openTypeSelector(); return; }
-  pendingAction = {type:'REPORT'};
-  openModal('loginModal');
+  if(member){openTypeSelector();return}
+  pendingAction={type:'REPORT'};openModal('loginModal');
 }
 
 async function validateMember(){
-  const cedula = document.getElementById('loginCedula').value.trim();
-  const codigo = document.getElementById('loginCodigo').value.trim();
-  const result = document.getElementById('loginResult');
-  const btn = document.getElementById('loginBtn');
-
-  if(!cedula || !codigo){
-    result.className='loginResult err'; result.textContent='Completa cédula y código.'; return;
-  }
-  if(!sb){ toast('Supabase todavía no está disponible.'); return; }
-
-  btn.disabled=true; btn.textContent='Verificando…';
+  const cedula=document.getElementById('loginCedula').value.trim(),codigo=document.getElementById('loginCodigo').value.trim();
+  const result=document.getElementById('loginResult'),btn=document.getElementById('loginBtn');
+  if(!cedula||!codigo){result.className='loginResult err';result.textContent='Completa cédula y código.';return}
+  btn.disabled=true;btn.textContent='Verificando…';
   try{
-    const {data,error} = await sb.functions.invoke('validar-integrante',{body:{cedula,codigo}});
-    if(error) throw error;
-    if(!data?.ok) throw new Error(data?.error || 'No fue posible validar.');
-
-    member = data.integrante;
-    sessionCedula = cedula;
-    sessionCodigo = codigo;
-
-    result.className='loginResult ok';
-    result.innerHTML=`✅ <strong>${htmlEscape(member.nombres || '')} ${htmlEscape(member.apellidos || '')}</strong>`;
-
-    if(member.es_moderador){
-      document.getElementById('moderationBtn').style.display='block';
-    }
-
-    setTimeout(()=>{
-      closeModal('loginModal');
-      if(pendingAction?.type === 'CONFIRM'){
-        const id = pendingAction.id; pendingAction=null; confirmReport(id);
-      }else{
-        pendingAction=null; openTypeSelector();
-      }
-    },450);
-  }catch(error){
-    console.error(error);
-    result.className='loginResult err';
-    result.textContent = error.message || 'No fue posible validar.';
-  }finally{
-    btn.disabled=false; btn.textContent='Verificar integrante';
-  }
+    const {data,error}=await sb.functions.invoke('validar-integrante',{body:{cedula,codigo}});
+    if(error) throw error;if(!data?.ok) throw new Error(data?.error||'No fue posible validar');
+    member=data.integrante;sessionCedula=cedula;sessionCodigo=codigo;
+    result.className='loginResult ok';result.innerHTML=`✅ <strong>${esc(member.nombres||'')} ${esc(member.apellidos||'')}</strong>`;
+    if(member.es_moderador) document.getElementById('moderationBtn').style.display='block';
+    setTimeout(()=>{closeModal('loginModal');if(pendingAction?.type==='CONFIRM'){const id=pendingAction.id;pendingAction=null;confirmReport(id)}else{pendingAction=null;openTypeSelector()}},400);
+  }catch(e){console.error(e);result.className='loginResult err';result.textContent=e.message||'No fue posible validar'}
+  finally{btn.disabled=false;btn.textContent='Verificar integrante'}
 }
 
 function openTypeSelector(){
-  document.getElementById('memberChip').innerHTML =
-    `✅ ${htmlEscape(member?.nombres || '')} ${htmlEscape(member?.apellidos || '')}`;
+  document.getElementById('memberChip').innerHTML=`✅ ${esc(member?.nombres||'')} ${esc(member?.apellidos||'')}`;
   openModal('typeModal');
 }
 
-function selectReportType(type){
-  closeModal('typeModal');
-  if(type === 'AMENAZA'){ prepareThreatForm(); return; }
-  comingSoon(type === 'ELEMENTO' ? 'Elementos expuestos' : type === 'VULNERABILIDAD' ? 'Vulnerabilidades' : 'Capacidades');
-}
+function openReportForm(type){
+  currentReportType=type;closeModal('typeModal');
+  const m=reportMeta[type];
+  document.getElementById('reportIcon').textContent=m.icon;
+  document.getElementById('reportHeading').textContent=m.heading;
+  document.getElementById('catalogLabel').textContent=m.catalogLabel;
+  document.getElementById('catalogHint').textContent=m.hint;
+  document.getElementById('reportIntro').innerHTML=`Se publicará como <strong>🟠 REPORTADO</strong>. Con 2 confirmaciones independientes pasa a <strong>🔵 CONFIRMADO</strong>; un moderador puede marcarlo como <strong>🟢 VALIDADO</strong>.`;
 
-function prepareThreatForm(){
-  reportLocation=null;
-  if(reportMarker){ map.removeLayer(reportMarker); reportMarker=null; }
-  document.getElementById('threatType').value='';
-  document.getElementById('threatTitle').value='';
-  document.getElementById('threatDescription').value='';
+  const groups={}; catalogs[type].forEach(x=>(groups[x.categoria]??=[]).push(x));
+  let opts='<option value="">Selecciona</option>';
+  Object.entries(groups).forEach(([cat,items])=>{opts+=`<optgroup label="${esc(cat.replaceAll('_',' '))}">`;items.forEach(x=>opts+=`<option value="${Number(x.id)}">${esc(x.icono||m.icon)} ${esc(x.nombre)}</option>`);opts+='</optgroup>'});
+  document.getElementById('reportCatalog').innerHTML=opts;
+
+  document.getElementById('reportTitle').value='';
+  document.getElementById('reportDescription').value='';
   document.getElementById('dateObs').value=new Date().toISOString().slice(0,10);
-  document.getElementById('nearList').innerHTML='';
-  updateLocationSummary();
-  openModal('threatModal');
+  document.getElementById('temporal').value='';
+  document.getElementById('frequency').value='';
+  document.getElementById('intensity').value='';
+  document.getElementById('sourceInfo').value='';
+  document.getElementById('sensitiveLocation').checked=false;
+  document.getElementById('placeSearch').value='';
+  document.getElementById('placeResults').classList.remove('show');
+  reportLocation=null;removeDraftMarker();updateLocationSummary();
+  openModal('reportModal');
 }
 
-function setReportPoint(lat,lng,method,precision=null){
-  if(reportMarker) map.removeLayer(reportMarker);
-  reportMarker = L.marker([lat,lng],{draggable:true}).addTo(map);
-  reportLocation = {lat:Number(lat),lng:Number(lng),method,precision:precision==null?null:Number(precision)};
-
-  reportMarker.on('dragend',ev=>{
-    const p=ev.target.getLatLng();
-    reportLocation.lat=p.lat; reportLocation.lng=p.lng; reportLocation.method='MAPA';
-    updateLocationSummary();
-  });
-
-  map.setView([lat,lng],16);
-  updateLocationSummary();
-  setTimeout(scheduleAutoContext,250);
-}
-
-function useGPSForReport(){
-  getGPS((lat,lng,accuracy)=>{
-    setReportPoint(lat,lng,'GPS',accuracy);
-    toast(`Ubicación GPS asignada · ±${Math.round(accuracy)} m`);
-  });
-}
-
-function selectOnMap(){
-  closeModal('threatModal');
-  selectingMapPoint=true;
-  toast('Toca en el mapa donde se encuentra la amenaza.');
-}
+function removeDraftMarker(){if(draftMarker){map.removeLayer(draftMarker);draftMarker=null}}
 
 function updateLocationSummary(){
   const el=document.getElementById('locationSummary');
-  if(!reportLocation){
-    el.className='locationSummary';
-    el.textContent='Aún no seleccionaste una ubicación.';
-    return;
-  }
-  el.className='locationSummary ok';
-  el.textContent=`✅ Ubicación por ${reportLocation.method}${reportLocation.precision?` · precisión GPS inicial ±${Math.round(reportLocation.precision)} m`:''}. Puedes mover el marcador para ajustarla.`;
+  if(!reportLocation){el.className='locSummary';el.textContent='Aún no has confirmado una ubicación.';return}
+  el.className='locSummary ok';
+  el.innerHTML=`✅ <strong>Ubicación confirmada</strong><br>Método: ${esc(reportLocation.method)} · ${reportLocation.lat.toFixed(6)}, ${reportLocation.lng.toFixed(6)}${reportLocation.precision?` · GPS ±${Math.round(reportLocation.precision)} m`:''}`;
+}
+
+function beginLocationMode(start=null){
+  closeModal('reportModal');
+  locationReturnView={center:map.getCenter(),zoom:map.getZoom()};
+  locationDraft=start?{...start}:(reportLocation?{...reportLocation}:{lat:map.getCenter().lat,lng:map.getCenter().lng,method:'MAPA',precision:null});
+  locationModeActive=true;
+  document.getElementById('locationMode').classList.add('open');
+  if(start||reportLocation) map.setView([locationDraft.lat,locationDraft.lng],Math.max(map.getZoom(),16));
+  else if(map.getZoom()<15) map.setZoom(15);
+  setTimeout(()=>{map.invalidateSize();updateLocationDraftFromCenter();scheduleContext(true)},80);
+}
+
+function updateLocationDraftFromCenter(){
+  if(!locationModeActive) return;
+  const c=map.getCenter();locationDraft.lat=c.lat;locationDraft.lng=c.lng;
+  if(locationDraft.method!=='GPS') locationDraft.method='MAPA';
+  document.getElementById('locLat').textContent=c.lat.toFixed(6);
+  document.getElementById('locLng').textContent=c.lng.toFixed(6);
+}
+
+function cancelLocationMode(){
+  locationModeActive=false;document.getElementById('locationMode').classList.remove('open');
+  if(locationReturnView) map.setView(locationReturnView.center,locationReturnView.zoom);
+  setTimeout(()=>map.invalidateSize(),60);
+  openModal('reportModal');
+}
+
+function confirmLocationMode(){
+  updateLocationDraftFromCenter();
+  reportLocation={...locationDraft};
+  locationModeActive=false;document.getElementById('locationMode').classList.remove('open');
+  removeDraftMarker();
+  draftMarker=L.marker([reportLocation.lat,reportLocation.lng]).addTo(map);
+  setTimeout(()=>map.invalidateSize(),60);
+  updateLocationSummary();openModal('reportModal');
+}
+
+function gpsInsideLocationMode(){
+  getGPS((lat,lng,acc)=>{locationDraft={lat,lng,method:'GPS',precision:acc};map.setView([lat,lng],17);toast(`GPS localizado · ±${Math.round(acc)} m. Ajusta el mapa si hace falta.`)});
+}
+
+function useGPSAndReview(){
+  getGPS((lat,lng,acc)=>beginLocationMode({lat,lng,method:'GPS',precision:acc}));
 }
 
 async function searchPlace(){
-  const q=document.getElementById('placeSearch').value.trim();
-  const box=document.getElementById('placeResults');
-  if(q.length<3){ toast('Escribe al menos 3 caracteres.'); return; }
-  if(Date.now()-lastSearchAt<1100){ toast('Espera un momento antes de otra búsqueda.'); return; }
-  lastSearchAt=Date.now();
-
-  box.className='searchResults show';
-  box.innerHTML='<div class="place">Buscando…</div>';
-
+  const q=document.getElementById('placeSearch').value.trim(),box=document.getElementById('placeResults');
+  if(q.length<3){toast('Escribe al menos 3 caracteres.');return}
+  box.className='searchResults show';box.innerHTML='<div class="place">Buscando…</div>';
   try{
-    const url='https://nominatim.openstreetmap.org/search?'+new URLSearchParams({
-      format:'jsonv2', q, limit:'5', countrycodes:'ve', addressdetails:'1'
-    }).toString();
-
-    const resp=await fetch(url,{headers:{Accept:'application/json'}});
-    if(!resp.ok) throw new Error('Error de búsqueda.');
-    searchResults=await resp.json();
-
-    box.innerHTML=searchResults.length
-      ? searchResults.map((x,i)=>`<div class="place" onclick="choosePlace(${i})">📍 ${htmlEscape(x.display_name)}</div>`).join('')
-      : '<div class="place">No encontramos resultados.</div>';
-  }catch(error){
-    console.error(error);
-    box.innerHTML='<div class="place">No fue posible realizar la búsqueda.</div>';
-  }
+    const {data,error}=await sb.functions.invoke('osm-servicios',{body:{action:'BUSCAR',query:q}});
+    if(error) throw error;if(!data?.ok) throw new Error(data?.error||'No fue posible buscar');
+    searchResults=data.places||[];
+    box.innerHTML=searchResults.length?searchResults.map((x,i)=>`<div class="place" onclick="choosePlace(${i})">📍 ${esc(x.nombre)}</div>`).join(''):'<div class="place">No encontramos resultados.</div>';
+  }catch(e){console.error(e);box.innerHTML='<div class="place">No fue posible realizar la búsqueda.</div>'}
 }
 
-function choosePlace(index){
-  const x=searchResults[index];
-  if(!x) return;
-  setReportPoint(Number(x.lat),Number(x.lon),'BUSQUEDA',null);
+function choosePlace(i){
+  const x=searchResults[i];if(!x)return;
   document.getElementById('placeResults').classList.remove('show');
-}
-
-function haversine(lat1,lng1,lat2,lng2){
-  const R=6371000, rad=x=>x*Math.PI/180;
-  const dLat=rad(lat2-lat1), dLng=rad(lng2-lng1);
-  const a=Math.sin(dLat/2)**2 + Math.cos(rad(lat1))*Math.cos(rad(lat2))*Math.sin(dLng/2)**2;
-  return 2*R*Math.asin(Math.sqrt(a));
+  beginLocationMode({lat:Number(x.lat),lng:Number(x.lng),method:'BUSQUEDA',precision:null});
 }
 
 function selectedContextAmenities(){
-  const selected=[...document.querySelectorAll('.ctx:checked')].map(x=>x.value);
-  const amenities=[];
-  selected.forEach(x=>{
-    if(x==='salud') amenities.push('hospital','clinic','doctors','healthcare_centre','ambulance_station');
-    else if(x==='educacion') amenities.push('school','kindergarten','university');
-    else amenities.push(x);
-  });
-  return [...new Set(amenities)];
+  const sel=[...document.querySelectorAll('.ctx:checked')].map(x=>x.value),out=[];
+  sel.forEach(x=>{if(x==='salud')out.push('hospital','clinic','doctors','healthcare_centre','ambulance_station');else if(x==='educacion')out.push('school','kindergarten','university');else out.push(x)});
+  return [...new Set(out)];
 }
 
-function autoRadiusForZoom(zoom){
-  if(zoom<=13) return 2500;
-  if(zoom===14) return 1800;
-  if(zoom===15) return 1200;
-  if(zoom===16) return 800;
-  return 500;
-}
+function autoRadius(z){if(z<=13)return 2500;if(z===14)return 1800;if(z===15)return 1200;if(z===16)return 800;return 500}
+function toggleAutoContext(v){autoContextEnabled=Boolean(v);lastContextKey='';if(!v)clearContext(false);else scheduleContext(false)}
+function contextFiltersChanged(){lastContextKey='';scheduleContext(locationModeActive)}
 
-function updateAutoContextStatus(mode,text){
-  const box=document.getElementById('autoContextStatus');
-  const label=document.getElementById('autoContextText');
-  if(!box || !label) return;
-  box.classList.remove('off','loading');
-  if(mode==='off') box.classList.add('off');
-  if(mode==='loading') box.classList.add('loading');
-  label.textContent=text;
-}
-
-function toggleAutoContext(enabled){
-  autoContextEnabled=Boolean(enabled);
-  contextHiddenManually=!autoContextEnabled;
+function scheduleContext(inLocator){
   clearTimeout(autoContextTimer);
-
-  if(!autoContextEnabled){
-    updateAutoContextStatus('off','Lugares automáticos desactivados');
-    return;
-  }
-
-  contextHiddenManually=false;
-  lastAutoContextKey='';
-  scheduleAutoContext();
+  if(!autoContextEnabled||!map||map.getZoom()<13){if(inLocator)document.getElementById('locContextStatus').textContent='Acércate a zoom 13+ para ver lugares cercanos.';return}
+  autoContextTimer=setTimeout(()=>loadSmartContext(inLocator),850);
 }
 
-function contextFiltersChanged(){
-  lastAutoContextKey='';
-  if(autoContextEnabled){
-    contextHiddenManually=false;
-    scheduleAutoContext();
-  }
-}
-
-function scheduleAutoContext(){
-  if(!map) return;
-  clearTimeout(autoContextTimer);
-
-  const zoom=map.getZoom();
-  if(!autoContextEnabled || contextHiddenManually){
-    updateAutoContextStatus('off','Lugares automáticos desactivados');
-    return;
-  }
-
-  if(zoom<AUTO_CONTEXT_MIN_ZOOM){
-    contextLayer?.clearLayers();
-    currentContextCount=0;
-    lastAutoContextKey='';
-    updateAutoContextStatus('off','Acércate más (zoom 13+) para ver lugares cercanos');
-    return;
-  }
-
-  updateAutoContextStatus('loading','Preparando lugares cercanos…');
-  autoContextTimer=setTimeout(loadAutoContext,AUTO_CONTEXT_DEBOUNCE_MS);
-}
-
-async function loadAutoContext(){
-  if(!map || !autoContextEnabled || contextHiddenManually || map.getZoom()<AUTO_CONTEXT_MIN_ZOOM) return;
-
-  if(overpassBusy){
-    overpassPending=true;
-    return;
-  }
-
-  const center=map.getCenter();
-  const radius=autoRadiusForZoom(map.getZoom());
-  const amenities=selectedContextAmenities();
-
-  if(!amenities.length){
-    contextLayer.clearLayers();
-    updateAutoContextStatus('off','Selecciona categorías de contexto');
-    return;
-  }
-
-  const key=[center.lat.toFixed(3),center.lng.toFixed(3),radius,amenities.slice().sort().join(',')].join('|');
-
-  if(key===lastAutoContextKey){
-    updateAutoContextStatus('on',`${currentContextCount} lugares cercanos visibles`);
-    return;
-  }
-
-  overpassBusy=true;
-  updateAutoContextStatus('loading','Consultando lugares cercanos…');
-
+async function loadSmartContext(inLocator){
+  if(contextBusy||!autoContextEnabled||map.getZoom()<13)return;
+  const c=map.getCenter(),radius=autoRadius(map.getZoom()),cats=selectedContextAmenities();
+  const key=`${c.lat.toFixed(3)}|${c.lng.toFixed(3)}|${radius}|${cats.sort().join(',')}`;
+  if(key===lastContextKey)return;
+  contextBusy=true;if(inLocator)document.getElementById('locContextStatus').textContent='Consultando lugares cercanos…';
   try{
-    const data=await queryOverpass(center.lat,center.lng,radius,amenities);
-    drawPOIs(data);
-    currentContextCount=data.length;
-    lastAutoContextKey=key;
-    updateAutoContextStatus('on',`${data.length} lugares cercanos · OSM`);
-  }catch(error){
-    console.error('Auto contexto:',error);
-    updateAutoContextStatus('off','Contexto temporalmente no disponible');
-  }finally{
-    overpassBusy=false;
-    if(overpassPending){
-      overpassPending=false;
-      scheduleAutoContext();
-    }
-  }
+    const {data,error}=await sb.functions.invoke('osm-servicios',{body:{action:'CONTEXTO',lat:c.lat,lng:c.lng,radius,categories:cats}});
+    if(error)throw error;if(!data?.ok)throw new Error(data?.error||'Contexto no disponible');
+    drawContext(data.places||[]);lastContextKey=key;
+    if(inLocator)document.getElementById('locContextStatus').textContent=`${data.count||0} lugares cercanos · OpenStreetMap`;
+  }catch(e){console.error(e);if(inLocator)document.getElementById('locContextStatus').textContent='Contexto temporalmente no disponible.'}
+  finally{contextBusy=false}
 }
 
-async function queryOverpass(lat,lng,radius,amenities){
-  const sorted=[...amenities].sort();
-  const cacheKey=`${lat.toFixed(3)}|${lng.toFixed(3)}|${radius}|${sorted.join(',')}`;
-  const cached=overpassCache.get(cacheKey);
-  if(cached && Date.now()-cached.time<600000) return cached.data;
-
-  const amenityValues=sorted.filter(x=>[
-    'hospital','clinic','doctors','school','kindergarten','university',
-    'fire_station','police','fuel','pharmacy'
-  ].includes(x));
-
-  const parts=[];
-  if(amenityValues.length){
-    parts.push(`nwr(around:${radius},${lat},${lng})["amenity"~"^(${amenityValues.join('|')})$"];`);
-  }
-  if(sorted.includes('healthcare_centre')){
-    parts.push(`nwr(around:${radius},${lat},${lng})["healthcare"~"^(hospital|clinic|doctor|centre)$"];`);
-  }
-  if(sorted.includes('ambulance_station')){
-    parts.push(`nwr(around:${radius},${lat},${lng})["emergency"="ambulance_station"];`);
-  }
-  if(!parts.length) return [];
-
-  const query=`[out:json][timeout:18];(${parts.join('')});out center tags;`;
-  const controller=new AbortController();
-  const timer=setTimeout(()=>controller.abort(),22000);
-
-  try{
-    const resp=await fetch(
-      'https://overpass-api.de/api/interpreter?data='+encodeURIComponent(query),
-      {signal:controller.signal,headers:{Accept:'application/json'}}
-    );
-
-    if(resp.status===429) throw new Error('Overpass temporalmente limitado');
-    if(!resp.ok) throw new Error(`Overpass respondió ${resp.status}`);
-
-    const json=await resp.json();
-    const unique=new Map();
-
-    for(const el of (json.elements||[])){
-      const pLat=el.lat ?? el.center?.lat;
-      const pLng=el.lon ?? el.center?.lon;
-      if(pLat==null || pLng==null) continue;
-
-      let type=el.tags?.amenity || '';
-      if(!type && el.tags?.healthcare){
-        type='healthcare_centre';
-        if(el.tags.healthcare==='hospital') type='hospital';
-        if(el.tags.healthcare==='clinic') type='clinic';
-        if(el.tags.healthcare==='doctor') type='doctors';
-        if(el.tags.healthcare==='pharmacy') type='pharmacy';
-      }
-      if(!type && el.tags?.emergency==='ambulance_station') type='ambulance_station';
-
-      const k=`${el.type}/${el.id}`;
-      unique.set(k,{
-        id:k,lat:Number(pLat),lng:Number(pLng),amenity:type||'place',
-        name:el.tags?.name || poiTypes[type]?.[1] || 'Lugar',
-        distance:haversine(lat,lng,Number(pLat),Number(pLng))
-      });
-    }
-
-    const data=[...unique.values()].sort((a,b)=>a.distance-b.distance);
-    overpassCache.set(cacheKey,{time:Date.now(),data});
-    return data;
-  }finally{
-    clearTimeout(timer);
-  }
-}
-
-function poiIcon(p){
-  const meta=poiTypes[p.amenity] || ['📍',p.amenity];
-  return L.divIcon({
-    className:'',
-    html:`<div style="width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:white;border:1px solid #aab8c8;box-shadow:0 3px 10px rgba(0,0,0,.15);font-size:17px">${meta[0]}</div>`,
-    iconSize:[32,32],iconAnchor:[16,16]
-  });
-}
-
-function drawPOIs(data){
+function drawContext(items){
   contextLayer.clearLayers();
-  const visible=data.slice(0,120);
-  const showLabels=map.getZoom()>=17 && visible.length<=35;
-
-  visible.forEach(p=>{
-    const meta=poiTypes[p.amenity] || ['📍',p.amenity || 'Lugar'];
-    const marker=L.marker([p.lat,p.lng],{
-      icon:poiIcon(p),keyboard:false,riseOnHover:true
-    }).addTo(contextLayer);
-
-    marker.bindPopup(
-      `<strong>${htmlEscape(p.name)}</strong><br>`+
-      `<small>${htmlEscape(meta[1])}</small><br>`+
-      `<small>Fuente: OpenStreetMap</small>`
-    );
-
-    if(showLabels){
-      marker.bindTooltip(htmlEscape(p.name),{direction:'top',offset:[0,-14],opacity:.85});
-    }
+  items.slice(0,120).forEach(p=>{
+    const meta=poiTypes[p.tipo]||['📍',p.tipo||'Lugar'];
+    const icon=L.divIcon({className:'',html:`<div style="width:31px;height:31px;border-radius:10px;display:grid;place-items:center;background:#fff;border:1px solid #aab8c8;box-shadow:0 3px 10px rgba(0,0,0,.15);font-size:16px">${meta[0]}</div>`,iconSize:[31,31],iconAnchor:[15,15]});
+    const mk=L.marker([Number(p.lat),Number(p.lng)],{icon,keyboard:false}).addTo(contextLayer).bindPopup(`<strong>${esc(p.nombre||meta[1])}</strong><br><small>${esc(meta[1])}</small><br><small>Fuente: OpenStreetMap</small>`);
+    if(map.getZoom()>=17&&items.length<=35)mk.bindTooltip(esc(p.nombre||meta[1]),{direction:'top',offset:[0,-13]});
   });
-}
-
-async function analyzeNearReport(){
-  if(!reportLocation){ toast('Primero ubica la amenaza.'); return; }
-  const radius=Number(document.getElementById('nearRadius').value);
-  const box=document.getElementById('nearList');
-  box.textContent='Consultando…';
-
-  try{
-    const data=await queryOverpass(reportLocation.lat,reportLocation.lng,radius,
-      ['hospital','clinic','doctors','healthcare_centre','ambulance_station','school','kindergarten','university','fire_station','police','fuel','pharmacy']);
-    drawPOIs(data);
-
-    box.innerHTML=data.length ? data.slice(0,30).map(p=>{
-      const meta=poiTypes[p.amenity] || ['📍',p.amenity];
-      const dist=p.distance<1000?`${Math.round(p.distance)} m`:`${(p.distance/1000).toFixed(1)} km`;
-      return `<div class="poi"><span style="font-size:18px">${meta[0]}</span><div><strong>${htmlEscape(p.name)}</strong><span class="distance">${dist}</span><br>${htmlEscape(meta[1])}</div></div>`;
-    }).join('') : '<p class="intro">No encontramos elementos registrados en OpenStreetMap dentro de ese radio.</p>';
-  }catch(error){
-    console.error(error);
-    box.innerHTML='<p class="intro">No fue posible consultar el entorno en este momento.</p>';
-  }
-}
-
-async function analyzePublicPoint(lat,lng){
-  map.setView([lat,lng],16);
-  openSheet('contextSheet');
-  try{
-    const data=await queryOverpass(lat,lng,1000,['hospital','clinic','doctors','healthcare_centre','ambulance_station','school','kindergarten','university','fire_station','police','fuel','pharmacy']);
-    drawPOIs(data);
-    toast(`${data.length} elementos encontrados a 1 km.`);
-  }catch(error){ toast('No fue posible consultar el entorno.'); }
 }
 
 async function loadContext(manual=false){
-  if(!map) return;
-  const center=map.getCenter();
-  const radius=Number(document.getElementById('contextRadius').value);
-  const amenities=selectedContextAmenities();
-
-  if(!amenities.length){ toast('Selecciona al menos una categoría.'); return; }
-  contextHiddenManually=false;
-
+  const c=map.getCenter(),radius=Number(document.getElementById('contextRadius').value),cats=selectedContextAmenities();
   try{
-    updateAutoContextStatus('loading','Consultando lugares cercanos…');
-    const data=await queryOverpass(center.lat,center.lng,radius,amenities);
-    drawPOIs(data);
-    currentContextCount=data.length;
-    lastAutoContextKey='';
-    updateAutoContextStatus('on',`${data.length} lugares cercanos · OSM`);
-    if(manual) toast(`${data.length} lugares encontrados.`);
-  }catch(error){
-    console.error(error);
-    updateAutoContextStatus('off','Contexto temporalmente no disponible');
-    toast('No fue posible cargar los lugares en este momento.');
-  }
+    const {data,error}=await sb.functions.invoke('osm-servicios',{body:{action:'CONTEXTO',lat:c.lat,lng:c.lng,radius,categories:cats}});
+    if(error)throw error;if(!data?.ok)throw new Error(data?.error||'No disponible');
+    drawContext(data.places||[]);lastContextKey='';
+    if(manual)toast(`${data.count||0} lugares encontrados.`);
+  }catch(e){console.error(e);toast('No fue posible cargar los lugares en este momento.')}
 }
 
-function clearContext(manual=false){
-  contextLayer.clearLayers();
-  currentContextCount=0;
-  lastAutoContextKey='';
+function clearContext(manual=false){contextLayer.clearLayers();lastContextKey='';if(manual)toast('Lugares ocultos.')}
+function focusContext(lat,lng){map.setView([lat,lng],16);openSheet('contextSheet');setTimeout(()=>loadContext(false),250)}
 
-  if(manual){
-    contextHiddenManually=true;
-    updateAutoContextStatus('off','Lugares ocultos · actívalos desde 🏙️');
-  }else{
-    updateAutoContextStatus('off','Sin lugares visibles');
-  }
-}
+async function saveReport(){
+  if(!member){openModal('loginModal');return}
+  const catalogId=Number(document.getElementById('reportCatalog').value),title=document.getElementById('reportTitle').value.trim(),description=document.getElementById('reportDescription').value.trim();
+  if(!Number.isFinite(catalogId)){toast('Selecciona el tipo de registro.');return}
+  if(title.length<4){toast('Escribe un título.');return}
+  if(!reportLocation){toast('Confirma la ubicación.');return}
+  if(description.length<10){toast('Completa la descripción técnica.');return}
 
-async function saveThreat(){
-  if(!member){ openModal('loginModal'); return; }
-  const threatId=Number(document.getElementById('threatType').value);
-  const title=document.getElementById('threatTitle').value.trim();
-  const description=document.getElementById('threatDescription').value.trim();
+  const m=reportMeta[currentReportType],btn=document.getElementById('saveReportBtn');
+  const payload={
+    cedula:sessionCedula,codigo:sessionCodigo,tipo_registro:currentReportType,
+    titulo:title,descripcion:description,latitud:reportLocation.lat,longitud:reportLocation.lng,
+    metodo_ubicacion:reportLocation.method,precision_gps_metros:reportLocation.precision,
+    ubicacion_exacta:document.querySelector('input[name="exact"]:checked')?.value==='true',
+    fecha_observacion:document.getElementById('dateObs').value||null,
+    estado_temporal:document.getElementById('temporal').value||null,
+    frecuencia:document.getElementById('frequency').value||null,
+    intensidad:document.getElementById('intensity').value||null,
+    fuente_informacion:document.getElementById('sourceInfo').value||null,
+    ubicacion_sensible:document.getElementById('sensitiveLocation').checked
+  };
+  payload[m.idField]=catalogId;
 
-  if(!threatId){ toast('Selecciona la amenaza.'); return; }
-  if(title.length<5){ toast('Escribe un título.'); return; }
-  if(!reportLocation){ toast('Selecciona la ubicación.'); return; }
-  if(description.length<10){ toast('Completa la descripción.'); return; }
-
-  const btn=document.getElementById('saveThreatBtn');
-  btn.disabled=true; btn.textContent='Guardando…';
-
+  btn.disabled=true;btn.textContent='Guardando…';
   try{
-    const {data,error}=await sb.functions.invoke('guardar-reporte',{body:{
-      cedula:sessionCedula,codigo:sessionCodigo,tipo_registro:'AMENAZA',
-      amenaza_id:threatId,titulo:title,descripcion:description,
-      latitud:reportLocation.lat,longitud:reportLocation.lng,
-      metodo_ubicacion:reportLocation.method,precision_gps_metros:reportLocation.precision,
-      ubicacion_exacta:document.querySelector('input[name="exact"]:checked')?.value==='true',
-      fecha_observacion:document.getElementById('dateObs').value||null,
-      estado_temporal:document.getElementById('temporal').value,
-      frecuencia:document.getElementById('frequency').value||null,
-      intensidad:document.getElementById('intensity').value||null,
-      fuente_informacion:document.getElementById('sourceInfo').value||null
-    }});
-
-    if(error) throw error;
-    if(!data?.ok) throw new Error(data?.error || 'No fue posible guardar.');
-
-    closeModal('threatModal');
-    toast(`Reporte #${data.reporte_id} publicado como 🟠 REPORTADO.`);
-    await loadPublicReports();
-  }catch(error){
-    console.error(error);
-    toast(error.message || 'No fue posible guardar el reporte.');
-  }finally{
-    btn.disabled=false; btn.textContent='Guardar reporte';
-  }
+    const {data,error}=await sb.functions.invoke('guardar-reporte',{body:payload});
+    if(error)throw error;if(!data?.ok)throw new Error(data?.error||'No fue posible guardar');
+    closeModal('reportModal');toast(`Reporte #${data.reporte_id} publicado como 🟠 REPORTADO.`);
+    removeDraftMarker();reportLocation=null;await loadPublicReports();
+    activeLayer=currentReportType;document.querySelectorAll('.layerBtn').forEach(x=>x.classList.toggle('active',x.dataset.filter===activeLayer));renderPublicReports();
+  }catch(e){console.error(e);toast(e.message||'No fue posible guardar el reporte')}
+  finally{btn.disabled=false;btn.textContent='Guardar reporte'}
 }
 
-function requestConfirmation(reportId){
-  if(!member){
-    pendingAction={type:'CONFIRM',id:reportId};
-    openModal('loginModal');
-    return;
-  }
-  confirmReport(reportId);
-}
-
-async function confirmReport(reportId){
+function requestConfirmation(id){if(!member){pendingAction={type:'CONFIRM',id};openModal('loginModal');return}confirmReport(id)}
+async function confirmReport(id){
   try{
-    const {data,error}=await sb.functions.invoke('confirmar-reporte',{body:{
-      reporte_id:reportId,cedula:sessionCedula,codigo:sessionCodigo
-    }});
-    if(error) throw error;
-    if(!data?.ok) throw new Error(data?.error || 'No fue posible confirmar.');
-    toast(data.mensaje || `Confirmaciones: ${data.confirmaciones}`);
-    await loadPublicReports();
-  }catch(error){
-    console.error(error);
-    toast(error.message || 'No fue posible confirmar.');
-  }
+    const {data,error}=await sb.functions.invoke('confirmar-reporte',{body:{reporte_id:id,cedula:sessionCedula,codigo:sessionCodigo}});
+    if(error)throw error;if(!data?.ok)throw new Error(data?.error||'No fue posible confirmar');
+    toast(data.mensaje||`Confirmaciones: ${data.confirmaciones}`);await loadPublicReports();
+  }catch(e){console.error(e);toast(e.message||'No fue posible confirmar')}
 }
 
-function openModeration(){
-  if(!member?.es_moderador){ toast('No tienes permisos de moderación.'); return; }
-  openModal('moderationModal');
-  loadPendingReports();
-}
-
+function openModeration(){if(!member?.es_moderador){toast('No tienes permisos de moderación.');return}openModal('moderationModal');loadPendingReports()}
 async function loadPendingReports(){
-  const box=document.getElementById('moderationList');
-  box.textContent='Cargando…';
-
+  const box=document.getElementById('moderationList');box.textContent='Cargando…';
   try{
-    const {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{
-      accion:'LISTAR',cedula:sessionCedula,codigo:sessionCodigo
-    }});
-    if(error) throw error;
-    if(!data?.ok) throw new Error(data?.error || 'No fue posible cargar.');
-
-    const reports=data.reportes || [];
-    box.innerHTML=reports.length ? reports.map(r=>`
-      <div class="modItem">
-        <div class="modTitle">${htmlEscape(r.amenaza_icono || '⚠️')} ${htmlEscape(r.titulo)}</div>
-        <div class="modDesc">
-          Estado: ${htmlEscape(r.nivel_validacion)} · 👥 ${Number(r.confirmaciones || 0)} confirmaciones<br><br>
-          ${htmlEscape(r.descripcion || '')}
-        </div>
-        <div class="modActions">
-          <button class="viewBtn" onclick="viewModerationReport(${Number(r.latitud)},${Number(r.longitud)})">📍 Ver</button>
-          <button class="validBtn" onclick="moderateReport(${Number(r.id)},'VALIDAR')">✅ Validar</button>
-          <button class="rejectBtn" onclick="moderateReport(${Number(r.id)},'RECHAZAR')">✕ Rechazar</button>
-        </div>
-      </div>`).join('') : '<p class="intro">No hay reportes pendientes.</p>';
-  }catch(error){
-    console.error(error);
-    box.textContent='No fue posible cargar la moderación.';
-  }
+    const {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{accion:'LISTAR',cedula:sessionCedula,codigo:sessionCodigo}});
+    if(error)throw error;if(!data?.ok)throw new Error(data?.error||'No fue posible cargar');
+    const rs=data.reportes||[];
+    box.innerHTML=rs.length?rs.map(r=>`<div class="modItem"><div class="modTitle">${esc(r.tipo_icono||'📍')} ${esc(r.tipo_nombre||r.tipo_registro)} · ${esc(r.titulo||'')}</div><div class="modDesc">Estado: ${esc(r.nivel_validacion)} · 👥 ${Number(r.confirmaciones||0)} confirmaciones<br><br>${esc(r.descripcion||'')}</div><div class="modActions"><button class="viewBtn" onclick="viewModeration(${Number(r.latitud)},${Number(r.longitud)})">📍 Ver</button><button class="validBtn" onclick="moderate(${Number(r.id)},'VALIDAR')">✅ Validar</button><button class="rejectBtn" onclick="moderate(${Number(r.id)},'RECHAZAR')">✕ Rechazar</button></div></div>`).join(''):'<p class="intro">No hay reportes pendientes.</p>';
+  }catch(e){console.error(e);box.textContent='No fue posible cargar la moderación.'}
 }
-
-function viewModerationReport(lat,lng){
-  closeModal('moderationModal');
-  map.setView([lat,lng],17);
-}
-
-async function moderateReport(reportId,action){
+function viewModeration(lat,lng){closeModal('moderationModal');map.setView([lat,lng],17)}
+async function moderate(id,accion){
   try{
-    const {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{
-      accion:action,reporte_id:reportId,cedula:sessionCedula,codigo:sessionCodigo
-    }});
-    if(error) throw error;
-    if(!data?.ok) throw new Error(data?.error || 'No fue posible moderar.');
-
-    toast(`Reporte ${data.estado}.`);
-    await loadPendingReports();
-    await loadPublicReports();
-  }catch(error){
-    console.error(error);
-    toast(error.message || 'No fue posible realizar la moderación.');
-  }
+    const {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{accion,reporte_id:id,cedula:sessionCedula,codigo:sessionCodigo}});
+    if(error)throw error;if(!data?.ok)throw new Error(data?.error||'No fue posible moderar');
+    toast(`Reporte ${data.estado}.`);await loadPendingReports();await loadPublicReports();
+  }catch(e){console.error(e);toast(e.message||'No fue posible moderar')}
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
-  document.getElementById('loginCodigo').addEventListener('keydown',e=>{
-    if(e.key==='Enter') validateMember();
-  });
-  document.getElementById('placeSearch').addEventListener('keydown',e=>{
-    if(e.key==='Enter'){ e.preventDefault(); searchPlace(); }
-  });
-  initApp();
+  document.getElementById('loginCodigo').addEventListener('keydown',e=>{if(e.key==='Enter')validateMember()});
+  document.getElementById('placeSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchPlace()}});
+  init();
 });
 </script>
 </body>
