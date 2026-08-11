@@ -250,6 +250,24 @@
     }
     .fatal.show{display:grid}
 
+    .autoContextBar{
+      position:absolute;z-index:690;left:10px;bottom:78px;display:flex;align-items:center;gap:6px;
+      max-width:calc(100% - 110px);padding:7px 9px;border-radius:12px;background:rgba(255,255,255,.94);
+      border:1px solid rgba(205,217,230,.9);box-shadow:0 6px 18px rgba(12,36,76,.12);
+      color:#526176;font-size:9px;font-weight:800;backdrop-filter:blur(6px)
+    }
+    .autoContextBar .dot{width:7px;height:7px;border-radius:50%;background:#58B947;flex:0 0 7px}
+    .autoContextBar.off .dot{background:#9aa6b6}
+    .autoContextBar.loading .dot{background:#F2BE1A;animation:pulsePoi 1s infinite alternate}
+    @keyframes pulsePoi{to{opacity:.35}}
+    .contextSwitch{
+      display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 11px;margin-top:10px;
+      border:1px solid var(--line);border-radius:13px;background:#f8fafc;color:#33435a;font-size:10.5px;font-weight:850
+    }
+    .contextSwitch input{width:18px;height:18px}
+    .osmNote{margin-top:10px;padding:9px 10px;border-radius:12px;background:#f3f6fa;color:#68758a;font-size:9.5px;line-height:1.45}
+    @media(min-width:760px){.autoContextBar{left:16px;bottom:18px;max-width:430px}}
+
     /* ---------- TABLET / PC ---------- */
     @media (min-width: 760px){
       .app{
@@ -330,6 +348,9 @@
       <button class="square" id="moderationBtn" onclick="openModeration()" title="Moderación">🛠️</button>
     </div>
 
+    <div class="autoContextBar off" id="autoContextStatus">
+      <span class="dot"></span><span id="autoContextText">Acércate al mapa para ver lugares cercanos</span>
+    </div>
     <button class="reportBtn" onclick="startReport()">＋ Reportar</button>
 
     <div class="fatal" id="fatalError">
@@ -357,7 +378,8 @@
   <div class="help">
     🟠 <strong>Reportado:</strong> aportado por un integrante verificado.<br><br>
     🔵 <strong>Confirmado:</strong> corroborado por al menos 2 integrantes distintos.<br><br>
-    🟢 <strong>Validado:</strong> revisado por un moderador.
+    🟢 <strong>Validado:</strong> revisado por un moderador.<br><br>
+    ⚪ <strong>Lugares de contexto:</strong> hospitales, escuelas, bomberos, policía, combustible y farmacias de OpenStreetMap.
   </div>
   <div id="legendBody"></div>
 </aside>
@@ -370,16 +392,21 @@
   </div>
   <p class="intro">Consulta lugares registrados en OpenStreetMap alrededor del centro actual del mapa. Son contexto territorial; no se consideran automáticamente elementos expuestos.</p>
 
+  <label class="contextSwitch">
+    <span>✨ Mostrar lugares automáticamente al acercarme</span>
+    <input id="autoContextToggle" type="checkbox" checked onchange="toggleAutoContext(this.checked)">
+  </label>
+
   <div class="contextGrid">
-    <label class="contextOpt"><input type="checkbox" class="ctx" value="salud" checked> 🏥 Salud</label>
-    <label class="contextOpt"><input type="checkbox" class="ctx" value="educacion" checked> 🏫 Educación</label>
-    <label class="contextOpt"><input type="checkbox" class="ctx" value="fire_station" checked> 🚒 Bomberos</label>
-    <label class="contextOpt"><input type="checkbox" class="ctx" value="police"> 🚓 Policía</label>
-    <label class="contextOpt"><input type="checkbox" class="ctx" value="fuel"> ⛽ Combustible</label>
-    <label class="contextOpt"><input type="checkbox" class="ctx" value="pharmacy"> 💊 Farmacias</label>
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="salud" checked onchange="contextFiltersChanged()"> 🏥 Salud</label>
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="educacion" checked onchange="contextFiltersChanged()"> 🏫 Educación</label>
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="fire_station" checked onchange="contextFiltersChanged()"> 🚒 Bomberos</label>
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="police" checked onchange="contextFiltersChanged()"> 🚓 Policía</label>
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="fuel" checked onchange="contextFiltersChanged()"> ⛽ Combustible</label>
+    <label class="contextOpt"><input type="checkbox" class="ctx" value="pharmacy" checked onchange="contextFiltersChanged()"> 💊 Farmacias</label>
   </div>
 
-  <label class="label">Radio alrededor del centro</label>
+  <label class="label">Radio manual alrededor del centro</label>
   <select id="contextRadius" class="select">
     <option value="500">500 m</option>
     <option value="1000" selected>1 km</option>
@@ -387,8 +414,13 @@
     <option value="5000">5 km</option>
   </select>
 
-  <button class="primary" onclick="loadContext()">Cargar lugares</button>
-  <button class="secondary" onclick="clearContext()">Limpiar</button>
+  <button class="primary" onclick="loadContext(true)">Actualizar ahora</button>
+  <button class="secondary" onclick="clearContext(true)">Ocultar lugares</button>
+
+  <div class="osmNote">
+    Los lugares son contexto territorial obtenido de OpenStreetMap. Su presencia
+    <strong>no significa automáticamente que sean elementos expuestos</strong>.
+  </div>
 </aside>
 
 <!-- LOGIN -->
@@ -603,9 +635,21 @@ let searchResults = [];
 let lastSearchAt = 0;
 const overpassCache = new Map();
 
+let autoContextEnabled = true;
+let autoContextTimer = null;
+let overpassBusy = false;
+let overpassPending = false;
+let contextHiddenManually = false;
+let lastAutoContextKey = '';
+let currentContextCount = 0;
+
+const AUTO_CONTEXT_MIN_ZOOM = 13;
+const AUTO_CONTEXT_DEBOUNCE_MS = 900;
+
 const poiTypes = {
-  hospital:['🏥','Hospital'], clinic:['🏥','Clínica'], school:['🏫','Escuela'],
-  kindergarten:['🧒','Preescolar'], university:['🎓','Universidad'],
+  hospital:['🏥','Hospital'], clinic:['🏥','Clínica'], doctors:['🩺','Consultorio / médicos'],
+  healthcare_centre:['🏥','Centro de salud'], ambulance_station:['🚑','Base de ambulancias'],
+  school:['🏫','Escuela'], kindergarten:['🧒','Preescolar'], university:['🎓','Universidad'],
   fire_station:['🚒','Bomberos'], police:['🚓','Policía'],
   fuel:['⛽','Estación de servicio'], pharmacy:['💊','Farmacia']
 };
@@ -661,6 +705,8 @@ async function initApp(){
       toast('Ubicación seleccionada.');
     });
 
+    map.on('moveend zoomend', scheduleAutoContext);
+
     if(!window.supabase){
       document.getElementById('connectionStatus').textContent = '● Mapa activo';
       toast('Mapa activo. Supabase no pudo cargar todavía.');
@@ -672,7 +718,7 @@ async function initApp(){
     await loadPublicReports();
     document.getElementById('connectionStatus').textContent = '● Conectado';
 
-    setTimeout(()=>map.invalidateSize(), 100);
+    setTimeout(()=>{ map.invalidateSize(); scheduleAutoContext(); }, 120);
   }catch(error){
     console.error(error);
     document.getElementById('connectionStatus').textContent = '● Error';
@@ -789,6 +835,7 @@ function goToMyLocation(){
   getGPS((lat,lng,accuracy)=>{
     map.setView([lat,lng],16);
     L.circle([lat,lng],{radius:accuracy}).addTo(map).bindPopup(`Tu ubicación · ±${Math.round(accuracy)} m`).openPopup();
+    setTimeout(scheduleAutoContext,250);
   });
 }
 
@@ -880,6 +927,7 @@ function setReportPoint(lat,lng,method,precision=null){
 
   map.setView([lat,lng],16);
   updateLocationSummary();
+  setTimeout(scheduleAutoContext,250);
 }
 
 function useGPSForReport(){
@@ -948,32 +996,194 @@ function haversine(lat1,lng1,lat2,lng2){
   return 2*R*Math.asin(Math.sqrt(a));
 }
 
+function selectedContextAmenities(){
+  const selected=[...document.querySelectorAll('.ctx:checked')].map(x=>x.value);
+  const amenities=[];
+  selected.forEach(x=>{
+    if(x==='salud') amenities.push('hospital','clinic','doctors','healthcare_centre','ambulance_station');
+    else if(x==='educacion') amenities.push('school','kindergarten','university');
+    else amenities.push(x);
+  });
+  return [...new Set(amenities)];
+}
+
+function autoRadiusForZoom(zoom){
+  if(zoom<=13) return 2500;
+  if(zoom===14) return 1800;
+  if(zoom===15) return 1200;
+  if(zoom===16) return 800;
+  return 500;
+}
+
+function updateAutoContextStatus(mode,text){
+  const box=document.getElementById('autoContextStatus');
+  const label=document.getElementById('autoContextText');
+  if(!box || !label) return;
+  box.classList.remove('off','loading');
+  if(mode==='off') box.classList.add('off');
+  if(mode==='loading') box.classList.add('loading');
+  label.textContent=text;
+}
+
+function toggleAutoContext(enabled){
+  autoContextEnabled=Boolean(enabled);
+  contextHiddenManually=!autoContextEnabled;
+  clearTimeout(autoContextTimer);
+
+  if(!autoContextEnabled){
+    updateAutoContextStatus('off','Lugares automáticos desactivados');
+    return;
+  }
+
+  contextHiddenManually=false;
+  lastAutoContextKey='';
+  scheduleAutoContext();
+}
+
+function contextFiltersChanged(){
+  lastAutoContextKey='';
+  if(autoContextEnabled){
+    contextHiddenManually=false;
+    scheduleAutoContext();
+  }
+}
+
+function scheduleAutoContext(){
+  if(!map) return;
+  clearTimeout(autoContextTimer);
+
+  const zoom=map.getZoom();
+  if(!autoContextEnabled || contextHiddenManually){
+    updateAutoContextStatus('off','Lugares automáticos desactivados');
+    return;
+  }
+
+  if(zoom<AUTO_CONTEXT_MIN_ZOOM){
+    contextLayer?.clearLayers();
+    currentContextCount=0;
+    lastAutoContextKey='';
+    updateAutoContextStatus('off','Acércate más (zoom 13+) para ver lugares cercanos');
+    return;
+  }
+
+  updateAutoContextStatus('loading','Preparando lugares cercanos…');
+  autoContextTimer=setTimeout(loadAutoContext,AUTO_CONTEXT_DEBOUNCE_MS);
+}
+
+async function loadAutoContext(){
+  if(!map || !autoContextEnabled || contextHiddenManually || map.getZoom()<AUTO_CONTEXT_MIN_ZOOM) return;
+
+  if(overpassBusy){
+    overpassPending=true;
+    return;
+  }
+
+  const center=map.getCenter();
+  const radius=autoRadiusForZoom(map.getZoom());
+  const amenities=selectedContextAmenities();
+
+  if(!amenities.length){
+    contextLayer.clearLayers();
+    updateAutoContextStatus('off','Selecciona categorías de contexto');
+    return;
+  }
+
+  const key=[center.lat.toFixed(3),center.lng.toFixed(3),radius,amenities.slice().sort().join(',')].join('|');
+
+  if(key===lastAutoContextKey){
+    updateAutoContextStatus('on',`${currentContextCount} lugares cercanos visibles`);
+    return;
+  }
+
+  overpassBusy=true;
+  updateAutoContextStatus('loading','Consultando lugares cercanos…');
+
+  try{
+    const data=await queryOverpass(center.lat,center.lng,radius,amenities);
+    drawPOIs(data);
+    currentContextCount=data.length;
+    lastAutoContextKey=key;
+    updateAutoContextStatus('on',`${data.length} lugares cercanos · OSM`);
+  }catch(error){
+    console.error('Auto contexto:',error);
+    updateAutoContextStatus('off','Contexto temporalmente no disponible');
+  }finally{
+    overpassBusy=false;
+    if(overpassPending){
+      overpassPending=false;
+      scheduleAutoContext();
+    }
+  }
+}
+
 async function queryOverpass(lat,lng,radius,amenities){
   const sorted=[...amenities].sort();
-  const key=`${lat.toFixed(3)}|${lng.toFixed(3)}|${radius}|${sorted.join(',')}`;
-  const cached=overpassCache.get(key);
+  const cacheKey=`${lat.toFixed(3)}|${lng.toFixed(3)}|${radius}|${sorted.join(',')}`;
+  const cached=overpassCache.get(cacheKey);
   if(cached && Date.now()-cached.time<600000) return cached.data;
 
-  const regex=sorted.join('|');
-  const query=`[out:json][timeout:20];(nwr(around:${radius},${lat},${lng})["amenity"~"^(${regex})$"];);out center tags;`;
+  const amenityValues=sorted.filter(x=>[
+    'hospital','clinic','doctors','school','kindergarten','university',
+    'fire_station','police','fuel','pharmacy'
+  ].includes(x));
 
-  const resp=await fetch('https://overpass-api.de/api/interpreter?data='+encodeURIComponent(query));
-  if(!resp.ok) throw new Error('Overpass no disponible');
-  const json=await resp.json();
+  const parts=[];
+  if(amenityValues.length){
+    parts.push(`nwr(around:${radius},${lat},${lng})["amenity"~"^(${amenityValues.join('|')})$"];`);
+  }
+  if(sorted.includes('healthcare_centre')){
+    parts.push(`nwr(around:${radius},${lat},${lng})["healthcare"~"^(hospital|clinic|doctor|centre)$"];`);
+  }
+  if(sorted.includes('ambulance_station')){
+    parts.push(`nwr(around:${radius},${lat},${lng})["emergency"="ambulance_station"];`);
+  }
+  if(!parts.length) return [];
 
-  const data=(json.elements||[]).map(el=>{
-    const pLat=el.lat ?? el.center?.lat, pLng=el.lon ?? el.center?.lon;
-    if(pLat==null || pLng==null) return null;
-    const amenity=el.tags?.amenity || '';
-    return {
-      id:`${el.type}/${el.id}`,lat:pLat,lng:pLng,amenity,
-      name:el.tags?.name || poiTypes[amenity]?.[1] || amenity,
-      distance:haversine(lat,lng,pLat,pLng)
-    };
-  }).filter(Boolean).sort((a,b)=>a.distance-b.distance);
+  const query=`[out:json][timeout:18];(${parts.join('')});out center tags;`;
+  const controller=new AbortController();
+  const timer=setTimeout(()=>controller.abort(),22000);
 
-  overpassCache.set(key,{time:Date.now(),data});
-  return data;
+  try{
+    const resp=await fetch(
+      'https://overpass-api.de/api/interpreter?data='+encodeURIComponent(query),
+      {signal:controller.signal,headers:{Accept:'application/json'}}
+    );
+
+    if(resp.status===429) throw new Error('Overpass temporalmente limitado');
+    if(!resp.ok) throw new Error(`Overpass respondió ${resp.status}`);
+
+    const json=await resp.json();
+    const unique=new Map();
+
+    for(const el of (json.elements||[])){
+      const pLat=el.lat ?? el.center?.lat;
+      const pLng=el.lon ?? el.center?.lon;
+      if(pLat==null || pLng==null) continue;
+
+      let type=el.tags?.amenity || '';
+      if(!type && el.tags?.healthcare){
+        type='healthcare_centre';
+        if(el.tags.healthcare==='hospital') type='hospital';
+        if(el.tags.healthcare==='clinic') type='clinic';
+        if(el.tags.healthcare==='doctor') type='doctors';
+        if(el.tags.healthcare==='pharmacy') type='pharmacy';
+      }
+      if(!type && el.tags?.emergency==='ambulance_station') type='ambulance_station';
+
+      const k=`${el.type}/${el.id}`;
+      unique.set(k,{
+        id:k,lat:Number(pLat),lng:Number(pLng),amenity:type||'place',
+        name:el.tags?.name || poiTypes[type]?.[1] || 'Lugar',
+        distance:haversine(lat,lng,Number(pLat),Number(pLng))
+      });
+    }
+
+    const data=[...unique.values()].sort((a,b)=>a.distance-b.distance);
+    overpassCache.set(cacheKey,{time:Date.now(),data});
+    return data;
+  }finally{
+    clearTimeout(timer);
+  }
 }
 
 function poiIcon(p){
@@ -987,10 +1197,24 @@ function poiIcon(p){
 
 function drawPOIs(data){
   contextLayer.clearLayers();
-  data.slice(0,150).forEach(p=>{
-    const meta=poiTypes[p.amenity] || ['📍',p.amenity];
-    L.marker([p.lat,p.lng],{icon:poiIcon(p)}).addTo(contextLayer)
-      .bindPopup(`<strong>${htmlEscape(p.name)}</strong><br><small>${htmlEscape(meta[1])}</small><br><small>Fuente: OpenStreetMap</small>`);
+  const visible=data.slice(0,120);
+  const showLabels=map.getZoom()>=17 && visible.length<=35;
+
+  visible.forEach(p=>{
+    const meta=poiTypes[p.amenity] || ['📍',p.amenity || 'Lugar'];
+    const marker=L.marker([p.lat,p.lng],{
+      icon:poiIcon(p),keyboard:false,riseOnHover:true
+    }).addTo(contextLayer);
+
+    marker.bindPopup(
+      `<strong>${htmlEscape(p.name)}</strong><br>`+
+      `<small>${htmlEscape(meta[1])}</small><br>`+
+      `<small>Fuente: OpenStreetMap</small>`
+    );
+
+    if(showLabels){
+      marker.bindTooltip(htmlEscape(p.name),{direction:'top',offset:[0,-14],opacity:.85});
+    }
   });
 }
 
@@ -1002,7 +1226,7 @@ async function analyzeNearReport(){
 
   try{
     const data=await queryOverpass(reportLocation.lat,reportLocation.lng,radius,
-      ['hospital','clinic','school','kindergarten','university','fire_station','police','fuel','pharmacy']);
+      ['hospital','clinic','doctors','healthcare_centre','ambulance_station','school','kindergarten','university','fire_station','police','fuel','pharmacy']);
     drawPOIs(data);
 
     box.innerHTML=data.length ? data.slice(0,30).map(p=>{
@@ -1020,37 +1244,48 @@ async function analyzePublicPoint(lat,lng){
   map.setView([lat,lng],16);
   openSheet('contextSheet');
   try{
-    const data=await queryOverpass(lat,lng,1000,['hospital','clinic','school','kindergarten','university','fire_station','police','fuel','pharmacy']);
+    const data=await queryOverpass(lat,lng,1000,['hospital','clinic','doctors','healthcare_centre','ambulance_station','school','kindergarten','university','fire_station','police','fuel','pharmacy']);
     drawPOIs(data);
     toast(`${data.length} elementos encontrados a 1 km.`);
   }catch(error){ toast('No fue posible consultar el entorno.'); }
 }
 
-async function loadContext(){
+async function loadContext(manual=false){
+  if(!map) return;
   const center=map.getCenter();
   const radius=Number(document.getElementById('contextRadius').value);
-  const selected=[...document.querySelectorAll('.ctx:checked')].map(x=>x.value);
+  const amenities=selectedContextAmenities();
 
-  let amenities=[];
-  selected.forEach(x=>{
-    if(x==='salud') amenities.push('hospital','clinic');
-    else if(x==='educacion') amenities.push('school','kindergarten','university');
-    else amenities.push(x);
-  });
-  amenities=[...new Set(amenities)];
   if(!amenities.length){ toast('Selecciona al menos una categoría.'); return; }
+  contextHiddenManually=false;
 
   try{
+    updateAutoContextStatus('loading','Consultando lugares cercanos…');
     const data=await queryOverpass(center.lat,center.lng,radius,amenities);
     drawPOIs(data);
-    toast(`${data.length} lugares cargados.`);
+    currentContextCount=data.length;
+    lastAutoContextKey='';
+    updateAutoContextStatus('on',`${data.length} lugares cercanos · OSM`);
+    if(manual) toast(`${data.length} lugares encontrados.`);
   }catch(error){
     console.error(error);
-    toast('No fue posible cargar el contexto territorial.');
+    updateAutoContextStatus('off','Contexto temporalmente no disponible');
+    toast('No fue posible cargar los lugares en este momento.');
   }
 }
 
-function clearContext(){ contextLayer.clearLayers(); toast('Contexto territorial limpiado.'); }
+function clearContext(manual=false){
+  contextLayer.clearLayers();
+  currentContextCount=0;
+  lastAutoContextKey='';
+
+  if(manual){
+    contextHiddenManually=true;
+    updateAutoContextStatus('off','Lugares ocultos · actívalos desde 🏙️');
+  }else{
+    updateAutoContextStatus('off','Sin lugares visibles');
+  }
+}
 
 async function saveThreat(){
   if(!member){ openModal('loginModal'); return; }
