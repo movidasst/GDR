@@ -1,0 +1,210 @@
+<!doctype html><html lang="es-VE"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>Mapa Participativo de Gestión de Riesgos en Venezuela | La Movida de SST Plus</title>
+<meta name="description" content="Mapa participativo de gestión de riesgos en Venezuela para identificar y visualizar amenazas, elementos expuestos, vulnerabilidades y capacidades. Iniciativa de La Movida de SST Plus para profesionales de SST, emergencias, prevención y gestión del riesgo.">
+<meta name="keywords" content="gestión de riesgos Venezuela, mapa de riesgos Venezuela, amenazas Venezuela, vulnerabilidades, elementos expuestos, capacidades, emergencias, SST Venezuela, seguridad y salud en el trabajo, prevención, planes de emergencia, La Movida de SST Plus">
+<meta name="author" content="David Linares Brea - La Movida de SST Plus">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0B2A6F">
+<meta name="application-name" content="Mapa Participativo de Gestión de Riesgos - La Movida de SST Plus">
+<meta name="geo.region" content="VE">
+<meta name="geo.placename" content="Venezuela">
+<link rel="canonical" href="https://gdr.movidasst.com/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_VE">
+<meta property="og:site_name" content="La Movida de SST Plus">
+<meta property="og:title" content="Mapa Participativo de Gestión de Riesgos en Venezuela">
+<meta property="og:description" content="Explora y aporta información sobre amenazas, elementos expuestos, vulnerabilidades y capacidades en Venezuela. Un mapa colaborativo de La Movida de SST Plus.">
+<meta property="og:url" content="https://gdr.movidasst.com/">
+<meta property="og:image" content="https://drive.google.com/thumbnail?id=1uJQz_j4X2fEHVNEqQPpXdF5A862WYBNB&sz=w1200">
+<meta property="og:image:secure_url" content="https://drive.google.com/thumbnail?id=1uJQz_j4X2fEHVNEqQPpXdF5A862WYBNB&sz=w1200">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Mapa Participativo de Gestión de Riesgos en Venezuela - La Movida de SST Plus">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mapa Participativo de Gestión de Riesgos en Venezuela">
+<meta name="twitter:description" content="Amenazas, exposición, vulnerabilidades y capacidades en un mapa colaborativo para profesionales de SST y gestión de riesgos en Venezuela.">
+<meta name="twitter:image" content="https://drive.google.com/thumbnail?id=1uJQz_j4X2fEHVNEqQPpXdF5A862WYBNB&sz=w1200">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Mapa Participativo de Gestión de Riesgos en Venezuela",
+  "alternateName":"Mapa de Gestión de Riesgos - La Movida de SST Plus",
+  "url":"https://gdr.movidasst.com/",
+  "description":"Mapa participativo para identificar, visualizar y analizar amenazas, elementos expuestos, vulnerabilidades y capacidades en Venezuela.",
+  "applicationCategory":"EducationalApplication",
+  "operatingSystem":"Web",
+  "inLanguage":"es-VE",
+  "areaServed":{"@type":"Country","name":"Venezuela"},
+  "creator":{"@type":"Person","name":"David Linares Brea","email":"info@movidasst.com"},
+  "publisher":{"@type":"Organization","name":"La Movida de SST Plus","url":"https://www.movidasst.com"},
+  "about":[
+    {"@type":"Thing","name":"Gestión de riesgos"},
+    {"@type":"Thing","name":"Seguridad y Salud en el Trabajo"},
+    {"@type":"Thing","name":"Gestión de emergencias"},
+    {"@type":"Thing","name":"Amenazas"},
+    {"@type":"Thing","name":"Vulnerabilidades"},
+    {"@type":"Thing","name":"Capacidades"}
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+:root{--az:#0b2a6f;--pt:#006d8f;--tx:#172033;--gr:#64748b;--bd:#dfe7f0;--sh:0 8px 28px rgba(20,38,70,.14)}*{box-sizing:border-box}html,body{margin:0;height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--tx)}body{overflow:hidden}button,input,select,textarea{font:inherit}#map{position:fixed;inset:0 0 72px;z-index:1}.top{position:fixed;z-index:1000;top:0;left:0;right:0;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);box-shadow:0 2px 16px rgba(15,35,70,.1);padding:calc(9px + env(safe-area-inset-top)) 12px 9px}.brand{display:flex;justify-content:space-between;align-items:center;gap:8px}.marca{font-weight:950;color:var(--az);font-size:13px}.title{margin:2px 0 0;color:#10264f;font-weight:950;font-size:clamp(16px,4vw,22px);line-height:1.05}.sub{font-size:10px;color:var(--gr);font-weight:650;margin-top:3px}.estado{font-size:10px;font-weight:850;padding:7px 9px;border-radius:999px;background:#eef8f2;color:#287543;white-space:nowrap}.acciones{position:fixed;z-index:950;top:90px;left:10px;right:10px;display:flex;gap:7px;pointer-events:none}.btn{pointer-events:auto;border:0;min-height:43px;border-radius:14px;padding:0 12px;background:#fff;box-shadow:var(--sh);font-size:12px;font-weight:850;cursor:pointer}.gps{background:var(--az);color:#fff;flex:1}.sq{width:46px;padding:0}#btnMod{display:none;background:#fff5e8;color:#934b08}.reportar{position:fixed;z-index:1000;right:15px;bottom:88px;height:56px;border:0;border-radius:28px;padding:0 19px;background:linear-gradient(135deg,var(--pt),var(--az));color:#fff;font-weight:950;box-shadow:0 12px 32px rgba(11,42,111,.3);cursor:pointer}.capas{position:fixed;z-index:1000;bottom:0;left:0;right:0;height:calc(72px + env(safe-area-inset-bottom));background:rgba(255,255,255,.98);box-shadow:0 -4px 20px rgba(20,40,70,.12);padding:6px 5px calc(6px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(4,1fr);gap:4px}.capa{border:0;background:transparent;border-radius:13px;color:#6a7487;font-size:9px;font-weight:850}.capa .i{display:block;font-size:20px}.capa.on{background:#edf4ff;color:var(--az)}.panel{position:fixed;z-index:1600;left:10px;right:10px;bottom:80px;max-height:68vh;overflow:auto;background:#fff;border-radius:21px;box-shadow:0 14px 44px rgba(15,30,60,.24);padding:15px;transform:translateY(120%);transition:.25s}.panel.open{transform:translateY(0)}.ph{display:flex;align-items:center;justify-content:space-between}.ph h2{margin:0;font-size:17px;color:var(--az)}.x{border:0;width:35px;height:35px;border-radius:50%;background:#eef2f7}.group{margin:14px 0}.gt{font-size:10px;color:var(--gr);font-weight:950;text-transform:uppercase}.li{display:flex;gap:9px;align-items:center;padding:8px 0;border-bottom:1px solid #eef1f5;font-size:12px;font-weight:750}.ii{width:32px;height:32px;border-radius:10px;background:#f3f6fa;display:grid;place-items:center;font-size:18px}.modal{position:fixed;inset:0;z-index:3000;background:rgba(8,20,45,.58);backdrop-filter:blur(5px);display:flex;align-items:flex-end;justify-content:center;padding:12px;opacity:0;visibility:hidden;pointer-events:none;transition:.22s}.modal.open{opacity:1;visibility:visible;pointer-events:auto}.card{position:relative;width:100%;max-width:540px;max-height:92vh;overflow:auto;background:#fff;border-radius:25px 25px 18px 18px;padding:22px 18px 18px;box-shadow:0 22px 60px rgba(10,25,55,.30)}.card h2{margin:0 40px 5px 0;color:var(--az);font-size:20px}.intro{font-size:12px;line-height:1.45;color:var(--gr);margin:0 0 15px}.mi{width:50px;height:50px;border-radius:15px;background:#edf4ff;display:grid;place-items:center;font-size:25px;margin-bottom:10px}.close{position:absolute;top:12px;right:12px;border:0;width:37px;height:37px;border-radius:50%;background:#eef2f7}.lab{display:block;margin:11px 0 5px;font-size:11px;font-weight:900;color:#26354e}.in,.sel,.ta{width:100%;border:1.5px solid #dce3ed;border-radius:13px;background:#f9fbfd;color:var(--tx);outline:none}.in,.sel{height:48px;padding:0 12px}.ta{min-height:90px;padding:11px 12px;resize:vertical}.in:focus,.sel:focus,.ta:focus{border-color:var(--pt);box-shadow:0 0 0 4px rgba(0,109,143,.1);background:#fff}.prim{width:100%;min-height:50px;margin-top:15px;border:0;border-radius:14px;background:linear-gradient(135deg,var(--pt),var(--az));color:#fff;font-weight:950}.sec{width:100%;min-height:46px;margin-top:7px;border:1px solid var(--bd);border-radius:14px;background:#fff;color:var(--az);font-weight:850}.res{display:none;margin-top:12px;padding:11px;border-radius:13px;font-size:12px}.res.ok{display:block;background:#eef9f2;color:#246c3e}.res.err{display:block;background:#fff0f0;color:#9a2929}.help{margin-top:12px;padding:10px 11px;border-radius:13px;background:#f4f7fb;color:#64748b;font-size:10px;line-height:1.45}.types{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:13px}.type{border:1px solid var(--bd);border-radius:17px;background:#fff;padding:12px 9px;min-height:105px;text-align:center}.type span{font-size:28px}.type strong{display:block;color:#18345f;font-size:12px;margin-top:5px}.type small{display:block;color:#6a7487;font-size:9px;line-height:1.3}.chip{padding:9px 11px;border-radius:13px;background:#eef9f2;color:#256a40;font-size:11px;font-weight:800}.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.ubs{display:grid;grid-template-columns:1fr 1fr;gap:7px}.ub{border:1px solid var(--bd);border-radius:14px;background:#fff;min-height:58px;font-size:11px;font-weight:850}.ubr{margin-top:8px;padding:10px;border-radius:13px;background:#f4f7fb;color:#42526b;font-size:11px}.ubr.ok{background:#eef9f2;color:#246c3e}.srow{display:flex;gap:7px}.srow .in{flex:1}.mini{width:49px;border:0;border-radius:13px;background:var(--az);color:#fff}.results{display:none;border:1px solid var(--bd);border-radius:13px;margin-top:7px;overflow:hidden}.results.open{display:block}.place{padding:9px 10px;border-bottom:1px solid #eef1f5;font-size:11px;line-height:1.35}.radios{display:grid;grid-template-columns:1fr 1fr;gap:7px}.radio{border:1px solid var(--bd);border-radius:13px;padding:9px;text-align:center;font-size:11px;font-weight:850}.radio input{display:none}.radio:has(input:checked){background:#edf9fb;border-color:var(--pt);color:var(--pt)}.env{margin-top:12px;border:1px solid #dbe5ef;border-radius:16px;padding:11px;background:#fbfdff}.envhead{display:flex;gap:7px;margin-top:7px}.envhead .sel{flex:1}.envhead button{border:0;border-radius:12px;background:#143d72;color:#fff;font-size:11px;font-weight:900;padding:0 10px}.envlist{max-height:180px;overflow:auto;margin-top:8px}.poi{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #edf1f5;font-size:10px}.poi b{display:block;font-size:11px}.dist{color:var(--pt);font-weight:850}.ctx{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:12px}.ctx label{border:1px solid var(--bd);border-radius:12px;padding:9px;font-size:10px;font-weight:800}.mods .m{padding:11px;border:1px solid var(--bd);border-radius:14px;margin:9px 0}.mt{display:flex;justify-content:space-between;gap:8px;font-size:11px}.ma{display:flex;gap:6px;margin-top:8px}.ma button{flex:1;border:0;min-height:38px;border-radius:10px;font-size:10px;font-weight:900}.valid{background:#eaf8ef;color:#246c3e}.reject{background:#fff0f0;color:#9a2929}.goto{background:#edf4ff;color:#174c8b}.toast{position:fixed;z-index:6000;left:50%;bottom:150px;transform:translate(-50%,25px);opacity:0;max-width:calc(100% - 25px);background:#172033;color:#fff;padding:10px 13px;border-radius:13px;font-size:11px;font-weight:750;text-align:center;transition:.22s;pointer-events:none}.toast.on{opacity:1;transform:translate(-50%,0)}
+@media(min-width:800px){#map{bottom:0}.top{top:18px;left:18px;right:auto;width:395px;border-radius:19px;padding:14px}.acciones{top:132px;left:18px;right:auto;width:395px}.capas{left:18px;right:auto;bottom:18px;width:395px;height:70px;border-radius:19px}.reportar{right:26px;bottom:25px}.panel{left:auto;right:18px;bottom:95px;width:410px}.modal{align-items:center}.card{border-radius:23px}}
+
+/* ===== Identidad La Movida de SST Plus / Venezuela ===== */
+.top{
+  padding:calc(9px + env(safe-area-inset-top)) 10px 9px;
+  border-bottom:1px solid rgba(11,42,111,.08);
+}
+.top::before{
+  content:"";
+  position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,#F7D117 0 33.333%,#003DA5 33.333% 66.666%,#CF142B 66.666% 100%);
+}
+.branding{display:flex;align-items:center;gap:10px}
+.logoBox{
+  width:64px;height:64px;flex:0 0 64px;border-radius:18px;background:#fff;
+  display:grid;place-items:center;overflow:hidden;box-shadow:0 6px 20px rgba(11,42,111,.12)
+}
+.logoBox img{width:92%;height:92%;object-fit:contain;display:block}
+.brandCopy{min-width:0;flex:1}
+.brandName{font-size:18px;line-height:1.03;font-weight:950;color:#0B2A6F;letter-spacing:-.02em}
+.slogan{margin-top:4px;font-size:10px;font-weight:850;color:#006D8F}
+.toolLine{
+  display:flex;align-items:flex-end;justify-content:space-between;gap:8px;
+  margin-top:8px;padding-top:7px;border-top:1px solid #edf1f6
+}
+.toolTitle{font-size:14px;font-weight:950;color:#172E5C;line-height:1.08}
+.toolSub{font-size:8.5px;color:#68758A;font-weight:700;margin-top:3px}
+.institutional{display:grid;grid-template-columns:auto 1fr 42px;gap:6px;margin-top:8px}
+.instBtn{
+  min-height:38px;border:0;border-radius:11px;padding:0 11px;font-size:10.5px;
+  font-weight:900;cursor:pointer
+}
+.backBtn{background:#eff3f8;color:#3e4d64}
+.registerBtn{background:linear-gradient(135deg,#F7D117,#F2BE1A);color:#172E5C}
+.infoBtn{background:#003DA5;color:white;padding:0;font-size:16px}
+.acciones{top:188px}
+.reportar{border:2px solid rgba(247,209,23,.85)}
+.infoLogo{
+  width:112px;height:112px;margin:0 auto 10px;border-radius:26px;background:#fff;
+  display:grid;place-items:center;box-shadow:0 10px 32px rgba(11,42,111,.14);overflow:hidden
+}
+.infoLogo img{width:92%;height:92%;object-fit:contain}
+.infoTitle{text-align:center;font-size:22px!important;margin:0!important;color:#0B2A6F!important}
+.infoSlogan{text-align:center;color:#006D8F;font-weight:850;font-size:12px;margin-top:4px}
+.flagMini{height:5px;width:82px;margin:12px auto 14px;border-radius:5px;background:linear-gradient(90deg,#F7D117 0 33.333%,#003DA5 33.333% 66.666%,#CF142B 66.666% 100%)}
+.infoLinks{display:grid;gap:7px;margin-top:14px}
+.infoLinks a,.infoLinks button{
+  width:100%;min-height:46px;border:0;border-radius:13px;padding:10px 12px;
+  display:flex;align-items:center;justify-content:center;text-align:center;text-decoration:none;
+  font-size:11px;font-weight:900;cursor:pointer
+}
+.linkReg{background:#F7D117;color:#172E5C}
+.linkWa{background:#EAF8EF;color:#176B3A}
+.linkContact{background:#EFF5FF;color:#194C8C}
+.linkBack{background:#EEF1F5;color:#48566B}
+.authorBox{text-align:center;margin-top:16px;padding-top:13px;border-top:1px solid #e8edf3;color:#68758A;font-size:10px;line-height:1.5}
+.statusReported{color:#A3560B}.statusConfirmed{color:#174C8B}.statusValidated{color:#246C3E}
+@media(min-width:800px){
+  .top{width:430px!important;padding:15px!important}
+  .logoBox{width:78px;height:78px;flex-basis:78px;border-radius:21px}
+  .brandName{font-size:22px}.slogan{font-size:11px}
+  .acciones{top:247px!important;width:430px!important}
+}
+
+</style></head><body>
+<header class="top">
+  <div class="branding">
+    <div class="logoBox">
+      <img src="https://drive.google.com/thumbnail?id=1MjVa3JxeKC95xEdlcZ5ZFMCKlatbrU2s&sz=w1000" alt="Logo La Movida de SST Plus">
+    </div>
+    <div class="brandCopy">
+      <div class="brandName">La Movida de SST Plus</div>
+      <div class="slogan">De la reacción a la prevención</div>
+    </div>
+  </div>
+
+  <div class="toolLine">
+    <div>
+      <div class="toolTitle">Mapa Participativo de Gestión de Riesgos en Venezuela</div>
+      <div class="toolSub">Amenazas · Exposición · Vulnerabilidades · Capacidades</div>
+    </div>
+    <div class="estado" id="conn">● Conectando</div>
+  </div>
+
+  <div class="institutional">
+    <button class="instBtn backBtn" onclick="window.location.href='https://www.movidasst.com'">← Volver</button>
+    <button class="instBtn registerBtn" onclick="window.location.href='https://registro.movidasst.com'">👤 Registrarse en La Movida</button>
+    <button class="instBtn infoBtn" onclick="openM('about')" aria-label="Información">ℹ️</button>
+  </div>
+</header>
+<div class="acciones"><button class="btn gps" onclick="gpsGeneral()">📍 Mi ubicación</button><button class="btn sq" onclick="openPanel('context')">🏙️</button><button class="btn sq" onclick="openPanel('legend')">☰</button><button class="btn sq" id="btnMod" onclick="openModeration()">🛠️</button></div>
+<div id="map"></div><button class="reportar" onclick="startReport()">＋ Reportar</button>
+<nav class="capas"><button class="capa on"><span class="i">🔥</span>Amenazas</button><button class="capa" onclick="later('Elementos expuestos')"><span class="i">👥</span>Exposición</button><button class="capa" onclick="later('Vulnerabilidades')"><span class="i">⚠️</span>Vulnerabilidad</button><button class="capa" onclick="later('Capacidades')"><span class="i">🛡️</span>Capacidades</button></nav>
+<aside class="panel" id="legend"><div class="ph"><h2>Leyenda</h2><button class="x" onclick="closePanel('legend')">✕</button></div><div id="legendBody"></div></aside>
+<aside class="panel" id="context"><div class="ph"><h2>🏙️ Contexto territorial</h2><button class="x" onclick="closePanel('context')">✕</button></div><p class="intro">Carga lugares existentes en OpenStreetMap alrededor del centro del mapa. Sirven como contexto; no son automáticamente elementos expuestos.</p><div class="ctx"><label><input type="checkbox" value="health" checked> 🏥 Salud</label><label><input type="checkbox" value="school" checked> 🏫 Educación</label><label><input type="checkbox" value="fire_station" checked> 🚒 Bomberos</label><label><input type="checkbox" value="police"> 🚓 Policía</label><label><input type="checkbox" value="fuel"> ⛽ Combustible</label><label><input type="checkbox" value="pharmacy"> 💊 Farmacias</label></div><label class="lab">Radio</label><select id="ctxRadius" class="sel"><option value="500">500 m</option><option value="1000" selected>1 km</option><option value="2000">2 km</option><option value="5000">5 km</option></select><button class="prim" onclick="loadContext()">Cargar lugares</button><button class="sec" onclick="contextLayer.clearLayers()">Limpiar</button><div class="help">Fuente: OpenStreetMap/Overpass. La cobertura depende de los datos disponibles en la zona.</div></aside>
+<div class="modal" id="login"><section class="card"><button class="close" onclick="closeM('login')">✕</button><div class="mi">🔐</div><h2>Identifícate como integrante</h2><p class="intro">Necesario para reportar, confirmar o moderar.</p><label class="lab">Cédula</label><input class="in" id="cedula" inputmode="numeric"><label class="lab">Código de integrante</label><input class="in" id="codigo"><button class="prim" id="loginBtn" onclick="validateMember()">Verificar integrante</button><div class="res" id="loginRes"></div><div class="help">Los visitantes pueden consultar el mapa sin identificarse.</div></section></div>
+<div class="modal" id="types"><section class="card"><button class="close" onclick="closeM('types')">✕</button><div class="mi">＋</div><h2>¿Qué deseas registrar?</h2><div class="chip" id="memberChip">✅ Integrante verificado</div><div class="types"><button class="type" onclick="chooseType('AMENAZA')"><span>🔥</span><strong>Amenaza</strong><small>Identificar, ubicar y caracterizar.</small></button><button class="type" onclick="later('Elementos expuestos')"><span>👥</span><strong>Elemento expuesto</strong><small>Personas, infraestructura o servicios.</small></button><button class="type" onclick="later('Vulnerabilidades')"><span>⚠️</span><strong>Vulnerabilidad</strong><small>Debilidades y susceptibilidad.</small></button><button class="type" onclick="later('Capacidades')"><span>🛡️</span><strong>Capacidad</strong><small>Recursos y fortalezas.</small></button></div></section></div>
+<div class="modal" id="threat"><section class="card"><button class="close" onclick="closeM('threat')">✕</button><div class="mi">🔥</div><h2>Registrar amenaza</h2><p class="intro">El reporte aparecerá inmediatamente como <strong>🟠 REPORTADO</strong>. Con 2 confirmaciones independientes pasará a <strong>🔵 CONFIRMADO</strong>; un moderador puede marcarlo como <strong>🟢 VALIDADO</strong>.</p><label class="lab">Tipo *</label><select id="threatType" class="sel"></select><label class="lab">Título *</label><input id="threatTitle" class="in" maxlength="120"><label class="lab">Ubicación *</label><div class="ubs"><button class="ub" onclick="gpsThreat()">📍<br>Usar mi ubicación</button><button class="ub" onclick="mapThreat()">🗺️<br>Marcar en mapa</button></div><label class="lab">Buscar lugar</label><div class="srow"><input id="placeQ" class="in" placeholder="Ej. Maracay, Aragua"><button class="mini" onclick="searchPlace()">🔎</button></div><div class="results" id="placeResults"></div><div class="ubr" id="locRes">Aún no seleccionaste ubicación.</div><label class="lab">Precisión</label><div class="radios"><label class="radio"><input type="radio" name="exact" value="true" checked>🎯 Exacta</label><label class="radio"><input type="radio" name="exact" value="false">⭕ Aproximada</label></div><div class="g2"><div><label class="lab">Estado temporal</label><select id="temporal" class="sel"><option>POTENCIAL</option><option>ACTIVA</option><option>RECURRENTE</option><option>HISTORICA</option></select></div><div><label class="lab">Fecha</label><input id="dateObs" type="date" class="in"></div></div><div class="g2"><div><label class="lab">Frecuencia</label><select id="freq" class="sel"><option value="">No determinada</option><option>UNICA</option><option>OCASIONAL</option><option>ESTACIONAL</option><option>RECURRENTE</option><option>PERMANENTE</option></select></div><div><label class="lab">Intensidad</label><select id="intensity" class="sel"><option value="">No determinada</option><option>BAJA</option><option>MEDIA</option><option>ALTA</option></select></div></div><label class="lab">Fuente</label><select id="source" class="sel"><option value="">Selecciona</option><option>OBSERVACION_PROPIA</option><option>COMUNIDAD</option><option>EMPRESA</option><option>AUTORIDAD</option><option>DOCUMENTO_TECNICO</option><option>MEDIO_COMUNICACION</option><option>OTRA</option></select><label class="lab">Descripción *</label><textarea id="desc" class="ta" maxlength="1200"></textarea><div class="env"><b>🔎 ¿Qué hay cerca?</b><div class="envhead"><select id="envRadius" class="sel"><option value="500">500 m</option><option value="1000" selected>1 km</option><option value="2000">2 km</option><option value="5000">5 km</option></select><button onclick="analyzeThreatEnv()">Analizar</button></div><div class="help">Radio de consulta del entorno; no representa automáticamente el área de impacto.</div><div class="envlist" id="envList"></div></div><div class="help">📷 Foto opcional: la interfaz queda prevista. Para subirla a Drive faltan las credenciales Google del proyecto, que deben ir del lado servidor.</div><button class="prim" id="saveBtn" onclick="saveThreat()">Guardar reporte</button><button class="sec" onclick="closeM('threat')">Cancelar</button></section></div>
+<div class="modal" id="moderation"><section class="card"><button class="close" onclick="closeM('moderation')">✕</button><div class="mi">🛠️</div><h2>Moderación técnica</h2><p class="intro">Valida o rechaza reportes antes de publicarlos.</p><button class="prim" onclick="loadPending()">Actualizar pendientes</button><div class="mods" id="modList"></div></section></div>
+<div class="modal" id="about">
+<section class="card">
+  <button class="close" onclick="closeM('about')">✕</button>
+  <div class="infoLogo">
+    <img src="https://drive.google.com/thumbnail?id=1MjVa3JxeKC95xEdlcZ5ZFMCKlatbrU2s&sz=w1000" alt="La Movida de SST Plus">
+  </div>
+  <h2 class="infoTitle">La Movida de SST Plus</h2>
+  <div class="infoSlogan">De la reacción a la prevención</div>
+  <div class="flagMini"></div>
+  <p class="intro" style="text-align:center">
+    Mapa colaborativo para identificar, ubicar y analizar amenazas, elementos expuestos,
+    vulnerabilidades y capacidades para la gestión de riesgos y emergencias en Venezuela.
+  </p>
+
+  <div class="infoLinks">
+    <a class="linkReg" href="https://registro.movidasst.com">👤 Registrarme en La Movida</a>
+    <a class="linkWa" href="https://whatsapp.com/channel/0029Va0mlH5Jf05mrcCz8r3e" target="_blank" rel="noopener noreferrer">📢 Canal de La Movida de SST en WhatsApp</a>
+    <a class="linkWa" href="https://wa.me/56868615650" target="_blank" rel="noopener noreferrer">💬 WhatsApp +56 868 615 650</a>
+    <a class="linkContact" href="mailto:info@movidasst.com">✉️ info@movidasst.com</a>
+    <button class="linkBack" onclick="window.location.href='https://www.movidasst.com'">← Volver a www.movidasst.com</button>
+  </div>
+
+  <div class="authorBox">
+    Elaborado por<br><strong>David Linares Brea</strong><br>
+    La Movida de SST Plus · Venezuela
+  </div>
+</section>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const URL='https://lfdmbkzghnwvsapxypvt.supabase.co',KEY='sb_publishable_bRnkA6PA8-v073nrw9zxiQ_8rVGiOn1',sb=window.supabase.createClient(URL,KEY);const map=L.map('map',{zoomControl:false}).setView([7.1,-66.2],6);L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'&copy; OpenStreetMap'}).addTo(map);L.control.zoom({position:'bottomleft'}).addTo(map);const publicLayer=L.layerGroup().addTo(map),contextLayer=L.layerGroup().addTo(map);let catalog=[],member=null,cCed='',cCod='',pending=null,marker=null,loc=null,mapMode=false,placeData=[],lastSearch=0,cache=new Map();
+const E=v=>String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;');function T(x){const e=document.getElementById('toast');e.textContent=x;e.classList.add('on');clearTimeout(window.tt);window.tt=setTimeout(()=>e.classList.remove('on'),3200)}function openM(id){document.getElementById(id).classList.add('open')}function closeM(id){document.getElementById(id).classList.remove('open')}function openPanel(id){document.getElementById(id).classList.add('open')}function closePanel(id){document.getElementById(id).classList.remove('open')}function later(n){T(n+': el catálogo ya existe; su formulario específico es el siguiente módulo.')}
+async function init(){try{let {data,error}=await sb.from('mapa_catalogo_amenazas').select('id,categoria,codigo,nombre,icono,orden').eq('activo',true).order('orden');if(error)throw error;catalog=data||[];drawLegend();fillTypes();document.getElementById('conn').textContent='● Conectado'}catch(e){console.error(e);document.getElementById('conn').textContent='● Error'}loadPublic()}
+function drawLegend(){let g={};catalog.forEach(x=>(g[x.categoria]??=[]).push(x));document.getElementById('legendBody').innerHTML=Object.entries(g).map(([c,a])=>`<div class=group><div class=gt>${E(c.replaceAll('_',' '))}</div>${a.map(x=>`<div class=li><span class=ii>${E(x.icono||'⚠️')}</span>${E(x.nombre)}</div>`).join('')}</div>`).join('')}
+function fillTypes(){document.getElementById('threatType').innerHTML='<option value="">Selecciona</option>'+catalog.map(x=>`<option value=${x.id}>${E(x.icono||'⚠️')} ${E(x.nombre)}</option>`).join('')}
+async function loadPublic(){try{let {data,error}=await sb.functions.invoke('reportes-publicos',{body:{}});if(error)throw error;if(!data?.ok)return;publicLayer.clearLayers();(data.reportes||[]).forEach(r=>{let lat=+r.latitud,lng=+r.longitud;if(!isFinite(lat)||!isFinite(lng))return;let col=r.nivel_validacion==='VALIDADO'?'#279455':(r.nivel_validacion==='CONFIRMADO'?'#2563a7':'#E87916'),ic=L.divIcon({className:'',html:`<div style="width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:white;border:3px solid ${col};box-shadow:0 5px 15px #0003;font-size:21px">${E(r.amenaza_icono||'⚠️')}</div>`,iconSize:[42,42],iconAnchor:[21,21]});L.marker([lat,lng],{icon:ic}).addTo(publicLayer).bindPopup(`<b>${E(r.amenaza_nombre||'Amenaza')}</b><br>${E(r.titulo)}<br><small>${E(r.nivel_validacion)} · 👥 ${r.confirmaciones||0}</small><br><button onclick="nearPublic(${lat},${lng})">🔎 Entorno</button> ${r.nivel_validacion==="VALIDADO"?"":`<button onclick="askConfirm(${r.id})">✅ Confirmar</button>`}`)})}catch(e){console.error(e)}}
+function gps(cb){if(!window.isSecureContext){T('GPS requiere HTTPS o localhost.');return}navigator.geolocation?.getCurrentPosition(p=>cb(p.coords.latitude,p.coords.longitude,p.coords.accuracy),()=>T('No fue posible obtener la ubicación.'),{enableHighAccuracy:true,timeout:15000,maximumAge:0})}function gpsGeneral(){gps((a,b,c)=>{map.setView([a,b],16);L.circle([a,b],{radius:c}).addTo(map);L.marker([a,b]).addTo(map);T(`Ubicación ±${Math.round(c)} m`)})}
+function startReport(){if(member){openTypes();return}pending={type:'REPORT'};openM('login')}function openTypes(){document.getElementById('memberChip').innerHTML=`✅ ${E(member.nombres)} ${E(member.apellidos)}`;openM('types')}
+async function validateMember(){let ced=document.getElementById('cedula').value.trim(),cod=document.getElementById('codigo').value.trim(),r=document.getElementById('loginRes'),b=document.getElementById('loginBtn');if(!ced||!cod){r.className='res err';r.textContent='Completa cédula y código.';return}b.disabled=true;try{let {data,error}=await sb.functions.invoke('validar-integrante',{body:{cedula:ced,codigo:cod}});if(error)throw error;if(!data?.ok)throw new Error(data?.error||'No validado');member=data.integrante;cCed=ced;cCod=cod;r.className='res ok';r.textContent='✅ Integrante verificado';if(member.es_moderador)document.getElementById('btnMod').style.display='block';setTimeout(()=>{closeM('login');if(pending?.type==='CONFIRM'){let id=pending.id;pending=null;confirmReport(id)}else{pending=null;openTypes()}},500)}catch(e){r.className='res err';r.textContent=e.message||'No validado'}finally{b.disabled=false}}
+function chooseType(t){closeM('types');if(t==='AMENAZA'){loc=null;if(marker){map.removeLayer(marker);marker=null}document.getElementById('dateObs').value=new Date().toISOString().slice(0,10);document.getElementById('locRes').className='ubr';document.getElementById('locRes').textContent='Aún no seleccionaste ubicación.';document.getElementById('envList').innerHTML='';openM('threat')}}
+function setLoc(a,b,m,p=null){if(marker)map.removeLayer(marker);marker=L.marker([a,b],{draggable:true}).addTo(map);loc={lat:+a,lng:+b,method:m,precision:p};marker.on('dragend',e=>{let q=e.target.getLatLng();loc.lat=q.lat;loc.lng=q.lng;loc.method='MAPA';showLoc()});map.setView([a,b],16);showLoc()}function showLoc(){let e=document.getElementById('locRes');if(!loc)return;e.className='ubr ok';e.textContent=`✅ Ubicación por ${loc.method}${loc.precision?` · ±${Math.round(loc.precision)} m`:''}. Puedes mover el marcador.`}function gpsThreat(){gps((a,b,c)=>setLoc(a,b,'GPS',c))}function mapThreat(){closeM('threat');mapMode=true;T('Toca en el mapa donde está la amenaza.')}map.on('click',e=>{if(!mapMode)return;mapMode=false;setLoc(e.latlng.lat,e.latlng.lng,'MAPA');openM('threat')});
+async function searchPlace(){let q=document.getElementById('placeQ').value.trim(),box=document.getElementById('placeResults');if(q.length<3)return T('Escribe al menos 3 caracteres.');if(Date.now()-lastSearch<1100)return T('Espera un momento.');lastSearch=Date.now();box.className='results open';box.innerHTML='<div class=place>Buscando…</div>';try{let u='https://nominatim.openstreetmap.org/search?'+new URLSearchParams({format:'jsonv2',q,limit:'5',countrycodes:'ve'});let r=await fetch(u,{headers:{Accept:'application/json'}});placeData=await r.json();box.innerHTML=placeData.map((x,i)=>`<div class=place onclick="pickPlace(${i})">📍 ${E(x.display_name)}</div>`).join('')||'<div class=place>Sin resultados</div>'}catch(e){box.innerHTML='<div class=place>Error de búsqueda</div>'}}function pickPlace(i){let x=placeData[i];if(!x)return;setLoc(+x.lat,+x.lon,'BUSQUEDA');document.getElementById('placeResults').classList.remove('open')}
+const PM={hospital:['🏥','Hospital'],clinic:['🏥','Clínica'],school:['🏫','Escuela'],kindergarten:['🧒','Preescolar'],university:['🎓','Universidad'],fire_station:['🚒','Bomberos'],police:['🚓','Policía'],fuel:['⛽','Combustible'],pharmacy:['💊','Farmacia']};function H(a,b,c,d){let R=6371000,r=x=>x*Math.PI/180,x=r(c-a),y=r(d-b),z=Math.sin(x/2)**2+Math.cos(r(a))*Math.cos(r(c))*Math.sin(y/2)**2;return 2*R*Math.asin(Math.sqrt(z))}async function overpass(lat,lng,rad,tags){let k=`${lat.toFixed(3)}|${lng.toFixed(3)}|${rad}|${tags.sort().join(',')}`,h=cache.get(k);if(h&&Date.now()-h.t<600000)return h.d;let rx=tags.join('|'),q=`[out:json][timeout:20];(nwr(around:${rad},${lat},${lng})["amenity"~"^(${rx})$"];);out center tags;`,r=await fetch('https://overpass-api.de/api/interpreter?data='+encodeURIComponent(q));if(!r.ok)throw Error();let j=await r.json(),d=(j.elements||[]).map(x=>{let a=x.lat??x.center?.lat,b=x.lon??x.center?.lon;if(a==null||b==null)return null;let am=x.tags?.amenity||'';return{lat:a,lng:b,am,name:x.tags?.name||PM[am]?.[1]||am,dist:H(lat,lng,a,b)}}).filter(Boolean).sort((a,b)=>a.dist-b.dist);cache.set(k,{t:Date.now(),d});return d}function poiIcon(p){return L.divIcon({className:'',html:`<div style="width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:white;border:1px solid #aab8c8;box-shadow:0 3px 10px #0002;font-size:17px">${PM[p.am]?.[0]||'📍'}</div>`,iconSize:[32,32],iconAnchor:[16,16]})}function paintPois(d){contextLayer.clearLayers();d.slice(0,150).forEach(p=>L.marker([p.lat,p.lng],{icon:poiIcon(p)}).addTo(contextLayer).bindPopup(`<b>${E(p.name)}</b><br><small>${E(PM[p.am]?.[1]||p.am)}</small>`))}
+async function analyzeThreatEnv(){if(!loc)return T('Primero ubica la amenaza.');let r=+document.getElementById('envRadius').value,b=document.getElementById('envList');b.textContent='Consultando…';try{let d=await overpass(loc.lat,loc.lng,r,['hospital','clinic','school','kindergarten','fire_station','police','fuel','pharmacy']);paintPois(d);b.innerHTML=d.slice(0,25).map(p=>`<div class=poi><span>${PM[p.am]?.[0]||'📍'}</span><div><b>${E(p.name)}</b><span class=dist>${p.dist<1000?Math.round(p.dist)+' m':(p.dist/1000).toFixed(1)+' km'}</span><br>${E(PM[p.am]?.[1]||p.am)}</div></div>`).join('')||'Sin elementos cercanos.'}catch(e){b.textContent='No fue posible consultar el entorno.'}}async function nearPublic(a,b){map.setView([a,b],16);openPanel('context');try{let d=await overpass(a,b,1000,['hospital','clinic','school','kindergarten','fire_station','police','fuel','pharmacy']);paintPois(d);T(`${d.length} elementos cercanos.`)}catch(e){T('No se pudo consultar el entorno.')}}async function loadContext(){let c=map.getCenter(),rad=+document.getElementById('ctxRadius').value,t=[];[...document.querySelectorAll('.ctx input:checked')].forEach(x=>{if(x.value==='health')t.push('hospital','clinic');else if(x.value==='school')t.push('school','kindergarten','university');else t.push(x.value)});t=[...new Set(t)];if(!t.length)return T('Selecciona una categoría.');try{let d=await overpass(c.lat,c.lng,rad,t);paintPois(d);T(`${d.length} lugares cargados.`)}catch(e){T('No fue posible cargar contexto.')}}
+async function saveThreat(){if(!member)return openM('login');let id=+document.getElementById('threatType').value,title=document.getElementById('threatTitle').value.trim(),desc=document.getElementById('desc').value.trim();if(!id)return T('Selecciona la amenaza.');if(title.length<5)return T('Escribe un título.');if(!loc)return T('Selecciona la ubicación.');if(desc.length<10)return T('Completa la descripción.');let b=document.getElementById('saveBtn');b.disabled=true;try{let {data,error}=await sb.functions.invoke('guardar-reporte',{body:{cedula:cCed,codigo:cCod,tipo_registro:'AMENAZA',amenaza_id:id,titulo:title,descripcion:desc,latitud:loc.lat,longitud:loc.lng,metodo_ubicacion:loc.method,precision_gps_metros:loc.precision,ubicacion_exacta:document.querySelector('input[name=exact]:checked')?.value==='true',fecha_observacion:document.getElementById('dateObs').value||null,estado_temporal:document.getElementById('temporal').value,frecuencia:document.getElementById('freq').value||null,intensidad:document.getElementById('intensity').value||null,fuente_informacion:document.getElementById('source').value||null}});if(error)throw error;if(!data?.ok)throw Error(data?.error||'No guardado');closeM('threat');T(`Reporte #${data.reporte_id} publicado como 🟠 REPORTADO.`);loadPublic()}catch(e){T(e.message||'No se pudo guardar.')}finally{b.disabled=false}}
+function askConfirm(id){if(!member){pending={type:'CONFIRM',id};openM('login');return}confirmReport(id)}async function confirmReport(id){try{let {data,error}=await sb.functions.invoke('confirmar-reporte',{body:{reporte_id:id,cedula:cCed,codigo:cCod}});if(error)throw error;if(!data?.ok)throw Error(data?.error||'No confirmado');T(`Confirmación registrada · ${data.confirmaciones}.`);loadPublic()}catch(e){T(e.message||'No se pudo confirmar.')}}
+function openModeration(){if(!member?.es_moderador)return T('No tienes permisos de moderación.');openM('moderation');loadPending()}async function loadPending(){let box=document.getElementById('modList');box.textContent='Cargando…';try{let {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{accion:'LISTAR',cedula:cCed,codigo:cCod}});if(error)throw error;if(!data?.ok)throw Error(data?.error||'Error');box.innerHTML=(data.reportes||[]).map(r=>`<div class=m><div class=mt><b>${E(r.amenaza_icono||'⚠️')} ${E(r.titulo)}</b><span>${E(r.nivel_validacion)}</span></div><small>${E(r.descripcion||'')}<br>👥 ${r.confirmaciones||0}</small><div class=ma><button class=goto onclick="go(${r.latitud},${r.longitud})">📍 Ver</button><button class=valid onclick="moderate(${r.id},'VALIDAR')">✅ Validar</button><button class=reject onclick="moderate(${r.id},'RECHAZAR')">✕ Rechazar</button></div></div>`).join('')||'No hay pendientes.'}catch(e){box.textContent='Error al cargar.'}}function go(a,b){closeM('moderation');map.setView([+a,+b],17)}async function moderate(id,a){try{let {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{accion:a,reporte_id:id,cedula:cCed,codigo:cCod}});if(error)throw error;if(!data?.ok)throw Error(data?.error||'Error');T(`Reporte ${data.estado}.`);loadPending();loadPublic()}catch(e){T(e.message||'No se pudo moderar.')}}
+init();
+</script></body></html>
