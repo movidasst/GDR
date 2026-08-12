@@ -228,6 +228,61 @@
 
     .modItem{border:1px solid var(--line);border-radius:13px;padding:10px;margin-bottom:8px}.modTitle{font-size:11px;font-weight:900;color:#1b365e}.modDesc{font-size:10px;color:#65748a;line-height:1.4;margin-top:4px}
     .modActions{display:flex;gap:5px;margin-top:7px}.modActions button{flex:1;border:0;border-radius:9px;min-height:36px;font-size:9.5px;font-weight:900}.viewBtn{background:#edf4ff;color:#174c8b}.validBtn{background:#eaf8ef;color:#246c3e}.rejectBtn{background:#fff0f0;color:#9a2929}
+    .modTabs{
+      display:grid;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      gap:5px;
+      margin:12px 0 10px;
+      padding:5px;
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:#f5f7fa
+    }
+    .modTab{
+      min-width:0;
+      min-height:38px;
+      border:0;
+      border-radius:10px;
+      background:transparent;
+      color:#607086;
+      font-size:8.7px;
+      font-weight:900;
+      padding:4px 5px;
+      line-height:1.1
+    }
+    .modTab.active{background:#fff;color:var(--blue);box-shadow:0 3px 10px rgba(11,42,111,.09)}
+    .modToolbar{display:flex;gap:6px;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .modToolbar .secondary{margin:0;min-height:38px;width:auto;padding:0 12px;font-size:9.5px}
+    .modCount{font-size:9px;color:#68758a;font-weight:850}
+    .modState{
+      display:inline-flex;align-items:center;gap:4px;margin-top:6px;
+      padding:4px 7px;border-radius:999px;font-size:8px;font-weight:950
+    }
+    .statePending{background:#fff4e8;color:#a3560b}
+    .stateConfirmed{background:#edf4ff;color:#174c8b}
+    .stateValidated{background:#eaf8ef;color:#246c3e}
+    .stateHistorical{background:#f4eefb;color:#694696}
+    .stateHidden{background:#eef1f5;color:#586578}
+    .stateRejected{background:#fff0f0;color:#9a2929}
+    .historyBtn{background:#f4eefb!important;color:#694696!important}
+    .hideBtn{background:#eef1f5!important;color:#586578!important}
+    .restoreBtn{background:#eaf8ef!important;color:#246c3e!important}
+    .deleteBtn{
+      background:#b42318!important;
+      color:#fff!important;
+      flex:0 0 100%!important;
+      margin-top:2px
+    }
+    .modActions{flex-wrap:wrap}
+    .modActions button{min-width:88px}
+    .modDangerNote{
+      margin-top:8px;padding:7px 8px;border-radius:9px;background:#fff6f5;color:#8a2b25;
+      font-size:8.5px;line-height:1.35
+    }
+    @media(max-width:390px){
+      .modTabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+
     .legendGroup{margin:13px 0}.legendTitle{font-size:10px;font-weight:950;color:var(--muted);text-transform:uppercase}.legendItem{display:flex;gap:8px;align-items:center;padding:7px 0;border-bottom:1px solid #eef1f5;font-size:11.5px;font-weight:750}
 
     /* INFO */
@@ -788,10 +843,23 @@
 <div class="modal" id="moderationModal">
   <section class="card">
     <button class="close" style="position:absolute;right:12px;top:12px" onclick="closeModal('moderationModal')">✕</button>
-    <div class="modalIcon">🛠️</div><h2>Moderación técnica</h2>
-    <p class="intro">Revisa los cuatro tipos de registros y decide si se validan o se rechazan.</p>
-    <button class="primary" onclick="loadPendingReports()">Actualizar reportes</button>
-    <div id="moderationList" style="margin-top:11px"></div>
+    <div class="modalIcon">🛠️</div>
+    <h2>Gestión y moderación</h2>
+    <p class="intro">Administra todo el ciclo de vida de amenazas, elementos expuestos, vulnerabilidades y capacidades.</p>
+
+    <div class="modTabs">
+      <button class="modTab active" data-modfilter="PENDIENTES" onclick="setModerationFilter('PENDIENTES',this)">Pendientes</button>
+      <button class="modTab" data-modfilter="PUBLICADOS" onclick="setModerationFilter('PUBLICADOS',this)">Publicados</button>
+      <button class="modTab" data-modfilter="RETIRADOS" onclick="setModerationFilter('RETIRADOS',this)">Retirados</button>
+      <button class="modTab" data-modfilter="TODOS" onclick="setModerationFilter('TODOS',this)">Todos</button>
+    </div>
+
+    <div class="modToolbar">
+      <span class="modCount" id="moderationCount">0 registros</span>
+      <button class="secondary" onclick="loadModerationReports()">↻ Actualizar</button>
+    </div>
+
+    <div id="moderationList"></div>
   </section>
 </div>
 
@@ -833,6 +901,7 @@ let member=null, sessionCedula='', sessionCodigo='', pendingAction=null;
 let currentReportType='AMENAZA', reportLocation=null, locationDraft=null, locationReturnView=null;
 let locationModeActive=false, autoContextEnabled=true, autoContextTimer=null, lastContextKey='', contextBusy=false;
 let searchResults=[];
+let moderationFilter='PENDIENTES';
 
 const reportMeta={
   AMENAZA:{icon:'🔥',heading:'Registrar amenaza',catalogLabel:'Tipo de amenaza *',hint:'Identifica y caracteriza el fenómeno o condición con potencial de causar daños.',idField:'amenaza_id'},
@@ -1330,23 +1399,236 @@ async function confirmReport(id){
   }catch(e){console.error(e);toast(e.message||'No fue posible confirmar')}
 }
 
-function openModeration(){if(!member?.es_moderador){toast('No tienes permisos de moderación.');return}openModal('moderationModal');loadPendingReports()}
-async function loadPendingReports(){
-  const box=document.getElementById('moderationList');box.textContent='Cargando…';
-  try{
-    const {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{accion:'LISTAR',cedula:sessionCedula,codigo:sessionCodigo}});
-    if(error)throw error;if(!data?.ok)throw new Error(data?.error||'No fue posible cargar');
-    const rs=data.reportes||[];
-    box.innerHTML=rs.length?rs.map(r=>`<div class="modItem"><div class="modTitle">${esc(r.tipo_icono||'📍')} ${esc(r.tipo_nombre||r.tipo_registro)} · ${esc(r.titulo||'')}</div><div class="modDesc">Estado: ${esc(r.nivel_validacion)} · 👥 ${Number(r.confirmaciones||0)} confirmaciones<br><br>${esc(r.descripcion||'')}</div><div class="modActions"><button class="viewBtn" onclick="viewModeration(${Number(r.latitud)},${Number(r.longitud)})">📍 Ver</button><button class="validBtn" onclick="moderate(${Number(r.id)},'VALIDAR')">✅ Validar</button><button class="rejectBtn" onclick="moderate(${Number(r.id)},'RECHAZAR')">✕ Rechazar</button></div></div>`).join(''):'<p class="intro">No hay reportes pendientes.</p>';
-  }catch(e){console.error(e);box.textContent='No fue posible cargar la moderación.'}
+function openModeration(){
+  if(!member?.es_moderador){
+    toast('No tienes permisos de moderación.');
+    return;
+  }
+
+  moderationFilter='PENDIENTES';
+  document.querySelectorAll('.modTab').forEach(btn=>{
+    btn.classList.toggle('active',btn.dataset.modfilter==='PENDIENTES');
+  });
+
+  openModal('moderationModal');
+  loadModerationReports();
 }
-function viewModeration(lat,lng){closeModal('moderationModal');map.setView([lat,lng],17)}
-async function moderate(id,accion){
+
+function setModerationFilter(filter,btn){
+  moderationFilter=filter;
+  document.querySelectorAll('.modTab').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  loadModerationReports();
+}
+
+function moderationStateBadge(r){
+  if(r.nivel_validacion==='VALIDADO' && r.estado_temporal==='HISTORICA'){
+    return '<span class="modState stateHistorical">📚 HISTÓRICO</span>';
+  }
+  if(r.nivel_validacion==='VALIDADO'){
+    return '<span class="modState stateValidated">🟢 VALIDADO</span>';
+  }
+  if(r.nivel_validacion==='CONFIRMADO'){
+    return '<span class="modState stateConfirmed">🔵 CONFIRMADO</span>';
+  }
+  if(r.nivel_validacion==='REPORTADO'){
+    return '<span class="modState statePending">🟠 REPORTADO</span>';
+  }
+  if(r.nivel_validacion==='DESACTUALIZADO'){
+    return '<span class="modState stateHidden">⚫ DESACTUALIZADO</span>';
+  }
+  if(r.nivel_validacion==='RECHAZADO'){
+    return '<span class="modState stateRejected">🔴 RECHAZADO</span>';
+  }
+  return `<span class="modState">${esc(r.nivel_validacion||'')}</span>`;
+}
+
+function moderationButtons(r){
+  const id=Number(r.id);
+  const lat=Number(r.latitud);
+  const lng=Number(r.longitud);
+  const state=r.nivel_validacion;
+  const historical=r.estado_temporal==='HISTORICA';
+
+  let buttons=`<button class="viewBtn" onclick="viewModeration(${lat},${lng})">📍 Ver</button>`;
+
+  if(state==='REPORTADO' || state==='CONFIRMADO'){
+    buttons+=`
+      <button class="validBtn" onclick="moderateReport(${id},'VALIDAR')">✅ Validar</button>
+      <button class="rejectBtn" onclick="moderateReport(${id},'RECHAZAR')">✕ Rechazar</button>
+    `;
+  }
+
+  if(state==='VALIDADO' && !historical){
+    buttons+=`
+      <button class="historyBtn" onclick="moderateReport(${id},'HISTORICO')">📚 Histórico</button>
+      <button class="hideBtn" onclick="moderateReport(${id},'OCULTAR')">👁️ Ocultar</button>
+    `;
+  }
+
+  if(state==='VALIDADO' && historical){
+    buttons+=`
+      <button class="restoreBtn" onclick="moderateReport(${id},'RESTAURAR')">♻️ Restaurar vigente</button>
+      <button class="hideBtn" onclick="moderateReport(${id},'OCULTAR')">👁️ Ocultar</button>
+    `;
+  }
+
+  if(state==='DESACTUALIZADO' || state==='RECHAZADO'){
+    buttons+=`
+      <button class="restoreBtn" onclick="moderateReport(${id},'RESTAURAR')">♻️ Restaurar</button>
+    `;
+  }
+
+  buttons+=`<button class="deleteBtn" onclick="deleteReportPermanently(${id})">🗑️ Eliminar definitivamente</button>`;
+
+  return buttons;
+}
+
+async function loadModerationReports(){
+  const box=document.getElementById('moderationList');
+  const count=document.getElementById('moderationCount');
+
+  box.innerHTML='<p class="intro">Cargando registros…</p>';
+  count.textContent='Consultando…';
+
   try{
-    const {data,error}=await sb.functions.invoke('moderacion-mapa',{body:{accion,reporte_id:id,cedula:sessionCedula,codigo:sessionCodigo}});
-    if(error)throw error;if(!data?.ok)throw new Error(data?.error||'No fue posible moderar');
-    toast(`Reporte ${data.estado}.`);await loadPendingReports();await loadPublicReports();
-  }catch(e){console.error(e);toast(e.message||'No fue posible moderar')}
+    const {data,error}=await sb.functions.invoke('moderacion-mapa',{
+      body:{
+        accion:'LISTAR',
+        filtro:moderationFilter,
+        cedula:sessionCedula,
+        codigo:sessionCodigo
+      }
+    });
+
+    if(error) throw error;
+    if(!data?.ok) throw new Error(data?.error||'No fue posible cargar la moderación');
+
+    const rs=data.reportes||[];
+    count.textContent=`${rs.length} ${rs.length===1?'registro':'registros'}`;
+
+    box.innerHTML=rs.length
+      ? rs.map(r=>`
+          <div class="modItem">
+            <div class="modTitle">
+              ${esc(r.tipo_icono||'📍')}
+              ${esc(r.tipo_nombre||r.tipo_registro)}
+              · ${esc(r.titulo||'')}
+            </div>
+
+            ${moderationStateBadge(r)}
+
+            <div class="modDesc">
+              ${r.categoria?`Categoría: ${esc(String(r.categoria).replaceAll('_',' '))}<br>`:''}
+              👥 ${Number(r.confirmaciones||0)} confirmaciones
+              ${r.estado_temporal?` · Temporal: ${esc(r.estado_temporal)}`:''}
+              <br><br>
+              ${esc(r.descripcion||'')}
+            </div>
+
+            <div class="modActions">
+              ${moderationButtons(r)}
+            </div>
+          </div>
+        `).join('')
+      : `<p class="intro">No hay registros en esta sección.</p>`;
+
+  }catch(e){
+    console.error(e);
+    count.textContent='Error';
+    box.innerHTML='<p class="intro">No fue posible cargar los registros de moderación.</p>';
+    toast(e.message||'No fue posible cargar la moderación.');
+  }
+}
+
+function viewModeration(lat,lng){
+  closeModal('moderationModal');
+
+  if(Number.isFinite(lat)&&Number.isFinite(lng)){
+    map.setView([lat,lng],17);
+  }
+}
+
+function moderationActionMessage(action,data){
+  if(action==='VALIDAR') return 'Reporte validado y visible públicamente.';
+  if(action==='RECHAZAR') return 'Reporte rechazado y retirado del mapa público.';
+  if(action==='HISTORICO') return 'Reporte marcado como histórico.';
+  if(action==='OCULTAR') return 'Reporte ocultado del mapa público.';
+  if(action==='RESTAURAR') return 'Reporte restaurado y visible públicamente.';
+  if(action==='ELIMINAR') return 'Reporte eliminado definitivamente.';
+  return data?.estado ? `Reporte ${data.estado}.` : 'Acción completada.';
+}
+
+async function moderateReport(id,action){
+  try{
+    const {data,error}=await sb.functions.invoke('moderacion-mapa',{
+      body:{
+        accion:action,
+        reporte_id:id,
+        cedula:sessionCedula,
+        codigo:sessionCodigo
+      }
+    });
+
+    if(error) throw error;
+    if(!data?.ok) throw new Error(data?.error||'No fue posible realizar la acción');
+
+    toast(moderationActionMessage(action,data));
+
+    await Promise.all([
+      loadModerationReports(),
+      loadPublicReports()
+    ]);
+
+  }catch(e){
+    console.error(e);
+    toast(e.message||'No fue posible realizar la acción.');
+  }
+}
+
+async function deleteReportPermanently(id){
+  const reportTitle=(()=>{
+    const r=allReports.find(x=>Number(x.id)===Number(id));
+    return r?.titulo ? `\n\n"${r.titulo}"` : '';
+  })();
+
+  const first=window.confirm(
+    `¿Eliminar definitivamente este reporte?${reportTitle}\n\n`+
+    `Se borrará de la base de datos junto con sus confirmaciones. Esta acción no se puede deshacer.`
+  );
+
+  if(!first) return;
+
+  const second=window.confirm(
+    'ÚLTIMA CONFIRMACIÓN\n\n¿Seguro que deseas eliminarlo definitivamente?'
+  );
+
+  if(!second) return;
+
+  try{
+    const {data,error}=await sb.functions.invoke('moderacion-mapa',{
+      body:{
+        accion:'ELIMINAR',
+        reporte_id:id,
+        cedula:sessionCedula,
+        codigo:sessionCodigo
+      }
+    });
+
+    if(error) throw error;
+    if(!data?.ok) throw new Error(data?.error||'No fue posible eliminar el reporte');
+
+    toast('Reporte eliminado definitivamente.');
+
+    await Promise.all([
+      loadModerationReports(),
+      loadPublicReports()
+    ]);
+
+  }catch(e){
+    console.error(e);
+    toast(e.message||'No fue posible eliminar el reporte.');
+  }
 }
 
 document.addEventListener('DOMContentLoaded',()=>{
