@@ -895,6 +895,7 @@ const SUPABASE_KEY='sb_publishable_bRnkA6PA8-v073nrw9zxiQ_8rVGiOn1';
 let sb=null, map=null, publicLayer=null, contextLayer=null, draftMarker=null;
 let publicMarkers=new Map();
 let initialDeepLinkHandled=false;
+let incomingSignal=null;
 let catalogs={AMENAZA:[],ELEMENTO_EXPUESTO:[],VULNERABILIDAD:[],CAPACIDAD:[]};
 let allReports=[], activeLayer='AMENAZA';
 let member=null, sessionCedula='', sessionCodigo='', pendingAction=null;
@@ -1100,38 +1101,71 @@ function shareReport(reportId){
   window.open(whatsapp,'_blank','noopener,noreferrer');
 }
 
+function cleanIncomingText(value,max){
+  return String(value??'').replace(/[\x00-\x1F\x7F]/g,' ').replace(/\s+/g,' ').trim().slice(0,max);
+}
+
+function cleanIncomingDescription(value,max=1500){
+  return String(value??'').replace(/\x00/g,'').trim().slice(0,max);
+}
+
+function parseIncomingSignal(params){
+  if(params.get('accion')!=='registrar'||params.get('origen')!=='monitor-sst')return null;
+  const lat=Number(params.get('lat')),lng=Number(params.get('lng'));
+  if(!Number.isFinite(lat)||!Number.isFinite(lng)||lat<-90||lat>90||lng<-180||lng>180)return null;
+  const code=String(params.get('amenaza_codigo')||'').trim().toUpperCase();
+  const intensity=String(params.get('intensidad')||'').trim().toUpperCase();
+  const temporal=String(params.get('estado_temporal')||'').trim().toUpperCase();
+  const sourceType=String(params.get('fuente_tipo')||'').trim().toUpperCase();
+  const date=String(params.get('fecha')||'').trim();
+  return{
+    lat,lng,
+    title:cleanIncomingText(params.get('titulo')||'Señal del Monitor SST',120),
+    description:cleanIncomingDescription(params.get('descripcion')||'',1500),
+    threatCode:/^[A-Z0-9_]{1,60}$/.test(code)?code:'',
+    intensity:['BAJA','MEDIA','ALTA'].includes(intensity)?intensity:'',
+    temporal:['POTENCIAL','ACTIVA','RECURRENTE','HISTORICA'].includes(temporal)?temporal:'ACTIVA',
+    sourceType:['OBSERVACION_PROPIA','COMUNIDAD','EMPRESA','AUTORIDAD','DOCUMENTO_TECNICO','MEDIO_COMUNICACION','OTRA'].includes(sourceType)?sourceType:'DOCUMENTO_TECNICO',
+    date:/^\d{4}-\d{2}-\d{2}$/.test(date)?date:new Date().toISOString().slice(0,10)
+  };
+}
+
 function handleDeepLink(){
-  if(initialDeepLinkHandled) return;
+  if(initialDeepLinkHandled)return;
   initialDeepLinkHandled=true;
-
   const params=new URLSearchParams(window.location.search);
-  const reportId=Number(params.get('reporte'));
-  const requestedLayer=params.get('capa');
 
-  if(!Number.isFinite(reportId)) return;
-
-  const report=allReports.find(r=>Number(r.id)===reportId);
-  if(!report){
-    toast('El registro compartido no está disponible públicamente.');
+  if(params.get('accion')==='registrar'&&params.get('origen')==='monitor-sst'){
+    const signal=parseIncomingSignal(params);
+    if(!signal){toast('La señal recibida desde el Monitor no contiene una ubicación válida.');return}
+    incomingSignal=signal;
+    activeLayer='AMENAZA';
+    document.querySelectorAll('.layerBtn').forEach(btn=>btn.classList.toggle('active',btn.dataset.filter==='AMENAZA'));
+    renderPublicReports();
+    map.setView([signal.lat,signal.lng],15,{animate:true});
+    if(member){
+      openReportForm('AMENAZA',signal);
+    }else{
+      pendingAction={type:'IMPORT_SIGNAL'};
+      openModal('loginModal');
+      toast('Señal recibida desde el Monitor SST. Valida tu identidad para revisarla antes de publicar.');
+    }
     return;
   }
 
-  const layer=report.tipo_registro || requestedLayer;
-  if(layer && reportMeta[layer]){
+  const reportId=Number(params.get('reporte'));
+  const requestedLayer=params.get('capa');
+  if(!Number.isFinite(reportId))return;
+  const report=allReports.find(r=>Number(r.id)===reportId);
+  if(!report){toast('El registro compartido no está disponible públicamente.');return}
+  const layer=report.tipo_registro||requestedLayer;
+  if(layer&&reportMeta[layer]){
     activeLayer=layer;
-    document.querySelectorAll('.layerBtn').forEach(btn=>{
-      btn.classList.toggle('active',btn.dataset.filter===layer);
-    });
+    document.querySelectorAll('.layerBtn').forEach(btn=>btn.classList.toggle('active',btn.dataset.filter===layer));
     renderPublicReports();
   }
-
-  const marker=publicMarkers.get(reportId);
   const lat=Number(report.latitud),lng=Number(report.longitud);
-
-  if(Number.isFinite(lat)&&Number.isFinite(lng)){
-    map.setView([lat,lng],17,{animate:true});
-  }
-
+  if(Number.isFinite(lat)&&Number.isFinite(lng))map.setView([lat,lng],17,{animate:true});
   setTimeout(()=>{
     const mk=publicMarkers.get(reportId);
     if(mk){
@@ -1141,7 +1175,6 @@ function handleDeepLink(){
     }
   },450);
 }
-
 
 function getGPS(success){
   if(!window.isSecureContext){toast('El GPS requiere HTTPS.');return}
@@ -1169,7 +1202,12 @@ async function validateMember(){
     member=data.integrante;sessionCedula=cedula;sessionCodigo=codigo;
     result.className='loginResult ok';result.innerHTML=`✅ <strong>${esc(member.nombres||'')} ${esc(member.apellidos||'')}</strong>`;
     if(member.es_moderador) document.getElementById('moderationBtn').style.display='block';
-    setTimeout(()=>{closeModal('loginModal');if(pendingAction?.type==='CONFIRM'){const id=pendingAction.id;pendingAction=null;confirmReport(id)}else{pendingAction=null;openTypeSelector()}},400);
+    setTimeout(()=>{
+      closeModal('loginModal');
+      if(pendingAction?.type==='CONFIRM'){const id=pendingAction.id;pendingAction=null;confirmReport(id);return}
+      if(pendingAction?.type==='IMPORT_SIGNAL'&&incomingSignal){const preset=incomingSignal;pendingAction=null;openReportForm('AMENAZA',preset);return}
+      pendingAction=null;openTypeSelector();
+    },400);
   }catch(e){console.error(e);result.className='loginResult err';result.textContent=e.message||'No fue posible validar'}
   finally{btn.disabled=false;btn.textContent='Verificar integrante'}
 }
@@ -1179,7 +1217,34 @@ function openTypeSelector(){
   openModal('typeModal');
 }
 
-function openReportForm(type){
+function applyIncomingSignalPreset(preset){
+  if(!preset)return;
+  const catalog=document.getElementById('reportCatalog');
+  const match=catalogs.AMENAZA.find(x=>String(x.codigo||'').toUpperCase()===preset.threatCode);
+  if(match){
+    catalog.value=String(match.id);
+    document.getElementById('catalogHint').textContent=reportMeta.AMENAZA.hint+' Categoría sugerida automáticamente desde el Monitor; verifícala antes de guardar.';
+  }else{
+    document.getElementById('catalogHint').textContent=reportMeta.AMENAZA.hint+' Esta señal no tiene una equivalencia automática segura; selecciona manualmente la categoría correcta.';
+  }
+  document.getElementById('reportTitle').value=preset.title||'';
+  document.getElementById('reportDescription').value=preset.description||'';
+  document.getElementById('dateObs').value=preset.date||new Date().toISOString().slice(0,10);
+  document.getElementById('temporal').value=preset.temporal||'ACTIVA';
+  document.getElementById('intensity').value=preset.intensity||'';
+  document.getElementById('sourceInfo').value=preset.sourceType||'DOCUMENTO_TECNICO';
+  const approx=document.querySelector('input[name="exact"][value="false"]');
+  if(approx)approx.checked=true;
+  reportLocation={lat:Number(preset.lat),lng:Number(preset.lng),method:'MAPA',precision:null};
+  removeDraftMarker();
+  draftMarker=L.marker([reportLocation.lat,reportLocation.lng]).addTo(map);
+  map.setView([reportLocation.lat,reportLocation.lng],15,{animate:true});
+  updateLocationSummary();
+  const summary=document.getElementById('locationSummary');
+  summary.insertAdjacentHTML('beforeend','<br><small>Precargada desde el Monitor SST. Verifica o ajusta el punto antes de publicar.</small>');
+  document.getElementById('reportIntro').innerHTML='<strong>Señal importada desde el Monitor SST.</strong> Los datos están precargados para revisión. Nada se publica automáticamente: confirma categoría, ubicación y descripción antes de guardar. El registro se publicará inicialmente como <strong>🟠 REPORTADO</strong>.';
+}
+function openReportForm(type,preset=null){
   currentReportType=type;closeModal('typeModal');
   const m=reportMeta[type];
   document.getElementById('reportIcon').textContent=m.icon;
@@ -1203,7 +1268,10 @@ function openReportForm(type){
   document.getElementById('sensitiveLocation').checked=false;
   document.getElementById('placeSearch').value='';
   document.getElementById('placeResults').classList.remove('show');
+  const exact=document.querySelector('input[name="exact"][value="true"]');
+  if(exact)exact.checked=true;
   reportLocation=null;removeDraftMarker();updateLocationSummary();
+  if(type==='AMENAZA'&&preset)applyIncomingSignalPreset(preset);
   openModal('reportModal');
 }
 
@@ -1384,8 +1452,18 @@ async function saveReport(){
     const {data,error}=await sb.functions.invoke('guardar-reporte',{body:payload});
     if(error)throw error;if(!data?.ok)throw new Error(data?.error||'No fue posible guardar');
     closeModal('reportModal');toast(`Reporte #${data.reporte_id} publicado como 🟠 REPORTADO.`);
+    const cameFromMonitor=Boolean(incomingSignal);
     removeDraftMarker();reportLocation=null;await loadPublicReports();
     activeLayer=currentReportType;document.querySelectorAll('.layerBtn').forEach(x=>x.classList.toggle('active',x.dataset.filter===activeLayer));renderPublicReports();
+    if(cameFromMonitor){
+      incomingSignal=null;
+      const cleanUrl=new URL(window.location.origin+'/');
+      cleanUrl.searchParams.set('reporte',String(data.reporte_id));
+      cleanUrl.searchParams.set('capa',currentReportType);
+      history.replaceState({},'',cleanUrl.toString());
+      const marker=publicMarkers.get(Number(data.reporte_id));
+      if(marker){map.setView(marker.getLatLng(),17,{animate:true});setTimeout(()=>marker.openPopup(),250)}
+    }
   }catch(e){console.error(e);toast(e.message||'No fue posible guardar el reporte')}
   finally{btn.disabled=false;btn.textContent='Guardar reporte'}
 }
